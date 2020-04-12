@@ -1,14 +1,16 @@
 import React, { useEffect } from "react"
 import SideBar from "./side-bar"
 
-const Layout = ({ children }) => {
+const Layout = props => {
   return (
     <div>
       <aside>
-        <SideBar />
+        <SideBar location={props.location} />
       </aside>
 
-      <main style={{ marginLeft: "16rem", padding: "2rem" }}>{children}</main>
+      <main style={{ marginLeft: "16rem", padding: "2rem" }}>
+        {props.children}
+      </main>
     </div>
   )
 }

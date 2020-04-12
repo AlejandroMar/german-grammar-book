@@ -1,35 +1,45 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import style from "./accordion.module.css"
 import ListRoot from "./list-root"
 
-const Accordion = ({ content }) => {
-  const [closeAccordion, setcloseAccordion] = useState(true)
+const Accordion = props => {
+  const [openAccordion, setopenAccordion] = useState(false)
 
   const expandAccordion = () => {
-    setcloseAccordion(!closeAccordion)
+    setopenAccordion(!openAccordion)
   }
 
-  console.log("content: ", content.path)
+  useEffect(() => {
+    if (
+      props.location &&
+      String(props.location.pathname).includes(props.content.path)
+    ) {
+      //TODO: try to be more specific qith the matching
+      //console.log(props.location.pathname)
+      //console.log(props.content)
+      expandAccordion(!openAccordion)
+    }
+  }, [])
 
   return (
     <>
       <li className={style.navItem}>
         <Link
-          to={content.path}
+          to={props.content.path}
           onClick={expandAccordion}
           activeStyle={{ color: "purple" }}
           className={style.navLink}
         >
-          {content.name}
+          {props.content.name}
         </Link>
       </li>
-      <ListRoot
-        content={content.items}
-        className={`${closeAccordion ? style.accordion : ""} ${
-          style.accordionNav
-        }`}
-      />
+      {openAccordion && (
+        <ListRoot
+          content={props.content.items}
+          className={`${style.accordionNav}`}
+        />
+      )}
     </>
   )
 }

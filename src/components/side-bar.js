@@ -8,7 +8,7 @@ class SideBar extends React.Component {
     return (
       <nav className={style.navbar}>
         <ul className={style.navbarNav}>
-          <NestedNavBar content={sideBarData} />
+          <NestedNavBar content={sideBarData} location={this.props.location} />
         </ul>
       </nav>
     )

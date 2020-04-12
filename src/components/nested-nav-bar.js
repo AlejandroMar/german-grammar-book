@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import style from "./nested-nav-bar.module.css"
 import Accordion from "./accordion"
 
-const NavLink = ({ item }) => {
+const NavLink = ({ item, children }) => {
   return (
     <li className={style.navItem}>
       <Link
@@ -18,20 +18,24 @@ const NavLink = ({ item }) => {
   )
 }
 
-const renderNavLinks = (item, i) => {
+const RenderNavLinks = ({ item, location }) => {
   return item.items ? (
     <>
-      <Accordion content={item} />
+      <Accordion content={item} location={location} />
     </>
   ) : (
-    <NavLink item={item} />
+    <NavLink item={item} location={location} />
   )
 }
 
-const NestedNavBar = ({ content }) => {
-  return Array.isArray(content)
-    ? content.map((item, i) => renderNavLinks(item, i))
-    : renderNavLinks(content)
+const NestedNavBar = ({ content, location }) => {
+  return Array.isArray(content) ? (
+    content.map((item, i) => (
+      <RenderNavLinks item={item} key={i} location={location} />
+    ))
+  ) : (
+    <RenderNavLinks item={content} location={location} />
+  )
 }
 
 export default NestedNavBar

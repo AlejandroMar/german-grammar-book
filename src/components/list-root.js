@@ -6,9 +6,7 @@ const ListRoot = ({ content, className }) => {
   return (
     <ul className={className}>
       {content.map((item, i) => (
-        <li key={i} className={style.navItem}>
-          <NestedNavBar content={item} />
-        </li>
+        <NestedNavBar content={item} key={i} />
       ))}
     </ul>
   )
