@@ -16,4 +16,11 @@
     path: /verbos/presente
     items: 
       - name: Ejercicios
-        path: /verbos/presente/ejercicio
+        path: /verbos/presente/ejercicios
+- name: Adjetivos
+  path: /adjetivos
+  items:
+    - name: Declinación
+      path: /adjetivos/declinacion
+    - name: se vende
+      path: /adjetivos/declinacion/#se-vende
