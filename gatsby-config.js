@@ -27,7 +27,7 @@ module.exports = {
         path: `./src/data/`,
       },
     },
-
+    // TODO: add remark auto link headers
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
