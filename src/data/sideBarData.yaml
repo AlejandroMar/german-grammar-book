@@ -1,0 +1,19 @@
+- name: Indice
+  path: /
+- name: Glosario
+  path: /glosario
+- name: Nombres
+  path: /nombres
+  items:
+  - name: Genero
+    path: /nombres/genero
+  - name: Masculinos
+    path: /nombres/masculinos
+- name: Verbos
+  path: /verbos
+  items:
+  - name: Presente
+    path: /verbos/presente
+    items: 
+      - name: Ejercicios
+        path: /verbos/presente/ejercicio
