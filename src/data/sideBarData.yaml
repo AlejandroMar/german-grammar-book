@@ -22,5 +22,6 @@
   items:
     - name: Declinación
       path: /adjetivos/declinacion
-    - name: se vende
-      path: /adjetivos/declinacion/#se-vende
+      items:
+      - name: Declinación debil
+        path: /adjetivos/declinacion/#declinacion-debil
