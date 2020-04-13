@@ -1,7 +1,7 @@
 import React from "react"
 import style from "./side-bar.module.css"
-import sideBarData from "../data/sideBarData.yaml"
-import NestedNavBar from "./nested-nav-bar"
+import sideBarData from "../../data/sideBarData.yaml"
+import NestedNavBar from "../nested-nav-bar/nested-nav-bar"
 
 class SideBar extends React.Component {
   render() {

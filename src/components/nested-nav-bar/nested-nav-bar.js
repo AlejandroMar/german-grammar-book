@@ -1,10 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-
 import style from "./nested-nav-bar.module.css"
-import Accordion from "./accordion"
+import Accordion from "../accordion/accordion"
 
-const NavLink = ({ item, children }) => {
+const NavLink = ({ item }) => {
   return (
     <li className={style.navItem}>
       <Link
