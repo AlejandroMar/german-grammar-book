@@ -11,26 +11,22 @@ class InputComp extends Component {
   }
 
   render() {
-    const answerText = () => {
-      if (this.props.answer === this.state.inputValue) {
-        return <span className={answer}>{this.props.answer}</span>
-      } else {
-        return (
-          <label htmlFor="fill-in">
-            <input
-              type="text"
-              name="fill-in"
-              placeholder={this.props.root}
-              value={this.state.inputValue}
-              onChange={this.handleChange}
-              size={this.props.root.length}
-            />
-          </label>
-        )
-      }
-    }
+    const displayAnswer = this.props.answer === this.state.inputValue
 
-    return <>{answerText()}</>
+    return displayAnswer ? (
+      <span className={answer}>{this.props.answer}</span>
+    ) : (
+      <label htmlFor="fill-in">
+        <input
+          type="text"
+          name="fill-in"
+          placeholder={this.props.root}
+          value={this.state.inputValue}
+          onChange={this.handleChange}
+          size={this.props.root.length}
+        />
+      </label>
+    )
   }
 }
 
