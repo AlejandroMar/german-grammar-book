@@ -1,27 +1,4 @@
 - name: Indice
   path: /
-- name: Glosario
-  path: /glosario
-- name: Nombres
-  path: /nombres
-  items:
-  - name: Genero
-    path: /nombres/genero
-  - name: Masculinos
-    path: /nombres/masculinos
-- name: Verbos
-  path: /verbos
-  items:
-  - name: Presente
-    path: /verbos/presente
-    items: 
-      - name: Ejercicios
-        path: /verbos/presente/ejercicios
-- name: Adjetivos
-  path: /adjetivos
-  items:
-    - name: Declinación
-      path: /adjetivos/declinacion
-      items:
-      - name: Declinación debil
-        path: /adjetivos/declinacion/#declinacion-debil
+- name: Unidad 2b - 5.2 Bilde Sätze.
+  path: /unidad-2b-5.2-bilde-sätze
