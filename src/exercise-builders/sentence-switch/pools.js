@@ -1,27 +1,47 @@
 import React from "react"
+import style from "./pools.module.css"
 
 const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
   return (
-    <>
-      <h4>Sujetos: </h4>
-      <ul>
-        {sujetos.map((sujeto, i) => (
-          <li key={i}>{sujeto.name}</li>
-        ))}
-      </ul>
-      <h4>Verbos: </h4>
-      <ul>
-        {verbosPre
-          ? verbosPre.map((verbo, i) => <li key={i}>{verbo}</li>)
-          : verbos.map((verbo, i) => <li key={i}>{verbo.nombre}</li>)}
-      </ul>
-      <h4>complementos: </h4>
-      <ul>
-        {complementos.map((complemento, i) => (
-          <li key={i}>{complemento.texto}</li>
-        ))}
-      </ul>
-    </>
+    <div className={style.row}>
+      <div className={style.col}>
+        <h4 className={style.catName}>sujetos: </h4>
+
+        <ul className={style.list}>
+          {sujetos.map((sujeto, i) => (
+            <li key={i} className={style.listItem}>
+              {sujeto.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={style.col}>
+        <h4 className={style.catName}>verbos: </h4>
+        <ul className={style.list}>
+          {verbosPre
+            ? verbosPre.map((verbo, i) => (
+                <li key={i} className={style.listItem}>
+                  {verbo}
+                </li>
+              ))
+            : verbos.map((verbo, i) => (
+                <li key={i} className={style.listItem}>
+                  {verbo.nombre}
+                </li>
+              ))}
+        </ul>
+      </div>
+      <div className={style.col}>
+        <h4 className={style.catName}>complementos: </h4>
+        <ul className={style.list}>
+          {complementos.map((complemento, i) => (
+            <li key={i} className={style.listItem}>
+              {complemento.texto}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
 

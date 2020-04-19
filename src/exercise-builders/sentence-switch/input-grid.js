@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect, useRef } from "react"
 import { verboListo, sujetoListo, complementoListo } from "./filtros"
+import style from "./input-grid.module.css"
 // el componente debe ser independiente de los datos
 // un api
 
@@ -58,7 +59,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   const initialMount = useRef(true)
 
   const [state, dispatch] = useReducer(reducer, initalState)
-  const { sujetoLocal, verboLocal, complementoLocal, msg } = state
+  const { sujetoLocal, verboLocal, complementoLocal, msg, correcto } = state
 
   const checkIfCorrect = () => {
     if (state.sujetoConVerbo && state.verboConComplemento) {
@@ -145,7 +146,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   }
 
   return (
-    <>
+    <div className={style.wrapper}>
       <form>
         <label htmlFor="sujetoLocal">
           <input
@@ -154,6 +155,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             value={sujetoLocal}
             placeholder="Sujeto"
             onChange={handleChange}
+            className={style.input}
           />
         </label>
         {verboPre ? (
@@ -166,6 +168,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
               value={verboLocal}
               placeholder="verbo"
               onChange={handleChange}
+              className={style.input}
             />
           </label>
         )}
@@ -177,19 +180,19 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             value={complementoLocal}
             placeholder="Complemento"
             onChange={handleChange}
+            className={style.input}
           />
         </label>
-        <button type="submit" onClick={checkAnswer}>
+        <button type="submit" onClick={checkAnswer} className={style.submit}>
           salvar
         </button>
-        {msg && (
-          <span>
-            {"---"}
-            {msg}
-          </span>
+        {correcto && msg ? (
+          <span className={style.correct}> &#10003; {msg}</span>
+        ) : (
+          msg && <span className={style.wrong}>&#10007; {msg}</span>
         )}
       </form>
-    </>
+    </div>
   )
 }
 
