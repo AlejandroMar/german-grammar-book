@@ -14,6 +14,17 @@ const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
   ))
 }
 
+const Dynamic = ({ verbosPre, verbos, sujetos, complementos }) => {
+  return sujetos.map((verbo, i) => (
+    <InputGrid
+      key={i}
+      verbos={verbos}
+      complementos={complementos}
+      sujetos={sujetos}
+    />
+  ))
+}
+
 const VerboComponent = ({ verbosPre, verbos, sujetos, complementos }) => {
   return (
     <>
@@ -32,10 +43,10 @@ const VerboComponent = ({ verbosPre, verbos, sujetos, complementos }) => {
           sujetos={sujetos}
         />
       ) : (
-        <InputGrid
+        <Dynamic
           verbos={verbos}
-          sujetos={sujetos}
           complementos={complementos}
+          sujetos={sujetos}
         />
       )}
     </>
