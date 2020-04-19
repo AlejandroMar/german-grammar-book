@@ -153,7 +153,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             type="text"
             name="sujetoLocal"
             value={sujetoLocal}
-            placeholder="Sujeto"
+            placeholder="sujeto"
             onChange={handleChange}
             className={style.input}
           />
@@ -178,7 +178,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             type="text"
             name="complementoLocal"
             value={complementoLocal}
-            placeholder="Complemento"
+            placeholder="complemento"
             onChange={handleChange}
             className={style.input}
           />
