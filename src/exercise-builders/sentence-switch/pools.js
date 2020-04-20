@@ -4,7 +4,7 @@ import style from "./pools.module.css"
 const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
   return (
     <div className={style.row}>
-      <div className={style.col}>
+      <div className={`${style.col} ${style.sujeto}`}>
         <h4 className={style.catName}>sujetos: </h4>
 
         <ul className={style.list}>
@@ -15,7 +15,7 @@ const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
           ))}
         </ul>
       </div>
-      <div className={style.col}>
+      <div className={`${style.col} ${style.verbo}`}>
         <h4 className={style.catName}>verbos: </h4>
         <ul className={style.list}>
           {verbosPre
@@ -31,7 +31,7 @@ const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
               ))}
         </ul>
       </div>
-      <div className={style.col}>
+      <div className={`${style.col} ${style.complemento}`}>
         <h4 className={style.catName}>complementos: </h4>
         <ul className={style.list}>
           {complementos.map((complemento, i) => (
