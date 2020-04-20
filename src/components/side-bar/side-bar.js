@@ -7,7 +7,6 @@ const SideBar = props => {
   const [openNavbar, setopenNavbar] = useState(false)
 
   const openNavbarNav = () => {
-    console.log("hello")
     setopenNavbar(!openNavbar)
   }
 
