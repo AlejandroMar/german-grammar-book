@@ -147,51 +147,62 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
 
   return (
     <div className={style.wrapper}>
-      <form>
-        <label htmlFor="sujetoLocal">
-          <input
-            type="text"
-            name="sujetoLocal"
-            value={sujetoLocal}
-            placeholder="sujeto"
-            onChange={handleChange}
-            className={style.input}
-          />
-        </label>
-        {verboPre ? (
-          <span style={{ margin: "0 5px" }}>{verboPre}</span>
-        ) : (
-          <label htmlFor="verboLocal">
+      {correcto ? (
+        <p className={style.correctAnswer}>
+          <span className={style.sujeto}>{sujetoLocal}</span>
+          <span className={style.verbo}>{verboLocal}</span>
+          <span className={style.complemento}>{complementoLocal}</span>
+          <span className={style.correct}> &#10003; {msg}</span>
+        </p>
+      ) : (
+        <form>
+          <label htmlFor="sujetoLocal">
             <input
               type="text"
-              name="verboLocal"
-              value={verboLocal}
-              placeholder="verbo"
+              name="sujetoLocal"
+              value={sujetoLocal}
+              placeholder="sujeto"
               onChange={handleChange}
-              className={style.input}
+              className={`${style.input} ${style.inputSujeto}`}
             />
           </label>
-        )}
+          {verboPre ? (
+            <span style={{ margin: "0 5px" }} className={`${style.verbo}`}>
+              {verboPre}
+            </span>
+          ) : (
+            <label htmlFor="verboLocal">
+              <input
+                type="text"
+                name="verboLocal"
+                value={verboLocal}
+                placeholder="verbo"
+                onChange={handleChange}
+                className={`${style.input} ${style.inputVerbo}`}
+              />
+            </label>
+          )}
 
-        <label htmlFor="complementoLocal">
-          <input
-            type="text"
-            name="complementoLocal"
-            value={complementoLocal}
-            placeholder="complemento"
-            onChange={handleChange}
-            className={style.input}
-          />
-        </label>
-        <button type="submit" onClick={checkAnswer} className={style.submit}>
-          salvar
-        </button>
-        {correcto && msg ? (
-          <span className={style.correct}> &#10003; {msg}</span>
-        ) : (
-          msg && <span className={style.wrong}>&#10007; {msg}</span>
-        )}
-      </form>
+          <label htmlFor="complementoLocal">
+            <input
+              type="text"
+              name="complementoLocal"
+              value={complementoLocal}
+              placeholder="complemento"
+              onChange={handleChange}
+              className={`${style.input} ${style.inputComplemento}`}
+            />
+          </label>
+          <button type="submit" onClick={checkAnswer} className={style.submit}>
+            salvar
+          </button>
+          {correcto && msg ? (
+            <span className={style.correct}> &#10003; {msg}</span>
+          ) : (
+            msg && <span className={style.wrong}>&#10007; {msg}</span>
+          )}
+        </form>
+      )}
     </div>
   )
 }

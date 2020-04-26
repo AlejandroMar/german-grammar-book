@@ -1,10 +1,11 @@
 .row {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 8%;
 }
 
 .catName {
-  color: red;
+  color:black;
   margin-bottom: 1%;
   font-size: 1.18rem;
 }
@@ -14,11 +15,23 @@
   flex-direction: column;
   align-items: center;
   flex-basis: 33%;
-  border-right: 1px solid red;
+  /*border-right: 1px solid red;*/
 }
 
 .col:first-child{
-  border-left: 1px solid red;
+  /*border-left: 1px solid red;*/
+}
+
+.sujeto {
+  background-color: turquoise;
+}
+
+.verbo{
+  background-color: wheat;
+}
+
+.complemento {
+  background-color: teal;
 }
 
 .list {
