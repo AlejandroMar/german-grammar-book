@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet"
 const Layout = props => {
   return (
     <>
-      <Helmet title="spanisch" defer={false}>
+      <Helmet title="spanisch-online" defer={false}>
         <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
           rel="stylesheet"
