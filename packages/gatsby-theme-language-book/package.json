@@ -4,6 +4,7 @@
   "description": "A dymanic language book",
   "version": "0.1.0",
   "license": "none",
+  "main": "index.js",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -21,7 +22,7 @@
     "gatsby-plugin-page-creator": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-transformer-yaml": "^2.3.1", 
+    "gatsby-transformer-yaml": "^2.3.1" 
   },
   "devDependencies": {
     "prettier": "^1.19.1","react": "^16.12.0",
