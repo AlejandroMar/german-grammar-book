@@ -9,3 +9,17 @@ exports.onPreBootstrap = ({ reporter }) => {
     fs.mkdirSync(contentPath)
   }
 }
+
+// Define the "MenuLink" type
+exports.sourceNodes = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+  type MenuLink implements Node @dontInfer {
+    id: ID!
+    name: String!
+    path: String!
+    items: [MenuLink]
+}
+`
+  createTypes(typeDefs)
+}

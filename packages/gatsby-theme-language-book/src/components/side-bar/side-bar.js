@@ -1,9 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import style from './side-bar.module.css'
-import sideBarData from '../../../data/sideBarData.yaml'
+//import sideBarData from '../../../data/sideBarData.yaml'
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const SideBar = props => {
+  // this query will give only three levels of recursion
+  // if in need of more levels add another to the query
+  const sideBarData = useStaticQuery(graphql`
+    query MyQuery {
+      allMenuLink {
+        edges {
+          node {
+            name
+            path
+            items {
+              name
+              path
+              items {
+                name
+                path
+                items {
+                  name
+                  path
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  console.log(sideBarData.allMenuLink.edges)
   const [openNavbar, setopenNavbar] = useState(false)
 
   const openNavbarNav = () => {
@@ -21,7 +50,7 @@ const SideBar = props => {
       </button>
       <ul className={`${style.navbarNav}`}>
         <NestedNavBar
-          content={sideBarData}
+          content={sideBarData.allMenuLink.edges}
           location={props.location}
           openNavbarNav={openNavbarNav}
         />

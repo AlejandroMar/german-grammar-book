@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import style from "./nested-nav-bar.module.css"
-import Accordion from "../accordion/accordion"
+import React from 'react'
+import { Link } from 'gatsby'
+import style from './nested-nav-bar.module.css'
+import Accordion from '../accordion/accordion'
 
 const NavLink = ({ item, openNavbarNav }) => {
   return (
@@ -9,7 +9,7 @@ const NavLink = ({ item, openNavbarNav }) => {
       <Link
         to={item.path}
         className={style.navLink}
-        activeStyle={{ color: "purple" }}
+        activeStyle={{ color: 'purple' }}
         onClick={openNavbarNav}
       >
         {item.name}
@@ -19,7 +19,8 @@ const NavLink = ({ item, openNavbarNav }) => {
 }
 
 const RenderNavLinks = ({ item, location, openNavbarNav }) => {
-  return item.items ? (
+  console.log('render links: ', item)
+  return item.items !== null ? (
     <>
       <Accordion content={item} location={location} />
     </>
@@ -32,7 +33,7 @@ const NestedNavBar = ({ content, location, openNavbarNav }) => {
   return Array.isArray(content) ? (
     content.map((item, i) => (
       <RenderNavLinks
-        item={item}
+        item={item.node ? item.node : item}
         key={i}
         location={location}
         openNavbarNav={openNavbarNav}
@@ -40,7 +41,7 @@ const NestedNavBar = ({ content, location, openNavbarNav }) => {
     ))
   ) : (
     <RenderNavLinks
-      item={content}
+      item={content.node ? content.node : content}
       location={location}
       openNavbarNav={openNavbarNav}
     />
