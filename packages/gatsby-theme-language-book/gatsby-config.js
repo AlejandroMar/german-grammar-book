@@ -1,9 +1,3 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-
 module.exports = {
   /* Your site config here */
   plugins: [
@@ -17,7 +11,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve("./src/components/layout/layout.js"),
+        component: require.resolve('./src/components/layout/layout.js'),
       },
     },
     `gatsby-transformer-yaml`,
