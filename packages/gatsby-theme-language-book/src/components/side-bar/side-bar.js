@@ -32,7 +32,6 @@ const SideBar = props => {
     }
   `)
 
-  console.log(sideBarData.allMenuLink.edges)
   const [openNavbar, setopenNavbar] = useState(false)
 
   const openNavbarNav = () => {

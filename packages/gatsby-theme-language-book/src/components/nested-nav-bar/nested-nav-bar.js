@@ -19,7 +19,6 @@ const NavLink = ({ item, openNavbarNav }) => {
 }
 
 const RenderNavLinks = ({ item, location, openNavbarNav }) => {
-  console.log('render links: ', item)
   return item.items !== null ? (
     <>
       <Accordion content={item} location={location} />
