@@ -14,12 +14,17 @@ module.exports = {
         component: require.resolve('./src/components/layout/layout.js'),
       },
     },
-    `gatsby-transformer-yaml`,
+    {
+      resolve: 'gatsby-transformer-yaml',
+      options: {
+        typeName: 'MenuLink',
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
-        path: `./src/data/`,
+        path: `data`,
       },
     },
     // TODO: add remark auto link headers
