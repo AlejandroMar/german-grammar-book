@@ -5,6 +5,8 @@
   ],
   "scripts": {
     "theme": "yarn workspace gatsby-theme-language-book develop",
-    "theme:clean": "yarn workspace gatsby-theme-language-book clean"
+    "theme:clean": "yarn workspace gatsby-theme-language-book clean",
+    "site":"yarn workspace esra-book develop",
+    "site:clean":"yarn workspace esra-book clean"
   }
 }
