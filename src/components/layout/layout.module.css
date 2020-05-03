@@ -4,6 +4,9 @@ html {
   letter-spacing: .1rem;
 }
 
+select{
+  font-size: 15px;
+}
 
 
 .layoutMain {
