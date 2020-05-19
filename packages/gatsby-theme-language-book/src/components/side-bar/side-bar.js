@@ -45,7 +45,9 @@ const SideBar = props => {
         onClick={openNavbarNav}
         className={style.navBarButton}
       >
-        {openNavbar ? 'Menü schließen' : 'Menü öffnen'}
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
       <ul className={`${style.navbarNav}`}>
         <NestedNavBar
