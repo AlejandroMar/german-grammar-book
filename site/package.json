@@ -1,7 +1,7 @@
 {
-  "name": "esra-book",
+  "name": "language-book",
   "private": true,
-  "description": "Ejercicios de español de Esra",
+  "description": "Interactive language book",
   "version": "0.1.0",
   "license": "None",
   "scripts": {
