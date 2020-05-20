@@ -1,0 +1,19 @@
+.inputWrapper {
+  display: inline-block;
+}
+
+.answer {
+  color: green;
+  border-bottom: 1px solid green;
+}
+
+input{
+  color: red
+}
+input::placeholder {
+  color: gray
+}
+
+
+
+
