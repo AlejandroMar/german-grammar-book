@@ -24,7 +24,10 @@
     "gatsby-plugin-sass": "^2.3.0",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-yaml": "^2.3.1",
-    "node-sass": "^4.14.0"
+    "immer": "^6.0.5",
+    "node-sass": "^4.14.0",
+    "react-beautiful-dnd": "^13.0.0",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "gatsby": "^2.20.12",

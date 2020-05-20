@@ -1,4 +1,4 @@
 - name: Introducción
   path: /
-- name: Verbos
-  path: /verbos
+- name: Scramble
+  path: /scramble
