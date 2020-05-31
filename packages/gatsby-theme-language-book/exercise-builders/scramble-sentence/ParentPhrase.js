@@ -11,14 +11,14 @@ const Container = styled.div`
   min-height: 10vh;
   border-radius: 2px;
   @media (max-width: 768px) {
-    width: 80%;
+    width: 90%;
   }
 `
 
 const PartList = styled.div`
   display: flex;
   justify-content: center;
-  padding: 8px;
+  /* padding: 8px; */
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;

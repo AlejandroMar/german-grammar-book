@@ -13,9 +13,9 @@ const Container = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     width: 95%;
-  }
+  } */
 `
 
 class ScrambleSentence extends Component {

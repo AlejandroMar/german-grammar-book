@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import { Droppable } from "react-beautiful-dnd";
-import PoolPart from "./PoolPart";
-import { Container, PoolPartList } from "./PoolStyledComponents";
-import styled from "styled-components";
+import React, { Component } from 'react'
+import { Droppable } from 'react-beautiful-dnd'
+import PoolPart from './PoolPart'
+import { Container, PoolPartList } from './PoolStyledComponents'
+import styled from 'styled-components'
 
 const DropHere = styled.div`
+  z-index: 0;
   position: relative;
   background-color: lightgray;
   height: 1%;
@@ -13,17 +14,17 @@ const DropHere = styled.div`
   margin: 0 auto;
 
   &::after {
-    content: "\\2193";
+    content: '\\2193';
     position: absolute;
     top: 75%;
     left: 50%;
   }
-`;
+`
 
 class Pool extends Component {
-  state = {};
+  state = {}
   render() {
-    const { phrase, pool, isDropDisabled } = this.props;
+    const { phrase, pool, isDropDisabled } = this.props
     return (
       <Container isDropDisabled={isDropDisabled} done={pool.done.correct}>
         {!isDropDisabled && <DropHere>Drop here</DropHere>}
@@ -46,8 +47,8 @@ class Pool extends Component {
           )}
         </Droppable>
       </Container>
-    );
+    )
   }
 }
 
-export default Pool;
+export default Pool

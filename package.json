@@ -7,8 +7,9 @@
   "scripts": {
     "theme": "yarn workspace gatsby-theme-language-book develop",
     "theme:clean": "yarn workspace gatsby-theme-language-book clean",
+    "theme:mobile": "yarn workspace gatsby-theme-language-book develop -H 0.0.0.0",
     "site": "yarn workspace language-book develop",
+    "site:mobile": "yarn workspace language-book develop -H 0.0.0.0",
     "site:clean": "yarn workspace language-book clean"
   }
-  
 }
