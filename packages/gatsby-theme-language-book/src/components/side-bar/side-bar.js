@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import style from './side-bar.module.css'
+import cx from 'classnames'
+import { graphql, useStaticQuery } from 'gatsby'
+import React, { useState } from 'react'
 //import sideBarData from '../../../data/sideBarData.yaml'
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
-import { useStaticQuery, graphql } from 'gatsby'
+import NavHamButton from './NavHamButton'
+import style from './side-bar.module.css'
 
 const SideBar = props => {
   // this query will give only three levels of recursion
@@ -39,16 +41,8 @@ const SideBar = props => {
   }
 
   return (
-    <nav className={`${style.navbar} ${openNavbar ? style.openNav : ''}`}>
-      <button
-        type="button"
-        onClick={openNavbarNav}
-        className={style.navBarButton}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+    <nav className={cx(style.navbar, openNavbar ? style.openNav : '')}>
+      <NavHamButton openNavbarNav={openNavbarNav} style={style} />
       <ul className={`${style.navbarNav}`}>
         <NestedNavBar
           content={sideBarData.allMenuLink.edges}

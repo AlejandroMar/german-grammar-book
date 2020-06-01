@@ -17,6 +17,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",
+    "classnames": "^2.2.6",
     "gatsby-plugin-layout": "^1.2.1",
     "gatsby-plugin-mdx": "^1.1.7",
     "gatsby-plugin-page-creator": "^2.2.1",
@@ -25,16 +26,15 @@
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-yaml": "^2.3.1",
     "immer": "^6.0.5",
+    "is-touch-device": "^1.0.1",
     "node-sass": "^4.14.0",
     "react-beautiful-dnd": "^13.0.0",
-    "react-dnd-preview": "^6.0.2",
-    "styled-components": "^5.1.0",
-    "use-immer": "^0.4.0",
+    "react-dnd": "^10.0.2",
     "react-dnd-html5-backend": "^10.0.2",
+    "react-dnd-preview": "^6.0.2",
     "react-dnd-touch-backend": "^11.1.2",
-    "is-touch-device": "^1.0.1",
-    "react-dnd": "^10.0.2"
-
+    "styled-components": "^5.1.0",
+    "use-immer": "^0.4.0"
   },
   "devDependencies": {
     "gatsby": "^2.20.12",
