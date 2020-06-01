@@ -2,7 +2,7 @@ import cx from 'classnames'
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useState } from 'react'
 //import sideBarData from '../../../data/sideBarData.yaml'
-import NavHamButton from './NavHamButton'
+import NavHamButton from './nav-ham-button'
 import style from './side-bar.module.css'
 import { NavBarRoot } from './nav-bar-root'
 

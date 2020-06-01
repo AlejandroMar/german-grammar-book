@@ -1,7 +1,8 @@
-import React from "react"
-import InputGrid from "./input-grid"
-import PoolGrid from "./pools"
+import React from 'react'
+import InputGrid from './input-grid'
+import PoolGrid from './pools'
 
+// si el ejercicio viene con el verbo predeterminado
 const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
   return verbosPre.map((verbo, i) => (
     <InputGrid
@@ -14,7 +15,8 @@ const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
   ))
 }
 
-const Dynamic = ({ verbosPre, verbos, sujetos, complementos }) => {
+// si el ejercicio viene sin verbo determinado
+const Dynamic = ({ verbos, sujetos, complementos }) => {
   return sujetos.map((verbo, i) => (
     <InputGrid
       key={i}

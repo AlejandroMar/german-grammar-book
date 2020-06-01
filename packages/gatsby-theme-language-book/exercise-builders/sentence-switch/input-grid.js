@@ -1,52 +1,27 @@
-import React, { useReducer, useEffect, useRef } from "react"
-import { verboListo, sujetoListo, complementoListo } from "./filtros"
-import style from "./input-grid.module.css"
+import React, { useEffect, useReducer, useRef } from 'react'
+import { getComplement, getSubject, getVerb } from './filtros'
+import style from './input-grid.module.css'
+import {
+  CHECK_IF_CORRECT,
+  CLEAN_STATE,
+  HANDLE_CHANGE,
+  PREDEFINED_VERB,
+  SUJETO_CON_VERBO,
+  VERBO_CON_COMPLEMENTO,
+} from './action-types'
+import { reducer } from './reducer'
 // el componente debe ser independiente de los datos
 // un api
 
 const initalState = {
-  sujetoLocal: "",
-  verboLocal: "",
-  complementoLocal: "",
+  sujetoLocal: '',
+  verboLocal: '',
+  complementoLocal: '',
   sujetoConVerbo: false,
   verboConComplemento: false,
   correcto: false,
-  msg: "",
+  msg: '',
 }
-
-const reducer = (state, action) => {
-  const { payload } = action
-  switch (action.type) {
-    case PREDEFINED_VERB: {
-      return { ...state, ...payload }
-    }
-    case HANDLE_CHANGE: {
-      const { name, value } = payload
-      return { ...state, [name]: value }
-    }
-    case SUJETO_CON_VERBO: {
-      return { ...state, ...payload }
-    }
-    case VERBO_CON_COMPLEMENTO: {
-      return { ...state, ...payload }
-    }
-    case CHECK_IF_CORRECT: {
-      return { ...state, ...payload }
-    }
-    case CLEAN_STATE: {
-      return { ...state, ...payload }
-    }
-    default:
-      return state
-  }
-}
-
-const HANDLE_CHANGE = "HANDLE_CHANGE"
-const SUJETO_CON_VERBO = "SUJETO_CON_VERBO"
-const VERBO_CON_COMPLEMENTO = "VERBO_CON_COMPLEMENTO"
-const CHECK_IF_CORRECT = "CHECK_IF_CORRECT"
-const CLEAN_STATE = "CLEAN_STATE"
-const PREDEFINED_VERB = "PREDEFINED_VERB"
 
 const cleanState = (dispatch, type, payload) => {
   dispatch({
@@ -65,12 +40,12 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
     if (state.sujetoConVerbo && state.verboConComplemento) {
       dispatch({
         type: CHECK_IF_CORRECT,
-        payload: { correcto: true, msg: "correcto" },
+        payload: { correcto: true, msg: 'correcto' },
       })
     } else {
       dispatch({
         type: CHECK_IF_CORRECT,
-        payload: { correcto: false, msg: "falso: intenta otra vez" },
+        payload: { correcto: false, msg: 'falso: intenta otra vez' },
       })
     }
     return false
@@ -117,14 +92,14 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
     cleanState(dispatch, CLEAN_STATE, {
       sujetoConVerbo: false,
       verboConComplemento: false,
-      msg: "",
+      msg: '',
     })
 
     checkIfCorrect()
 
-    const verbo = verboListo(verbos, verboLocal)
-    const complemento = complementoListo(complementos, complementoLocal)
-    const sujeto = sujetoListo(sujetos, sujetoLocal)
+    const verbo = getVerb(verbos, verboLocal)
+    const complemento = getComplement(complementos, complementoLocal)
+    const sujeto = getSubject(sujetos, sujetoLocal)
 
     if (verbo.conjugacion[sujeto.p] === verboLocal.trim()) {
       dispatch({
@@ -167,7 +142,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             />
           </label>
           {verboPre ? (
-            <span style={{ margin: "0 5px" }} className={`${style.verbo}`}>
+            <span style={{ margin: '0 5px' }} className={`${style.verbo}`}>
               {verboPre}
             </span>
           ) : (

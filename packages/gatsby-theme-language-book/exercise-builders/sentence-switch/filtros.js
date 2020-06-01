@@ -1,4 +1,5 @@
-export const verboListo = (verbos, verboLocal) => {
+export const getVerb = (verbos, verboLocal) => {
+  // encuentra el verbo que dió el usuario
   const filtraVerbo = verbos.reduce((result, verbo) => {
     const { conjugacion } = verbo
     Object.keys(conjugacion).forEach(item => {
@@ -17,9 +18,9 @@ export const verboListo = (verbos, verboLocal) => {
           p1_s: null,
           p2_s: null,
           p3_s: null,
-          p1_p: "",
-          p2_p: "",
-          p3_p: "",
+          p1_p: '',
+          p2_p: '',
+          p3_p: '',
         },
 
         complementos: [],
@@ -28,7 +29,7 @@ export const verboListo = (verbos, verboLocal) => {
   return verboListo
 }
 
-export const complementoListo = (complementos, complementoLocal) => {
+export const getComplement = (complementos, complementoLocal) => {
   const buscaComplemento = complementos.filter(comp => {
     return comp.texto === complementoLocal.trim()
   })
@@ -42,7 +43,7 @@ export const complementoListo = (complementos, complementoLocal) => {
   return complementoListo
 }
 
-export const sujetoListo = (sujetos, sujetoLocal) => {
+export const getSubject = (sujetos, sujetoLocal) => {
   const buscaSujeto = sujetos.filter(sujeto => {
     return sujeto.name === sujetoLocal.trim()
   })
