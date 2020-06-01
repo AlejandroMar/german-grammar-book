@@ -33,7 +33,7 @@ const Accordion = props => {
     }
   }, [])
 
-  return (
+  return ( 
     <>
       <li className={style.navItem}>
         <Link
