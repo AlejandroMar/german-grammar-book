@@ -1,37 +1,37 @@
-import React from "react";
-import { useDrop } from "react-dnd";
-import styled, { css } from "styled-components";
-import { Types } from "./reactDndTypes";
+import React from 'react'
+import { useDrop } from 'react-dnd'
+import styled, { css } from 'styled-components'
+import { Types } from './reactDndTypes'
 
 const ContentText = styled.p`
   margin-right: 1%;
-`;
+`
 
 const AnswerDropBox = styled.div`
   border: 2px dashed lightgrey;
   margin-block-start: 1em;
   min-height: 3vh;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   padding: 0.5rem;
 
-  ${(props) => {
+  ${props => {
     if (props.correct) {
       return css`
         background-color: lightgreen;
-      `;
+      `
     }
   }}
-  ${(props) => {
+  ${props => {
     if (props.isOver) {
       return css`
         background-color: lightblue;
-      `;
+      `
     }
     return css`
-      background-color: "#f9f9f9";
-    `;
+      background-color: #f9f9f9;
+    `
   }}
   background-clip: padding-box;
   flex-basis: 50%;
@@ -39,7 +39,7 @@ const AnswerDropBox = styled.div`
   @media only screen and (max-width: 600px) {
     padding: 1rem;
   }
-`;
+`
 
 const CorrectAnswers = ({ respondedAnswers }) => {
   return (
@@ -47,23 +47,23 @@ const CorrectAnswers = ({ respondedAnswers }) => {
     respondedAnswers.map((answer, index) => (
       <ContentText key={index}>{answer.text}</ContentText>
     ))
-  );
-};
+  )
+}
 
 const RenderDropBox = ({ drop, isOver, respondedCounter, possibleAnswers }) => {
   if (respondedCounter === possibleAnswers) {
-    return null;
+    return null
   }
-  return <AnswerDropBox ref={drop} isOver={isOver}></AnswerDropBox>;
-};
+  return <AnswerDropBox ref={drop} isOver={isOver} />
+}
 
 const ProgressInfo = ({ respondedCounter, possibleAnswers }) => {
   return (
     <div>
       {respondedCounter}/{possibleAnswers}
     </div>
-  );
-};
+  )
+}
 
 const AnswerDrop = ({
   index,
@@ -73,15 +73,15 @@ const AnswerDrop = ({
   respondedCounter,
   possibleAnswers,
 }) => {
-  const [{ canDrop, isOver }, drop] = useDrop({
+  const [{ isOver }, drop] = useDrop({
     accept: Types.ANSWER,
-    canDrop: (item) => checkIfCorrect(item.answer, index),
-    drop: (item) => setStateOnDrop(item, index),
-    collect: (monitor) => ({
+    canDrop: item => checkIfCorrect(item.answer, index),
+    drop: item => setStateOnDrop(item, index),
+    collect: monitor => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
-  });
+  })
 
   return (
     <>
@@ -97,7 +97,7 @@ const AnswerDrop = ({
       />
       <CorrectAnswers respondedAnswers={respondedAnswers} />
     </>
-  );
-};
+  )
+}
 
-export default AnswerDrop;
+export default AnswerDrop

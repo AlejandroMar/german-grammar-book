@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react'
 import { useImmer } from 'use-immer'
-/* import { DndProvider } from "react-dnd-multi-backend";
-import HTML5toTouch from "react-dnd-multi-backend/dist/esm/HTML5toTouch"; */
 
 import Backend from 'react-dnd-html5-backend'
 import { TouchBackend } from 'react-dnd-touch-backend'
@@ -39,9 +37,7 @@ function Index() {
   }, [])
 
   const checkIfCorrect = (draggedItem, index) => {
-    if (state.questions[index].answers.includes(draggedItem.key)) {
-      return true
-    }
+    if (state.questions[index].answers.includes(draggedItem.key)) return
     return false
   }
 
