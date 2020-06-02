@@ -37,8 +37,7 @@ function Index() {
   }, [])
 
   const checkIfCorrect = (draggedItem, index) => {
-    if (state.questions[index].answers.includes(draggedItem.key)) return
-    return false
+    return state.questions[index].answers.includes(draggedItem.key)
   }
 
   const setStateOnDrop = (droppedItem, index) => {
