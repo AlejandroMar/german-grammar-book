@@ -2,6 +2,7 @@ html {
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   letter-spacing: .1rem;
+
 }
 
 select{
@@ -14,6 +15,7 @@ select{
   margin-left: 18rem;
   margin-right: 5rem;
   padding: 2rem;
+  composes: primaryColor from "../../styles/theme.css";
 }
 
 

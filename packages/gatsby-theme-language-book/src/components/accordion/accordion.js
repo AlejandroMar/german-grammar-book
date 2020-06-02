@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react"
-import { Link } from "gatsby"
-import style from "./accordion.module.css"
-import NestedNavBar from "../nested-nav-bar/nested-nav-bar"
+import React, { useState, useEffect } from 'react'
+import { Link } from 'gatsby'
+import style from './accordion.module.css'
+import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
 
 const ListRoot = ({ content }) => {
   return (
     <ul className={style.listRoot}>
       {content.map((item, i) => (
+        //this is another recursion call
         <NestedNavBar content={item} key={i} />
       ))}
     </ul>
@@ -15,10 +16,10 @@ const ListRoot = ({ content }) => {
 
 const Accordion = props => {
   // If openAccordion = true open sub menu
-  const [openAccordion, setopenAccordion] = useState(false)
+  const [openAccordion, setOpenAccordion] = useState(false)
 
   const expandAccordion = () => {
-    setopenAccordion(!openAccordion)
+    setOpenAccordion(!openAccordion)
   }
 
   useEffect(() => {
@@ -33,13 +34,13 @@ const Accordion = props => {
     }
   }, [])
 
-  return ( 
+  return (
     <>
       <li className={style.navItem}>
         <Link
           to={props.content.path}
           onClick={expandAccordion}
-          activeStyle={{ color: "purple" }}
+          activeStyle={{ color: 'purple' }}
           className={style.navLink}
         >
           {props.content.name}

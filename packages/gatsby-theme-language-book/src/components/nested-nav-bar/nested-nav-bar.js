@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import style from './nested-nav-bar.module.css'
 import Accordion from '../accordion/accordion'
+//this Component renders the nav links
 
 const NavLink = ({ item, openNavbarNav }) => {
   return (
@@ -21,6 +22,7 @@ const NavLink = ({ item, openNavbarNav }) => {
 const RenderNavLinks = ({ item, location, openNavbarNav }) => {
   return item.items !== null ? (
     <>
+      {/* if there are items it means there is a array of nested links*/}
       <Accordion content={item} location={location} />
     </>
   ) : (
@@ -28,6 +30,7 @@ const RenderNavLinks = ({ item, location, openNavbarNav }) => {
   )
 }
 
+// this is the main recursion to render the nested NavLinks
 const NestedNavBar = ({ content, location, openNavbarNav }) => {
   return Array.isArray(content) ? (
     content.map((item, i) => (
