@@ -1,26 +1,19 @@
-html {
-  font-family: 'Lato', sans-serif;
-  font-size: 20px;
-  letter-spacing: .1rem;
-
-}
-
-select{
-  font-size: 15px;
-}
-
-
 .layoutMain {
-  margin-top: 2%;
-  margin-left: 18rem;
-  margin-right: 5rem;
+  margin: 2% 5rem 2% 18rem;
   padding: 2rem;
+
 }
 
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 960px) {
   .layoutMain {
-    margin: 15vh 1% 1% 1%;
+    margin: 6vh 8% 8% 8%;
+    padding: inherit;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .layoutMain {
+    margin: 6vh 2% 2% 2%;
     padding: inherit;
   }
 }
