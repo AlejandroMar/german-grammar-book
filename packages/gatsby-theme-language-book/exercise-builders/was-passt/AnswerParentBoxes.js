@@ -1,6 +1,6 @@
-import React from "react";
-import AnswerDrag from "./AnswerDrag";
-import { AnswerCol } from "./styledComponents/index";
+import React from 'react';
+import AnswerDrag from './AnswerDrag';
+import { AnswerCol } from './styledComponents/index';
 
 const AnswerParentBoxes = ({ answers }) => {
   return answers.map((answer, index) => (

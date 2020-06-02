@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { PoolPartContainer as Container } from "./PoolStyledComponents";
-import { Draggable } from "react-beautiful-dnd";
+import React, { Component } from 'react';
+import { PoolPartContainer as Container } from './PoolStyledComponents';
+import { Draggable } from 'react-beautiful-dnd';
 
 class PoolPart extends Component {
   state = {};

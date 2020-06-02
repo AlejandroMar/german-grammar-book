@@ -1,6 +1,6 @@
-import React from 'react'
-import style from './pools.module.css'
-import cx from 'classnames'
+import React from 'react';
+import style from './pools.module.css';
+import cx from 'classnames';
 
 const SujetosColumn = ({ sujetos }) => (
   <div className={cx(style.col, style.sujeto)}>
@@ -14,7 +14,7 @@ const SujetosColumn = ({ sujetos }) => (
       ))}
     </ul>
   </div>
-)
+);
 
 const VerbosColumn = ({ verbosPre, verbos }) => (
   <div className={cx(style.col, style.verbo)}>
@@ -33,7 +33,7 @@ const VerbosColumn = ({ verbosPre, verbos }) => (
           ))}
     </ul>
   </div>
-)
+);
 
 const ComplementosColumn = ({ complementos }) => (
   <div className={cx(style.col, style.complemento)}>
@@ -46,7 +46,7 @@ const ComplementosColumn = ({ complementos }) => (
       ))}
     </ul>
   </div>
-)
+);
 
 const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
   return (
@@ -55,7 +55,7 @@ const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
       <VerbosColumn verbosPre={verbosPre} verbos={verbos} />
       <ComplementosColumn complementos={complementos} />
     </div>
-  )
-}
+  );
+};
 
-export default Pools
+export default Pools;

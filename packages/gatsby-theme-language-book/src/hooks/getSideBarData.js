@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby';
 
 export default () => {
   const sideBarData = useStaticQuery(graphql`
@@ -24,6 +24,6 @@ export default () => {
         }
       }
     }
-  `)
-  return sideBarData
-}
+  `);
+  return sideBarData;
+};

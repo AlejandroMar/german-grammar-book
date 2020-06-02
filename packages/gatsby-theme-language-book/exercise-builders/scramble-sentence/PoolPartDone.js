@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { PoolPartContainer as Container } from "./PoolStyledComponents";
+import React, { Component } from 'react';
+import { PoolPartContainer as Container } from './PoolStyledComponents';
 
 class Part extends Component {
   state = {};

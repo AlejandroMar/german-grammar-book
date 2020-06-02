@@ -1,4 +1,5 @@
 # Hinweise
+
 Diese Übungen helfen euch Verben im Satz zu üben. Ihr braucht die regelmäßigen Verben BUSCAR, MANDAR, BEBER, COMER, VER, VIVIR. In der ersten Übung müsst ihr die Formen nur wiedererkennen, in der zweiten müsst ihr sie selbst bilden. Natürlich müsst ihr auch wissen, was die Wörter bedeuten. Leider könnt ihr das noch nicht auf dieser Seite direkt nachschauen, bitte nutzt dazu das Internet
 
 Zum Anhören der fertigen richtigen Sätze empfehle ich zusätzlich ein mit "copy and paste" andere Internet-Dienste in Anspruch zu nehmen. Es ist sehr sinnvoll, richtige Sätze nach dem notieren durch das eigene Aussprechen zu festen.

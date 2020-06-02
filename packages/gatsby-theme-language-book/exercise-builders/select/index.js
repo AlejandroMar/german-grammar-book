@@ -1,16 +1,16 @@
-import React, { useState } from "react"
-import { answer as cssAnswer } from "../input/input.module.css"
+import React, { useState } from 'react';
+import { answer as cssAnswer } from '../input/input.module.css';
 
 const SelectComp = ({ root, options, answer }) => {
-  const [selectValue, setSelectValue] = useState("   ")
+  const [selectValue, setSelectValue] = useState('   ');
 
   const handleChange = e => {
-    setSelectValue(e.target.value)
-  }
+    setSelectValue(e.target.value);
+  };
 
   const renderTextOrSelect = () => {
     if (selectValue === answer) {
-      return <span className={cssAnswer}>{answer}</span>
+      return <span className={cssAnswer}>{answer}</span>;
     }
     return (
       <label htmlFor="prueba">
@@ -23,10 +23,10 @@ const SelectComp = ({ root, options, answer }) => {
           ))}
         </select>
       </label>
-    )
-  }
+    );
+  };
 
-  return renderTextOrSelect()
-}
+  return renderTextOrSelect();
+};
 
-export default SelectComp
+export default SelectComp;

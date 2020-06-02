@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const Container = styled.div`
   text-align: center;
@@ -15,11 +15,11 @@ const Container = styled.div`
     if (!props.isDropDisabled) {
       return css`
         order: 0;
-      `
+      `;
     }
     return css`
       order: 2;
-    `
+    `;
   }}
 
   ${props =>
@@ -27,7 +27,7 @@ const Container = styled.div`
     css`
       order: 1;
     `};
-`
+`;
 
 const PoolPartList = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ const PoolPartList = styled.div`
     css`
       background-color: lightgreen;
     `};
-`
+`;
 
 const PoolPartContainer = styled.div`
   border: 1px solid lightgrey;
@@ -65,6 +65,6 @@ const PoolPartContainer = styled.div`
   @media (max-width: 768px) {
     font-size: 15px;
   }
-`
+`;
 
-export { Container, PoolPartContainer, PoolPartList }
+export { Container, PoolPartContainer, PoolPartList };

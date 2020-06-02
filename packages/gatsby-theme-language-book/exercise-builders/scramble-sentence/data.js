@@ -1,9 +1,9 @@
 export const initialData = {
   parentPhrase: {
-    id: "parentPhrase",
+    id: 'parentPhrase',
     phrasePartIds: [],
-    title: "Main phrase",
-    text: "Completa todas las opciones",
+    title: 'Main phrase',
+    text: 'Completa todas las opciones',
   },
 
   //As many as there are answers

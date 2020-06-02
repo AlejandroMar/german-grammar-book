@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Draggable } from 'react-beautiful-dnd'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
 
 const Container = styled.div`
   border: 1px solid lightgrey;
@@ -10,12 +10,12 @@ const Container = styled.div`
   min-width: fit-content;
   min-height: fit-content;
   background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
-`
+`;
 
 class Part extends Component {
-  state = {}
+  state = {};
   render() {
-    const { part, index } = this.props
+    const { part, index } = this.props;
     return (
       <Draggable draggableId={part.id} index={index}>
         {(provided, snapshot) => (
@@ -29,8 +29,8 @@ class Part extends Component {
           </Container>
         )}
       </Draggable>
-    )
+    );
   }
 }
 
-export default Part
+export default Part;

@@ -1,7 +1,7 @@
-import React from 'react'
-import SideBar from '../side-bar/side-bar'
-import style from './layout.module.css'
-import { Helmet } from 'react-helmet'
+import React from 'react';
+import SideBar from '../side-bar/side-bar';
+import style from './layout.module.css';
+import { Helmet } from 'react-helmet';
 
 const Layout = props => {
   return (
@@ -19,7 +19,7 @@ const Layout = props => {
 
       <main className={style.layoutMain}>{props.children}</main>
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

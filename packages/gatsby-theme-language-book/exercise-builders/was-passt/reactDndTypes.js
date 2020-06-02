@@ -1,3 +1,3 @@
 export const Types = {
-  ANSWER: "answer",
+  ANSWER: 'answer',
 };

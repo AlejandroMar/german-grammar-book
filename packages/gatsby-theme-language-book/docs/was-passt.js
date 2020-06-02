@@ -1,8 +1,8 @@
-import WPast from '../exercise-builders/was-passt/index'
-import React from 'react'
+import WPast from '../exercise-builders/was-passt/index';
+import React from 'react';
 
 const WasPasst = () => {
-  return <WPast />
-}
+  return <WPast />;
+};
 
-export default WasPasst
+export default WasPasst;

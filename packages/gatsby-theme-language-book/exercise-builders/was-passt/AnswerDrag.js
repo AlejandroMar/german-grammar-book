@@ -1,9 +1,9 @@
-import React from "react";
-import { useDrag } from "react-dnd";
-import styled from "styled-components";
-import { usePreview } from "react-dnd-preview";
-import isTouchDevice from "is-touch-device";
-import { Types } from "./reactDndTypes";
+import React from 'react';
+import { useDrag } from 'react-dnd';
+import styled from 'styled-components';
+import { usePreview } from 'react-dnd-preview';
+import isTouchDevice from 'is-touch-device';
+import { Types } from './reactDndTypes';
 
 const ContentText = styled.div`
   border: 1px solid lightgray;
@@ -30,7 +30,7 @@ const AnswerDrag = ({ answer }) => {
   // hook from reactDnd
   const [, drag] = useDrag({
     item: { type: Types.ANSWER, answer },
-    collect: (monitor) => ({
+    collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
   });

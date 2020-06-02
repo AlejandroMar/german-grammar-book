@@ -1,6 +1,6 @@
-import style from './side-bar.module.css'
-import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
-import React from 'react'
+import style from './side-bar.module.css';
+import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
+import React from 'react';
 
 const NavbarRoot = ({ location, openNavbarNav, sideBarData }) => (
   <ul className={`${style.navbarNav}`}>
@@ -10,5 +10,5 @@ const NavbarRoot = ({ location, openNavbarNav, sideBarData }) => (
       openNavbarNav={openNavbarNav}
     />
   </ul>
-)
-export default NavbarRoot
+);
+export default NavbarRoot;

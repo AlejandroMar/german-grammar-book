@@ -1,17 +1,17 @@
-import React, { Component } from "react"
-import { answer } from "./input.module.css"
+import React, { Component } from 'react';
+import { answer } from './input.module.css';
 
 class InputComp extends Component {
   state = {
-    inputValue: "",
-  }
+    inputValue: '',
+  };
 
   handleChange = e => {
-    this.setState({ inputValue: e.target.value })
-  }
+    this.setState({ inputValue: e.target.value });
+  };
 
   render() {
-    const displayAnswer = this.props.answer === this.state.inputValue
+    const displayAnswer = this.props.answer === this.state.inputValue;
 
     return displayAnswer ? (
       <span className={answer}>{this.props.answer}</span>
@@ -26,8 +26,8 @@ class InputComp extends Component {
           size={this.props.root.length}
         />
       </label>
-    )
+    );
   }
 }
 
-export default InputComp
+export default InputComp;

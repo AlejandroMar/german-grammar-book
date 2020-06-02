@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'gatsby'
-import style from './accordion.module.css'
-import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
+import style from './accordion.module.css';
+import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
 
 const ListRoot = ({ content }) => {
   return (
@@ -11,16 +11,16 @@ const ListRoot = ({ content }) => {
         <NestedNavBar content={item} key={i} />
       ))}
     </ul>
-  )
-}
+  );
+};
 
 const Accordion = props => {
   // If openAccordion = true open sub menu
-  const [openAccordion, setOpenAccordion] = useState(false)
+  const [openAccordion, setOpenAccordion] = useState(false);
 
   const expandAccordion = () => {
-    setOpenAccordion(!openAccordion)
-  }
+    setOpenAccordion(!openAccordion);
+  };
 
   useEffect(() => {
     if (
@@ -30,9 +30,9 @@ const Accordion = props => {
       //TODO: try to be more specific qith the matching
       //console.log(props.location.pathname)
       //console.log(props.content)
-      expandAccordion(!openAccordion)
+      expandAccordion(!openAccordion);
     }
-  }, [])
+  }, []);
 
   return (
     <>
@@ -48,7 +48,7 @@ const Accordion = props => {
       </li>
       {openAccordion && <ListRoot content={props.content.items} />}
     </>
-  )
-}
+  );
+};
 
-export default Accordion
+export default Accordion;

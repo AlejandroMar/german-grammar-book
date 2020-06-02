@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import style from './nested-nav-bar.module.css'
-import Accordion from '../accordion/accordion'
+import React from 'react';
+import { Link } from 'gatsby';
+import style from './nested-nav-bar.module.css';
+import Accordion from '../accordion/accordion';
 //this Component renders the nav links
 
 const NavLink = ({ item, openNavbarNav }) => {
@@ -16,8 +16,8 @@ const NavLink = ({ item, openNavbarNav }) => {
         {item.name}
       </Link>
     </li>
-  )
-}
+  );
+};
 
 const RenderNavLinks = ({ item, location, openNavbarNav }) => {
   return item.items !== null ? (
@@ -27,8 +27,8 @@ const RenderNavLinks = ({ item, location, openNavbarNav }) => {
     </>
   ) : (
     <NavLink item={item} location={location} openNavbarNav={openNavbarNav} />
-  )
-}
+  );
+};
 
 // this is the main recursion to render the nested NavLinks
 const NestedNavBar = ({ content, location, openNavbarNav }) => {
@@ -47,7 +47,7 @@ const NestedNavBar = ({ content, location, openNavbarNav }) => {
       location={location}
       openNavbarNav={openNavbarNav}
     />
-  )
-}
+  );
+};
 
-export default NestedNavBar
+export default NestedNavBar;

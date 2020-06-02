@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react'
-import { useImmer } from 'use-immer'
+import React, { useEffect } from 'react';
+import { useImmer } from 'use-immer';
 
-import Backend from 'react-dnd-html5-backend'
-import { TouchBackend } from 'react-dnd-touch-backend'
-import { DndProvider } from 'react-dnd'
-import isTouchDevice from 'is-touch-device'
+import Backend from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { DndProvider } from 'react-dnd';
+import isTouchDevice from 'is-touch-device';
 
-import { data } from './data'
-import { shuffleArray, repeatedAnswer } from './utils'
+import { data } from './data';
+import { shuffleArray, repeatedAnswer } from './utils';
 
-import AnswerDrop from './AnswerDrop'
-import AnswerParentBoxes from './AnswerParentBoxes'
+import AnswerDrop from './AnswerDrop';
+import AnswerParentBoxes from './AnswerParentBoxes';
 
 import {
   Container,
@@ -18,41 +18,41 @@ import {
   ContentText,
   Col,
   AnswersParentCol,
-} from './styledComponents/index'
+} from './styledComponents/index';
 
-const chooseBackend = isTouchDevice() ? TouchBackend : Backend
+const chooseBackend = isTouchDevice() ? TouchBackend : Backend;
 
 // Main component
 function Index() {
-  const [state, setState] = useImmer(data)
+  const [state, setState] = useImmer(data);
 
   useEffect(() => {
     setState(draft => {
       draft.shuffledAnswers = shuffleArray(Object.keys(draft.answers)).map(
         answer => {
-          return { key: answer, text: draft.answers[answer] }
+          return { key: answer, text: draft.answers[answer] };
         }
-      )
-    })
-  }, [])
+      );
+    });
+  }, []);
 
   const checkIfCorrect = (draggedItem, index) => {
-    return state.questions[index].answers.includes(draggedItem.key)
-  }
+    return state.questions[index].answers.includes(draggedItem.key);
+  };
 
   const setStateOnDrop = (droppedItem, index) => {
     // if answer is correct but already given don't setState
     if (repeatedAnswer(state.questions[index].responded, droppedItem)) {
-      return
+      return;
     }
 
     setState(draft => {
       draft.questions[index].responded.push(
         Object.assign({}, droppedItem.answer)
-      )
-      draft.questions[index].respondedCounter += 1
-    })
-  }
+      );
+      draft.questions[index].respondedCounter += 1;
+    });
+  };
 
   return (
     <DndProvider backend={chooseBackend}>
@@ -75,7 +75,7 @@ function Index() {
                   />
                 </Col>
               </Row>
-            )
+            );
           })}
         </Col>
         <AnswersParentCol flexBasis={30} className="sticky">
@@ -83,7 +83,7 @@ function Index() {
         </AnswersParentCol>
       </Container>
     </DndProvider>
-  )
+  );
 }
 
-export default Index
+export default Index;

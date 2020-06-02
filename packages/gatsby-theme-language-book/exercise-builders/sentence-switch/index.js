@@ -1,6 +1,6 @@
-import React from 'react'
-import InputGrid from './input-grid'
-import PoolGrid from './pools'
+import React from 'react';
+import InputGrid from './input-grid';
+import PoolGrid from './pools';
 
 // si el ejercicio viene con el verbo predeterminado
 const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
@@ -12,8 +12,8 @@ const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
       complementos={complementos}
       sujetos={sujetos}
     />
-  ))
-}
+  ));
+};
 
 // si el ejercicio viene sin verbo determinado
 const Dynamic = ({ verbos, sujetos, complementos }) => {
@@ -24,8 +24,8 @@ const Dynamic = ({ verbos, sujetos, complementos }) => {
       complementos={complementos}
       sujetos={sujetos}
     />
-  ))
-}
+  ));
+};
 
 const VerboComponent = ({ verbosPre, verbos, sujetos, complementos }) => {
   return (
@@ -52,7 +52,7 @@ const VerboComponent = ({ verbosPre, verbos, sujetos, complementos }) => {
         />
       )}
     </>
-  )
-}
+  );
+};
 
-export default VerboComponent
+export default VerboComponent;

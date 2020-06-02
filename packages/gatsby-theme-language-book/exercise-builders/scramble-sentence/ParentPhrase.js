@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import styled from 'styled-components'
-import { Droppable } from 'react-beautiful-dnd'
-import Part from './Part'
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { Droppable } from 'react-beautiful-dnd';
+import Part from './Part';
 
 const Container = styled.div`
   display: block;
@@ -13,7 +13,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     width: 90%;
   }
-`
+`;
 
 const PartList = styled.div`
   display: flex;
@@ -23,24 +23,24 @@ const PartList = styled.div`
     flex-direction: column;
     align-items: center;
   }
-`
+`;
 const msg = styled.p`
   padding: 8px;
   text-align: center;
   color: white;
-`
+`;
 
 const Success = styled(msg)`
   background-color: green;
-`
+`;
 const RepeatedAnswer = styled(msg)`
   background-color: orangered;
-`
+`;
 
 class ParentPhrase extends Component {
-  state = {}
+  state = {};
   render() {
-    const { phrase, allCompleted, repeatedAnswerMsg } = this.props
+    const { phrase, allCompleted, repeatedAnswerMsg } = this.props;
     return (
       <Container>
         {repeatedAnswerMsg && (
@@ -69,8 +69,8 @@ class ParentPhrase extends Component {
           </Droppable>
         )}
       </Container>
-    )
+    );
   }
 }
 
-export default ParentPhrase
+export default ParentPhrase;

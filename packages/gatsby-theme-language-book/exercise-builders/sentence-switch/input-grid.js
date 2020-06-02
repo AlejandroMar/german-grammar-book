@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer, useRef } from 'react'
-import { getComplement, getSubject, getVerb } from './filtros'
-import style from './input-grid.module.css'
+import React, { useEffect, useReducer, useRef } from 'react';
+import { getComplement, getSubject, getVerb } from './filtros';
+import style from './input-grid.module.css';
 import {
   CHECK_IF_CORRECT,
   CLEAN_STATE,
@@ -8,8 +8,8 @@ import {
   PREDEFINED_VERB,
   SUJETO_CON_VERBO,
   VERBO_CON_COMPLEMENTO,
-} from './action-types'
-import { reducer } from './reducer'
+} from './action-types';
+import { reducer } from './reducer';
 // el componente debe ser independiente de los datos
 // un api
 
@@ -21,35 +21,35 @@ const initalState = {
   verboConComplemento: false,
   correcto: false,
   msg: '',
-}
+};
 
 const cleanState = (dispatch, type, payload) => {
   dispatch({
     type,
     payload,
-  })
-}
+  });
+};
 
 const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
-  const initialMount = useRef(true)
+  const initialMount = useRef(true);
 
-  const [state, dispatch] = useReducer(reducer, initalState)
-  const { sujetoLocal, verboLocal, complementoLocal, msg, correcto } = state
+  const [state, dispatch] = useReducer(reducer, initalState);
+  const { sujetoLocal, verboLocal, complementoLocal, msg, correcto } = state;
 
   const checkIfCorrect = () => {
     if (state.sujetoConVerbo && state.verboConComplemento) {
       dispatch({
         type: CHECK_IF_CORRECT,
         payload: { correcto: true, msg: 'correcto' },
-      })
+      });
     } else {
       dispatch({
         type: CHECK_IF_CORRECT,
         payload: { correcto: false, msg: 'falso: intenta otra vez' },
-      })
+      });
     }
-    return false
-  }
+    return false;
+  };
 
   // no se sie esto es un buen patron pero
   // cuando el componente se monta si tengo verbos predefinidos
@@ -63,43 +63,43 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
         payload: {
           verboLocal: verboPre,
         },
-      })
+      });
     }
-  }, [verboPre])
+  }, [verboPre]);
 
   useEffect(() => {
     if (initialMount.current) {
-      initialMount.current = false
-      return
+      initialMount.current = false;
+      return;
     } else {
-      checkIfCorrect()
+      checkIfCorrect();
     }
-  }, [state.sujetoConVerbo, state.verboConComplemento])
+  }, [state.sujetoConVerbo, state.verboConComplemento]);
 
   const handleChange = e => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     dispatch({
       type: HANDLE_CHANGE,
       payload: {
         value: value,
         name: name,
       },
-    })
-  }
+    });
+  };
 
   const checkAnswer = e => {
-    e.preventDefault()
+    e.preventDefault();
     cleanState(dispatch, CLEAN_STATE, {
       sujetoConVerbo: false,
       verboConComplemento: false,
       msg: '',
-    })
+    });
 
-    checkIfCorrect()
+    checkIfCorrect();
 
-    const verbo = getVerb(verbos, verboLocal)
-    const complemento = getComplement(complementos, complementoLocal)
-    const sujeto = getSubject(sujetos, sujetoLocal)
+    const verbo = getVerb(verbos, verboLocal);
+    const complemento = getComplement(complementos, complementoLocal);
+    const sujeto = getSubject(sujetos, sujetoLocal);
 
     if (verbo.conjugacion[sujeto.p] === verboLocal.trim()) {
       dispatch({
@@ -107,7 +107,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
         payload: {
           sujetoConVerbo: true,
         },
-      })
+      });
     }
 
     if (verbo.complementos.includes(complemento.categoria)) {
@@ -116,9 +116,9 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
         payload: {
           verboConComplemento: true,
         },
-      })
+      });
     }
-  }
+  };
 
   return (
     <div className={style.wrapper}>
@@ -179,7 +179,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
         </form>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default InputGrid
+export default InputGrid;
