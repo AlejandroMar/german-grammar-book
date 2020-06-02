@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
 import NavHamburger from './nav-hamburger';
 import styled, { withTheme, css } from 'styled-components';
-import NavbarRoot from './navbar-root';
 import getSideBarData from '../../hooks/getSideBarData';
+import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
+
+const NavbarNav = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+   @media only screen and (max-width: ${props => props.theme.mq.xl}) {
+    display: none;
+    ${props => {
+      if (props.openNavbar) {
+        return css`
+          display: flex;
+        `;
+      }
+    }}
+`;
 
 const NavBar = styled.nav`
   background-color: ${props => props.theme.colorPrimary};
@@ -31,8 +48,6 @@ const SideBar = props => {
   // if in need of more levels add another to the query
   const sideBarData = getSideBarData();
 
-  console.log('here the props: ', props);
-
   const [openNavbar, setopenNavbar] = useState(false);
 
   const openNavbarNav = () => {
@@ -43,12 +58,13 @@ const SideBar = props => {
     <NavBar className="navBar" openNavbar={openNavbar}>
       <NavHamburger openNavbarNav={openNavbarNav} />
       {/* nav root is the ul tag */}
-      <NavbarRoot
-        openNavbar={openNavbar}
-        sideBarData={sideBarData}
-        location={props.location}
-        openNavbarNav={openNavbarNav}
-      />
+      <NavbarNav className="navBarNav" openNavbar={openNavbar}>
+        <NestedNavBar
+          content={sideBarData.allMenuLink.edges}
+          location={props.location}
+          openNavbarNav={openNavbarNav}
+        />
+      </NavbarNav>
     </NavBar>
   );
 };

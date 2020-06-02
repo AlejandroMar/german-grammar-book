@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const NavBarButton = styled.div`
+const NavBarHamWrapper = styled.div`
   position: absolute;
   right: 5%;
   top: 3.5%;
@@ -27,10 +27,10 @@ const NavBarButton = styled.div`
 `;
 
 const NavHamburger = ({ openNavbarNav }) => (
-  <NavBarButton onClick={openNavbarNav} className="navBarButton">
+  <NavBarHamWrapper onClick={openNavbarNav} className="navBarButton">
     <span>{''}</span>
     <span>{''}</span>
     <span>{''}</span>
-  </NavBarButton>
+  </NavBarHamWrapper>
 );
 export default NavHamburger;
