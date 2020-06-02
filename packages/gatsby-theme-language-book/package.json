@@ -17,12 +17,14 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.8",
     "@mdx-js/react": "^1.5.8",
+    "babel-plugin-styled-components": "^1.10.7",
     "classnames": "^2.2.6",
     "gatsby-plugin-layout": "^1.2.1",
     "gatsby-plugin-mdx": "^1.1.7",
     "gatsby-plugin-page-creator": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.2.5",
     "gatsby-plugin-sass": "^2.3.0",
+    "gatsby-plugin-styled-components": "^3.3.2",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-yaml": "^2.3.1",
     "immer": "^6.0.5",
@@ -33,7 +35,7 @@
     "react-dnd-html5-backend": "^10.0.2",
     "react-dnd-preview": "^6.0.2",
     "react-dnd-touch-backend": "^11.1.2",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.1.1",
     "use-immer": "^0.4.0"
   },
   "devDependencies": {

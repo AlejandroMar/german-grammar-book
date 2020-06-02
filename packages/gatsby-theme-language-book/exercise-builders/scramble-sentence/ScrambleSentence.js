@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { initialData } from './data';
 import produce from 'immer';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import ParentPhrase from './ParentPhrase';
 import { DragDropContext } from 'react-beautiful-dnd';
 
@@ -189,6 +189,7 @@ class ScrambleSentence extends Component {
     const phrase = this.state.parentPhrase.phrasePartIds.map((part, index) => {
       return this.state.phrase[part];
     });
+
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
         <ParentPhrase
@@ -228,11 +229,4 @@ class ScrambleSentence extends Component {
   }
 }
 
-export default ScrambleSentence;
-
-/* ReactDOM.render(
-  <React.StrictMode>
-    <Index />
-  </React.StrictMode>,
-  document.getElementById("root")
-); */
+export default withTheme(ScrambleSentence);

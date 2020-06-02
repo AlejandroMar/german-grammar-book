@@ -2,6 +2,8 @@ import React from 'react';
 import SideBar from '../side-bar/side-bar';
 import style from './layout.module.css';
 import { Helmet } from 'react-helmet';
+import { ThemeProvider } from 'styled-components';
+import { theme } from '../../styles/theme';
 
 const Layout = props => {
   return (
@@ -12,12 +14,13 @@ const Layout = props => {
           rel="stylesheet"
         />
       </Helmet>
+      <ThemeProvider theme={theme}>
+        <aside>
+          <SideBar location={props.location} />
+        </aside>
 
-      <aside>
-        <SideBar location={props.location} />
-      </aside>
-
-      <main className={style.layoutMain}>{props.children}</main>
+        <main className={style.layoutMain}>{props.children}</main>
+      </ThemeProvider>
     </>
   );
 };

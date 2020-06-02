@@ -1,61 +1,29 @@
-.navbar {
-  background-color: #23232e;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 16rem;
-  height: 100vh;
-  z-index: 0;
-  overflow: auto;
-}
-.navbarNav {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  overflow: hidden;
-}
 
-.navBarButton {
-  position: absolute;
-  right: 5%;
-  top: 3.5%;
-  display: none;
-  background-color: rgb(92, 3, 92);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
 
-.navBarButton span {
-  display: block;
-  width: 33px;
-  height: 2px;
-  margin: 5px;
-  position: relative;
-  background-color: white;
-  z-index: 1;
-}
 
-@media only screen and (max-width: 1140px) {
-  .navbar {
-    position: static;
-    width: 100%;
-    height: 8vh;
-  }
+/*.navBarButton {*/
+/*  position: absolute;*/
+/*  right: 5%;*/
+/*  top: 3.5%;*/
+/*  display: none;*/
+/*  background-color: rgb(92, 3, 92);*/
+/*  border: none;*/
+/*  border-radius: 4px;*/
+/*  cursor: pointer;*/
+/*}*/
 
-  .navbarNav {
-    display: none;
-  }
-  .openNav.navbar {
-    height: 100vh;
-  }
+/*.navBarButton span {*/
+/*  display: block;*/
+/*  width: 33px;*/
+/*  height: 2px;*/
+/*  margin: 5px;*/
+/*  position: relative;*/
+/*  background-color: white;*/
+/*  z-index: 1;*/
+/*}*/
 
-  .openNav.navbar  .navbarNav {
-    display: flex;
-  }
-
-  .navBarButton {
-    display: block;
-  }
-}
+/*@media only screen and (max-width: 1140px) {*/
+/*  .navBarButton {*/
+/*    display: block;*/
+/*  }*/
+/*}*/
