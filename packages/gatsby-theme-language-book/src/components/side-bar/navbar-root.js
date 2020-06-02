@@ -2,7 +2,7 @@ import style from './side-bar.module.css'
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar'
 import React from 'react'
 
-export const NavBarRoot = ({ location, openNavbarNav, sideBarData }) => (
+const NavbarRoot = ({ location, openNavbarNav, sideBarData }) => (
   <ul className={`${style.navbarNav}`}>
     <NestedNavBar
       content={sideBarData.allMenuLink.edges}
@@ -11,3 +11,4 @@ export const NavBarRoot = ({ location, openNavbarNav, sideBarData }) => (
     />
   </ul>
 )
+export default NavbarRoot
