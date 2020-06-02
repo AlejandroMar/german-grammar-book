@@ -4,6 +4,8 @@
   border-bottom: 1px solid #818185;
 }
 
+
+
 .navLink {
   display: flex;
   align-items: center;
@@ -13,9 +15,11 @@
   transition: 600ms;
 }
 
-.listRoot {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+/*.listRoot {*/
+/*  list-style: none;*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  overflow: hidden;*/
+/*}*/
+
+

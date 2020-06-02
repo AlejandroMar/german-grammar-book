@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import style from './accordion.module.css';
+import styled from 'styled-components';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
 
-const ListRoot = ({ content }) => {
+const ListRoot = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+const NestedList = ({ content }) => {
   return (
-    <ul className={style.listRoot}>
+    <ListRoot className="nestedListRoot">
       {content.map((item, i) => (
         //this is another recursion call
         <NestedNavBar content={item} key={i} />
       ))}
-    </ul>
+    </ListRoot>
   );
 };
 
@@ -46,7 +54,7 @@ const Accordion = props => {
           {props.content.name}
         </Link>
       </li>
-      {openAccordion && <ListRoot content={props.content.items} />}
+      {openAccordion && <NestedList content={props.content.items} />}
     </>
   );
 };
