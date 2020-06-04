@@ -10,7 +10,7 @@ const NavbarNav = styled.ul`
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-   @media only screen and (max-width: ${props => props.theme.mq.xl}) {
+   @media only screen and (max-width: ${({ theme }) => theme.mq.xl}) {
     display: none;
     ${props => {
       if (props.openNavbar) {
@@ -22,7 +22,7 @@ const NavbarNav = styled.ul`
 `;
 
 const NavBar = styled.nav`
-  background-color: ${props => props.theme.colorPrimary};
+  background-color: ${({ theme }) => theme.colorPrimary};
   position: fixed;
   top: 0;
   left: 0;
@@ -30,7 +30,7 @@ const NavBar = styled.nav`
   height: 100vh;
   z-index: 0;
   overflow: auto;
-  @media only screen and (max-width: ${props => props.theme.mq.xl}) {
+  @media only screen and (max-width: ${({ theme }) => theme.mq.xl}) {
     position: static;
     width: 100%;
     height: 8vh;
