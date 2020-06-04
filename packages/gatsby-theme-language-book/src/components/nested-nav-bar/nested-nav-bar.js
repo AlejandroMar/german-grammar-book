@@ -1,35 +1,18 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import Accordion from '../accordion/accordion';
-import styled from 'styled-components';
-//this Component renders the nav links
-
-const NavItem = styled.li`
-  width: 80%;
-  padding: 0.5rem;
-  border-bottom: 1px solid #818185;
-`;
-
-const linkStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  height: '2rem',
-  color: '#b6b6b6',
-  textDecoration: 'none',
-  transition: '600ms',
-};
+import { NavItem } from '../styledComponents/NavItem';
+import { StyledGatsbyLink } from '../styledComponents/StyledGatsbyLink';
 
 const NavLink = ({ item, openNavbarNav }) => {
   return (
-    <NavItem className="navItem">
-      <Link
+    <NavItem className="nav-item">
+      <StyledGatsbyLink
         to={item.path}
-        style={linkStyle}
         activeStyle={{ color: 'purple' }}
         onClick={openNavbarNav}
       >
         {item.name}
-      </Link>
+      </StyledGatsbyLink>
     </NavItem>
   );
 };

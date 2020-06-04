@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
-import style from './accordion.module.css';
 import styled from 'styled-components';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
+import { NavItem } from '../styledComponents/NavItem';
+import { StyledGatsbyLink } from '../styledComponents/StyledGatsbyLink';
 
 const ListRoot = styled.ul`
   list-style: none;
@@ -44,16 +44,15 @@ const Accordion = props => {
 
   return (
     <>
-      <li className={style.navItem}>
-        <Link
+      <NavItem className="nav-item">
+        <StyledGatsbyLink
           to={props.content.path}
           onClick={expandAccordion}
           activeStyle={{ color: 'purple' }}
-          className={style.navLink}
         >
           {props.content.name}
-        </Link>
-      </li>
+        </StyledGatsbyLink>
+      </NavItem>
       {openAccordion && <NestedList content={props.content.items} />}
     </>
   );

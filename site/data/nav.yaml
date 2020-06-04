@@ -2,3 +2,8 @@
   path: /
 - name: Scramble
   path: /scramble
+- name: Intro
+  path: /scramble
+  items:
+    - name: Genero
+      path: /nombres/genero
