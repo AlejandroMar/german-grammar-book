@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
-import { NavItem } from '../styledComponents/NavItem';
-import { StyledGatsbyLink } from '../styledComponents/StyledGatsbyLink';
+import { NavLink } from '../nested-nav-bar/nav-link';
 
 const ListRoot = styled.ul`
   list-style: none;
@@ -44,15 +43,12 @@ const Accordion = props => {
 
   return (
     <>
-      <NavItem className="nav-item">
-        <StyledGatsbyLink
-          to={props.content.path}
-          onClick={expandAccordion}
-          activeStyle={{ color: 'purple' }}
-        >
-          {props.content.name}
-        </StyledGatsbyLink>
-      </NavItem>
+      <NavLink
+        path={props.content.path}
+        name={props.content.name}
+        onClickFunc={expandAccordion}
+      />
+
       {openAccordion && <NestedList content={props.content.items} />}
     </>
   );

@@ -1,21 +1,6 @@
 import React from 'react';
 import Accordion from '../accordion/accordion';
-import { NavItem } from '../styledComponents/NavItem';
-import { StyledGatsbyLink } from '../styledComponents/StyledGatsbyLink';
-
-const NavLink = ({ item, openNavbarNav }) => {
-  return (
-    <NavItem className="nav-item">
-      <StyledGatsbyLink
-        to={item.path}
-        activeStyle={{ color: 'purple' }}
-        onClick={openNavbarNav}
-      >
-        {item.name}
-      </StyledGatsbyLink>
-    </NavItem>
-  );
-};
+import { NavLink } from './nav-link';
 
 const RenderNavLinks = ({ item, location, openNavbarNav }) => {
   return item.items !== null ? (
@@ -24,7 +9,7 @@ const RenderNavLinks = ({ item, location, openNavbarNav }) => {
       <Accordion content={item} location={location} />
     </>
   ) : (
-    <NavLink item={item} location={location} openNavbarNav={openNavbarNav} />
+    <NavLink path={item.path} name={item.name} onClickFunc={openNavbarNav} />
   );
 };
 
