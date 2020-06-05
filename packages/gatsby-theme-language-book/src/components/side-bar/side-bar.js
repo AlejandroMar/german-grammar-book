@@ -22,7 +22,7 @@ const NavbarNav = styled.ul`
 `;
 
 const NavBar = styled.nav`
-  background-color: ${({ theme }) => theme.colorPrimary};
+  background-color: ${({ theme }) => theme.theme_colors.primary};
   position: fixed;
   top: 0;
   left: 0;
@@ -44,6 +44,7 @@ const NavBar = styled.nav`
 `;
 
 const SideBar = props => {
+  console.log('props: ', props);
   // this query will give only three levels of recursion
   // if in need of more levels add another to the query
   const sideBarData = getSideBarData();
