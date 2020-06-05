@@ -6,4 +6,4 @@
   path: /intro
   items:
     - name: Genero
-      path: /nombres/genero
+      path: /intro/genero
