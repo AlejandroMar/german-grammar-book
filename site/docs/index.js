@@ -5,7 +5,7 @@ const tabla = [
   {
     tiempo: 'presente',
     frase: (
-      <span class="bold">
+      <span className="bold">
         ich kau
         <In answer="fe" root="kaufen" />
       </span>
@@ -15,7 +15,7 @@ const tabla = [
   {
     tiempo: 'pasado',
     frase: (
-      <span class="bold">
+      <span className="bold">
         ich kau
         <In answer="fte" root="kaufen" />
       </span>
@@ -25,7 +25,7 @@ const tabla = [
   {
     tiempo: 'pasado',
     frase: (
-      <span class="bold">
+      <span className="bold">
         ich kau
         <In answer="fte" root="kaufen" />
       </span>
@@ -68,9 +68,9 @@ const Index = () => {
     return table.map((row, index) => {
       const keys = Object.keys(row)
       return (
-        <tr key={index}>
+        <tr key={`${index}-1`}>
           {keys.map((key, i) => (
-            <td>{row[key]}</td>
+            <td key={`${index}-${row[key]}`}>{row[key]}</td>
           ))}
         </tr>
       )
