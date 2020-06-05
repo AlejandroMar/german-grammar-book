@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import NavHamburger from './nav-hamburger';
 import styled, { withTheme, css } from 'styled-components';
 import getSideBarData from '../../hooks/getSideBarData';
@@ -42,7 +42,8 @@ const NavBar = styled.nav`
       }
     }}
 `;
-
+export const NavBarContext = createContext(null);
+// necesito poner index en el folder de cualquier menu que sea nesteado
 const SideBar = props => {
   console.log('props: ', props);
   // this query will give only three levels of recursion
@@ -60,11 +61,12 @@ const SideBar = props => {
       <NavHamburger openNavbarNav={openNavbarNav} />
       {/* nav root is the ul tag */}
       <NavbarNav className="navBarNav" openNavbar={openNavbar}>
-        <NestedNavBar
-          content={sideBarData.allMenuLink.edges}
-          location={props.location}
-          openNavbarNav={openNavbarNav}
-        />
+        <NavBarContext.Provider value={openNavbarNav}>
+          <NestedNavBar
+            content={sideBarData.allMenuLink.edges}
+            location={props.location}
+          />
+        </NavBarContext.Provider>
       </NavbarNav>
     </NavBar>
   );
