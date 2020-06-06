@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
-import { NavLink } from '../nested-nav-bar/nav-link';
+import { NavItem } from '../styledComponents/NavItem';
 
 const ListRoot = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+`;
+
+const AccordionParentItem = styled(NavItem)`
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  color: ${props => props.theme.theme_colors.link};
+  text-decoration: none;
+  transition: 600ms;
+  cursor: pointer;
+
+  & > span {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 1%;
+    transition: transform 0.2s linear;
+    transform: ${props => (props.accordionArrow ? 'rotate(90deg)}' : '')};
+  }
 `;
 
 const NestedList = ({ content }) => {
@@ -24,9 +42,11 @@ const NestedList = ({ content }) => {
 const Accordion = props => {
   // If openAccordion = true open sub menu
   const [openAccordion, setOpenAccordion] = useState(false);
+  const [accordionArrow, rotateAccordionArrow] = useState(false);
 
   const expandAccordion = () => {
     setOpenAccordion(!openAccordion);
+    rotateAccordionArrow(!accordionArrow);
   };
 
   useEffect(() => {
@@ -43,11 +63,12 @@ const Accordion = props => {
 
   return (
     <>
-      <NavLink
-        path={props.content.path}
-        name={props.content.name}
-        onClickFunc={expandAccordion}
-      />
+      <AccordionParentItem
+        onClick={expandAccordion}
+        accordionArrow={accordionArrow}
+      >
+        {props.content.name} <span>&gt;</span>
+      </AccordionParentItem>
 
       {openAccordion && <NestedList content={props.content.items} />}
     </>
