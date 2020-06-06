@@ -24,7 +24,7 @@ exports.sourceNodes = ({ actions }) => {
   type MenuLink implements Node @dontInfer {
     id: ID!
     name: String!
-    path: String!
+    path: String
     items: [MenuLink]
 }
 `;
