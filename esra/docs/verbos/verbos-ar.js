@@ -1,7 +1,7 @@
 import React from 'react'
 import In from 'gatsby-theme-language-book/exercise-builders/input'
 import VerbsTable from './verbs-table'
-import { Hint } from './Hint'
+import Hint from './Hint'
 
 const tabla = [
   {

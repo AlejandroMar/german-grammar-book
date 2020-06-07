@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Hint({ text }) {
+export default function Hint({ text }) {
   return (
     <div style={{ margin: '3px 0 0 10px', color: 'grey', fontSize: '.5rem' }}>
       {text}

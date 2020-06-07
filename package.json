@@ -13,6 +13,7 @@
     "site:mobile": "yarn workspace language-book develop -H 0.0.0.0",
     "site:clean": "yarn workspace language-book clean",
     "esra": "yarn workspace esra develop",
+    "esra:build": "yarn workspace esra build",
     "esra:mobile": "yarn workspace esra develop -H 0.0.0.0",
     "esra:clean": "yarn workspace esra clean"
   }
