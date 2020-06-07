@@ -16,9 +16,11 @@ table {
 }
 
 th, td {
-  padding: 20px;
+  padding: 1%;
   border: 1px solid rgb(193, 193, 193);
 }
+
+
 
 tr > td:first-child {
   background-color: gainsboro;
@@ -42,4 +44,10 @@ tr > td:first-child {
 
 .gray {
   background-color: gainsboro;
+}
+
+@media only screen and (max-width: 770px) {
+  th {
+    font-size:16px;
+  }
 }

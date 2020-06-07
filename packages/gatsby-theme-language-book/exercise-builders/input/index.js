@@ -23,7 +23,7 @@ class InputComp extends Component {
           placeholder={this.props.root}
           value={this.state.inputValue}
           onChange={this.handleChange}
-          size={this.props.root.length}
+          size={this.props.answer.length}
         />
       </label>
     );

@@ -9,25 +9,25 @@ const tabla = [
     hacer: (
       <span className="bold">
         ha
-        <In answer="go" root="    " />
+        <In answer="go" root="  " />
         <Hint text="ich mache, ¡IRREGULAR!" />
       </span>
     ),
     tener: (
       <span className="bold">
         t
-        <In answer="e" root="    " />
+        <In answer="e" root=" " />
         n
-        <In answer="go" root="    " />
+        <In answer="go" root="  " />
         <Hint text="ich habe, ¡IRREGULAR!" />
       </span>
     ),
     querer: (
       <span className="bold">
         qu
-        <In answer="ie" root="    " />
+        <In answer="ie" root="  " />
         r
-        <In answer="o" root="    " />
+        <In answer="o" root=" " />
         <Hint text="ich will" />
       </span>
     ),
@@ -37,25 +37,25 @@ const tabla = [
     hacer: (
       <span className="bold">
         hac
-        <In answer="es" root="    " />
+        <In answer="es" root="  " />
         <Hint text="du machst" />
       </span>
     ),
     tener: (
       <span className="bold">
         t
-        <In answer="ie" root="    " />
+        <In answer="ie" root="  " />
         n
-        <In answer="es" root="    " />
+        <In answer="es" root="  " />
         <Hint text="du hast" />
       </span>
     ),
     querer: (
       <span className="bold">
         qu
-        <In answer="ie" root="    " />
+        <In answer="ie" root="  " />
         r
-        <In answer="es" root="    " />
+        <In answer="es" root="  " />
         <Hint text="du willst" />
       </span>
     ),
