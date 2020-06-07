@@ -16,8 +16,8 @@
       path: /verbos/verbos-ir
     - name: Verbos irr. (hacer, tener, querer)
       path: /verbos/verbos-irregulares
-    - name: Verbos ss
-      path: /verbos/verbos-ss
+    - name: Verbos frases
+      path: /verbos/verbos-sentence
 
 
 

@@ -65,6 +65,19 @@ const verbos = [
     complementos: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
   },
   {
+    nombre: 'querer',
+    conjugacion: {
+      p1_s: 'quiero',
+      p2_s: 'quieres',
+      p3_s: 'quiere',
+      p1_p: 'queremos',
+      p2_p: 'queréis',
+      p3_p: 'quieren',
+    },
+
+    complementos: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
+  },
+  {
     nombre: 'comer',
     conjugacion: {
       p1_s: 'como',
@@ -116,6 +129,19 @@ const verbos = [
       'comida',
       'líquido',
     ],
+  },
+  {
+    nombre: 'llevar',
+    conjugacion: {
+      p1_s: 'llevo',
+      p2_s: 'llevas',
+      p3_s: 'lleva',
+      p1_p: 'llevamos',
+      p2_p: 'lleváis',
+      p3_p: 'llevan',
+    },
+
+    complementos: ['objeto-directo', 'cantidad', 'comida', 'líquido'],
   },
   {
     nombre: 'mandar',
