@@ -13,6 +13,19 @@ const verbos = [
     complementos: ['lugar', 'acompañante', 'modo'],
   },
   {
+    nombre: 'escribir',
+    conjugacion: {
+      p1_s: 'escribo',
+      p2_s: 'escribes',
+      p3_s: 'escribe',
+      p1_p: 'escribimos',
+      p2_p: 'escribís',
+      p3_p: 'escriben',
+    },
+
+    complementos: ['objeto-escrito', 'acompañante', 'modo'],
+  },
+  {
     nombre: 'beber',
     conjugacion: {
       p1_s: 'bebo',
@@ -24,6 +37,32 @@ const verbos = [
     },
 
     complementos: ['líquido', 'cantidad'],
+  },
+  {
+    nombre: 'hacer',
+    conjugacion: {
+      p1_s: 'hago',
+      p2_s: 'haces',
+      p3_s: 'hace',
+      p1_p: 'hacemos',
+      p2_p: 'hacéis',
+      p3_p: 'hacen',
+    },
+
+    complementos: ['comida', 'líquido', 'cantidad', 'objeto-directo'],
+  },
+  {
+    nombre: 'tener',
+    conjugacion: {
+      p1_s: 'tengo',
+      p2_s: 'tienes',
+      p3_s: 'tiene',
+      p1_p: 'tenemos',
+      p2_p: 'tenéis',
+      p3_p: 'tienen',
+    },
+
+    complementos: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
   },
   {
     nombre: 'comer',
@@ -115,7 +154,7 @@ const verbos = [
       p3_p: 'leen',
     },
 
-    complementos: ['objeto-directo', 'acompañante', 'lugar', 'tiempo'],
+    complementos: ['objeto-escrito', 'acompañante', 'lugar', 'tiempo'],
   },
 ]
 
@@ -182,11 +221,11 @@ const complementos = [
     texto: 'en casa',
   },
   {
-    categoria: 'objeto-directo',
+    categoria: 'objeto-escrito',
     texto: 'un mensaje',
   },
   {
-    categoria: 'objeto-directo',
+    categoria: 'objeto-escrito',
     texto: 'un libro',
   },
   {
@@ -200,10 +239,6 @@ const complementos = [
   {
     categoria: 'líquido',
     texto: 'un zumo',
-  },
-  {
-    categoria: 'líquido',
-    texto: 'un vaso de agua',
   },
   {
     categoria: 'líquido',
@@ -227,7 +262,7 @@ const complementos = [
   },
   {
     categoria: 'objeto-directo',
-    texto: 'móvil de Marta',
+    texto: 'el móvil de Marta',
   },
 ]
 
