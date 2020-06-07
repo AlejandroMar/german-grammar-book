@@ -154,7 +154,7 @@ const verbos = [
       p3_p: 'mandan',
     },
 
-    complementos: ['objeto-directo', 'cantidad'],
+    complementos: ['objeto-directo', 'objeto-escrito', 'cantidad'],
   },
   {
     nombre: 'comprar',
