@@ -162,6 +162,10 @@ const sujetos = [
     name: 'Vosotros',
     p: 'p2_p',
   },
+  {
+    name: 'Tus amigas y tú',
+    p: 'p2_p',
+  },
 ]
 
 const complementos = [
@@ -170,12 +174,40 @@ const complementos = [
     texto: 'en Madrid',
   },
   {
+    categoria: 'lugar',
+    texto: 'en el colegio',
+  },
+  {
+    categoria: 'lugar',
+    texto: 'en casa',
+  },
+  {
     categoria: 'objeto-directo',
     texto: 'un mensaje',
   },
   {
+    categoria: 'objeto-directo',
+    texto: 'un libro',
+  },
+  {
+    categoria: 'objeto-directo',
+    texto: 'unas gafas',
+  },
+  {
+    categoria: 'objeto-directo',
+    texto: 'ropa de verano',
+  },
+  {
     categoria: 'líquido',
     texto: 'un zumo',
+  },
+  {
+    categoria: 'líquido',
+    texto: 'un vaso de agua',
+  },
+  {
+    categoria: 'líquido',
+    texto: 'un chocolate caliente',
   },
   {
     categoria: 'objeto-directo',
@@ -186,8 +218,16 @@ const complementos = [
     texto: 'bocadillos',
   },
   {
+    categoria: 'comida',
+    texto: 'manzanas',
+  },
+  {
+    categoria: 'comida',
+    texto: 'helados',
+  },
+  {
     categoria: 'objeto-directo',
-    texto: 'mi móvil',
+    texto: 'móvil de Marta',
   },
 ]
 
