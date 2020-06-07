@@ -6,6 +6,18 @@
   path: /unidad-2b-5.2-bilde-sätze-level-2
 - name: Unidad 6.
   path: /unidad-6-texto-para-completar
+- name: 'Repaso: Verbos en presente.'
+  items:
+    - name: Verbos con -ar
+      path: /verbos/verbos-ar
+    - name: Verbos con -er
+      path: /verbos/verbos-er
+    - name: Verbos con -ir
+      path: /verbos/verbos-ir
+    - name: Verbos irr. (hacer, tener, querer)
+      path: /verbos/verbos-irregulares
+    - name: Verbos ss
+      path: /verbos/verbos-ss
 
 
 
