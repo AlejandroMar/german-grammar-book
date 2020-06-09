@@ -10,14 +10,13 @@ import {
   Card,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import teal from '@material-ui/core/colors/teal';
 
 const ListItem = styled(MuListItem)`
   padding-bottom: 0;
   padding-top: 0;
 `;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -31,7 +30,10 @@ const SujetosColumn = ({ sujetos }) => {
   return (
     <Card className={classes.item}>
       <CardContent>
-        <Typography>Sujetos: </Typography>
+        <Typography gutterBottom variant="h6" component="h3">
+          Sujetos:
+        </Typography>
+
         <List>
           {sujetos.map((sujeto, i) => (
             <ListItem key={i}>
@@ -49,7 +51,9 @@ const VerbosColumn = ({ verbosPre, verbos }) => {
   return (
     <Card className={classes.item}>
       <CardContent>
-        <Typography>verbos: </Typography>
+        <Typography gutterBottom variant="h6" component="h3">
+          Verbos:
+        </Typography>
         <List>
           {verbosPre
             ? verbosPre.map((verbo, i) => (
@@ -73,7 +77,9 @@ const ComplementosColumn = ({ complementos }) => {
   return (
     <Card className={classes.item}>
       <CardContent>
-        <Typography>complementos: </Typography>
+        <Typography gutterBottom variant="h6" component="h3">
+          Complementos:
+        </Typography>
         <List>
           {complementos.map((complemento, i) => (
             <ListItem key={i}>
