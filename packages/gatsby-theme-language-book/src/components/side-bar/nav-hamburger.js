@@ -21,7 +21,8 @@ const NavBarHamWrapper = styled.div`
     z-index: 1;
   }
 
-  @media only screen and (max-width: ${props => props.theme.mq.xl}) {
+  @media only screen and (max-width: ${props =>
+      props.theme.breakpoints.values.lg}) {
     display: block;
   }
 `;

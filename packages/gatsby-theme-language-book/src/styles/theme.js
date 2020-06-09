@@ -1,4 +1,7 @@
-export const theme = {
+import { createMuiTheme } from '@material-ui/core/styles';
+
+export const theme = createMuiTheme({});
+/*export const theme = {
   theme_colors: {
     primary: '#400135',
     secondary: '#F2D57E',
@@ -18,7 +21,7 @@ export const theme = {
     lg: '992px',
     xl: '1140px',
   },
-};
+};*/
 
 /*
  Color Theme Swatches in Hex

@@ -10,7 +10,7 @@ const NavbarNav = styled.ul`
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-   @media only screen and (max-width: ${({ theme }) => theme.mq.xl}) {
+  ${props => props.theme.breakpoints.down('md')} {
     display: none;
     ${props => {
       if (props.openNavbar) {
@@ -19,10 +19,11 @@ const NavbarNav = styled.ul`
         `;
       }
     }}
+  }
 `;
 
 const NavBar = styled.nav`
-  background-color: ${({ theme }) => theme.theme_colors.primary};
+  background-color: ${({ theme }) => theme.palette.primary.main};
   position: fixed;
   top: 0;
   left: 0;
@@ -30,7 +31,7 @@ const NavBar = styled.nav`
   height: 100vh;
   z-index: 0;
   overflow: auto;
-  @media only screen and (max-width: ${({ theme }) => theme.mq.xl}) {
+  ${props => props.theme.breakpoints.down('md')} {
     position: static;
     width: 100%;
     height: 8vh;
@@ -41,6 +42,7 @@ const NavBar = styled.nav`
         `;
       }
     }}
+  }
 `;
 export const NavBarContext = createContext(null);
 // necesito poner index en el folder de cualquier menu que sea nesteado

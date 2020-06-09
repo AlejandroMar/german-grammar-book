@@ -1,6 +1,17 @@
 module.exports = {
   /* Your site config here */
   plugins: [
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+        disableAutoprefixing: false,
+        disableMinification: false,
+      },
+    },
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,

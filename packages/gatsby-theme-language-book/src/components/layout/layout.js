@@ -3,6 +3,7 @@ import SideBar from '../side-bar/side-bar';
 import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 
 const Main = styled.main`
   margin: 2% 5rem 2% 18rem;
@@ -27,13 +28,15 @@ const Layout = props => {
           rel="stylesheet"
         />
       </Helmet>
-      <ThemeProvider theme={theme}>
-        <aside>
-          <SideBar location={props.location} />
-        </aside>
+      <MuiThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <aside>
+            <SideBar location={props.location} />
+          </aside>
 
-        <Main className="main">{props.children}</Main>
-      </ThemeProvider>
+          <Main className="main">{props.children}</Main>
+        </ThemeProvider>
+      </MuiThemeProvider>
     </>
   );
 };
