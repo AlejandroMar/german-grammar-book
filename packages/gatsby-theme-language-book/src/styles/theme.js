@@ -1,6 +1,18 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-export const theme = createMuiTheme({});
+export const theme = createMuiTheme({
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        html: {
+          WebkitFontSmoothing: 'auto',
+          fontSize: '20px',
+          letterSpacing: '.1rem',
+        },
+      },
+    },
+  },
+});
 /*export const theme = {
   theme_colors: {
     primary: '#400135',

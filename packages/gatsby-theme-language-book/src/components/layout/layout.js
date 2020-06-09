@@ -5,6 +5,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const Main = styled(Box)`
   margin: 2% 5rem 2% 18rem;
@@ -30,13 +31,15 @@ const Layout = props => {
       </Helmet>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <Box component="aside">
-            <SideBar location={props.location} />
-          </Box>
+          <CssBaseline>
+            <Box component="aside">
+              <SideBar location={props.location} />
+            </Box>
 
-          <Main className="main" component="main">
-            {props.children}
-          </Main>
+            <Main className="main" component="main">
+              {props.children}
+            </Main>
+          </CssBaseline>
         </ThemeProvider>
       </MuiThemeProvider>
     </>
