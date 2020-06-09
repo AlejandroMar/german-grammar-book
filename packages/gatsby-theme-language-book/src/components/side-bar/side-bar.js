@@ -27,7 +27,7 @@ const NavbarNav = styled(List)`
 `;
 
 const NavBar = styled(Box)`
-  background-color: ${({ theme }) => theme.palette.common.black};
+  background-color: ${({ theme }) => theme.palette.bg.main};
   position: fixed;
   top: 0;
   left: 0;
