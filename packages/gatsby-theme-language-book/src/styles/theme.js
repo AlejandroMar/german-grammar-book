@@ -7,7 +7,6 @@ export const theme = createMuiTheme({
         html: {
           WebkitFontSmoothing: 'auto',
           fontSize: '20px',
-          letterSpacing: '.1rem',
         },
       },
     },

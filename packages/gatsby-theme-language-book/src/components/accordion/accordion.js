@@ -11,6 +11,14 @@ const ListRoot = styled.ul`
   overflow: hidden;
 `;
 
+const Span = styled.span`
+  display: flex;
+  margin-left: 20px;
+  margin-top: 1%;
+  transition: transform 0.2s linear;
+  transform: ${props => (props.accordionArrow ? 'rotate(90deg)}' : '')};
+`;
+
 const AccordionParentItem = styled(NavItem)`
   display: flex;
   align-items: center;
@@ -18,14 +26,6 @@ const AccordionParentItem = styled(NavItem)`
   text-decoration: none;
   transition: 600ms;
   cursor: pointer;
-
-  & > span {
-    display: flex;
-    margin-left: 20px;
-    margin-top: 1%;
-    transition: transform 0.2s linear;
-    transform: ${props => (props.accordionArrow ? 'rotate(90deg)}' : '')};
-  }
 `;
 
 const NestedList = ({ content }) => {
@@ -63,12 +63,9 @@ const Accordion = props => {
 
   return (
     <>
-      <AccordionParentItem
-        onClick={expandAccordion}
-        accordionArrow={accordionArrow}
-      >
+      <AccordionParentItem onClick={expandAccordion}>
         <ListItemText>{props.content.name}</ListItemText>
-        <span>&gt;</span>
+        <Span accordionArrow={accordionArrow}>&gt;</Span>
       </AccordionParentItem>
 
       {openAccordion && <NestedList content={props.content.items} />}

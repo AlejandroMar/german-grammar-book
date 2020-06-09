@@ -6,6 +6,8 @@ import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
 import List from '@material-ui/core/List';
 import Box from '@material-ui/core/Box';
 
+export const NavBarContext = createContext(null);
+
 const NavbarNav = styled(List)`
   //list-style: none;
   display: flex;
@@ -46,7 +48,7 @@ const NavBar = styled(Box)`
     }}
   }
 `;
-export const NavBarContext = createContext(null);
+
 // necesito poner index en el folder de cualquier menu que sea nesteado
 const SideBar = props => {
   console.log('props: ', props);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { answer as cssAnswer } from '../input/input.module.css';
+import Select from '@material-ui/core/Select';
 
 const SelectComp = ({ root, options, answer }) => {
   const [selectValue, setSelectValue] = useState('   ');
@@ -14,14 +15,14 @@ const SelectComp = ({ root, options, answer }) => {
     }
     return (
       <label htmlFor="prueba">
-        <select value={selectValue} id="prueba" onChange={handleChange}>
+        <Select value={selectValue} id="prueba" native onChange={handleChange}>
           <option value={selectValue}>{selectValue}</option>
           {options.map(option => (
             <option key={option} value={option}>
               {option}
             </option>
           ))}
-        </select>
+        </Select>
       </label>
     );
   };

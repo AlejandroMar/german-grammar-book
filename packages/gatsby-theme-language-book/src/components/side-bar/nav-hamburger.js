@@ -10,6 +10,7 @@ const NavBarHamWrapper = styled(Box)`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  z-index: 1;
 
   & span {
     display: block;
@@ -17,6 +18,7 @@ const NavBarHamWrapper = styled(Box)`
     width: 33px;
     height: 2px;
     margin: 6px;
+
     position: relative;
     background-color: ${({ theme }) => theme.palette.common.white};
     z-index: 1;
