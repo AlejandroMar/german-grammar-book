@@ -3,12 +3,14 @@ import NavHamburger from './nav-hamburger';
 import styled, { withTheme, css } from 'styled-components';
 import getSideBarData from '../../hooks/getSideBarData';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
+import List from '@material-ui/core/List';
+import Box from '@material-ui/core/Box';
 
-const NavbarNav = styled.ul`
-  list-style: none;
+const NavbarNav = styled(List)`
+  //list-style: none;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
   overflow: hidden;
   ${props => props.theme.breakpoints.down('md')} {
     display: none;
@@ -22,8 +24,8 @@ const NavbarNav = styled.ul`
   }
 `;
 
-const NavBar = styled.nav`
-  background-color: ${({ theme }) => theme.palette.primary.main};
+const NavBar = styled(Box)`
+  background-color: ${({ theme }) => theme.palette.common.black};
   position: fixed;
   top: 0;
   left: 0;
@@ -59,7 +61,7 @@ const SideBar = props => {
   };
 
   return (
-    <NavBar className="navBar" openNavbar={openNavbar}>
+    <NavBar component="nav" className="navBar" openNavbar={openNavbar}>
       <NavHamburger openNavbarNav={openNavbarNav} />
       {/* nav root is the ul tag */}
       <NavbarNav className="navBarNav" openNavbar={openNavbar}>

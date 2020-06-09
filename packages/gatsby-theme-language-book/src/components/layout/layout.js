@@ -4,16 +4,16 @@ import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+import Box from '@material-ui/core/Box';
 
-const Main = styled.main`
+const Main = styled(Box)`
   margin: 2% 5rem 2% 18rem;
   padding: 2rem;
-
-  @media only screen and (max-width: 1140px) {
+  ${props => props.theme.breakpoints.down('md')} {
     margin: 6vh 8% 8% 8%;
     padding: inherit;
   }
-  @media only screen and (max-width: 540px) {
+  ${props => props.theme.breakpoints.down('sm')} {
     margin: 6vh 2% 2% 2%;
     padding: inherit;
   }
@@ -24,17 +24,19 @@ const Layout = props => {
     <>
       <Helmet title="the language book" defer={false}>
         <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"
           rel="stylesheet"
         />
       </Helmet>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <aside>
+          <Box component="aside">
             <SideBar location={props.location} />
-          </aside>
+          </Box>
 
-          <Main className="main">{props.children}</Main>
+          <Main className="main" component="main">
+            {props.children}
+          </Main>
         </ThemeProvider>
       </MuiThemeProvider>
     </>

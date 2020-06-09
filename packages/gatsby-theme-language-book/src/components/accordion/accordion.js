@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NestedNavBar from '../nested-nav-bar/nested-nav-bar';
 import { NavItem } from '../styledComponents/NavItem';
+import { ListItemText } from '@material-ui/core';
 
 const ListRoot = styled.ul`
   list-style: none;
@@ -13,8 +14,7 @@ const ListRoot = styled.ul`
 const AccordionParentItem = styled(NavItem)`
   display: flex;
   align-items: center;
-  height: 2rem;
-  color: ${props => props.theme.palette.grey[700]};
+  color: ${props => props.theme.palette.grey[400]};
   text-decoration: none;
   transition: 600ms;
   cursor: pointer;
@@ -67,7 +67,8 @@ const Accordion = props => {
         onClick={expandAccordion}
         accordionArrow={accordionArrow}
       >
-        {props.content.name} <span>&gt;</span>
+        <ListItemText>{props.content.name}</ListItemText>
+        <span>&gt;</span>
       </AccordionParentItem>
 
       {openAccordion && <NestedList content={props.content.items} />}
