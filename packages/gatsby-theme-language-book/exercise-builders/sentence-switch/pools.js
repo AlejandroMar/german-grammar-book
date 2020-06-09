@@ -1,59 +1,107 @@
 import React from 'react';
-import style from './pools.module.css';
-import cx from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import {
+  List,
+  ListItemText,
+  ListItem as MuListItem,
+  Card,
+} from '@material-ui/core';
+import styled from 'styled-components';
+import teal from '@material-ui/core/colors/teal';
 
-const SujetosColumn = ({ sujetos }) => (
-  <div className={cx(style.col, style.sujeto)}>
-    <h4 className={style.catName}>sujetos: </h4>
+const ListItem = styled(MuListItem)`
+  padding-bottom: 0;
+  padding-top: 0;
+`;
 
-    <ul className={style.list}>
-      {sujetos.map((sujeto, i) => (
-        <li key={i} className={style.listItem}>
-          {sujeto.name}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  item: {
+    height: '100%',
+  },
+}));
 
-const VerbosColumn = ({ verbosPre, verbos }) => (
-  <div className={cx(style.col, style.verbo)}>
-    <h4 className={style.catName}>verbos: </h4>
-    <ul className={style.list}>
-      {verbosPre
-        ? verbosPre.map((verbo, i) => (
-            <li key={i} className={style.listItem}>
-              {verbo}
-            </li>
-          ))
-        : verbos.map((verbo, i) => (
-            <li key={i} className={style.listItem}>
-              {verbo.nombre}
-            </li>
+const SujetosColumn = ({ sujetos }) => {
+  const classes = useStyles();
+  return (
+    <Card className={classes.item}>
+      <CardContent>
+        <Typography>Sujetos: </Typography>
+        <List>
+          {sujetos.map((sujeto, i) => (
+            <ListItem key={i}>
+              <ListItemText primary={sujeto.name} />
+            </ListItem>
           ))}
-    </ul>
-  </div>
-);
+        </List>
+      </CardContent>
+    </Card>
+  );
+};
 
-const ComplementosColumn = ({ complementos }) => (
-  <div className={cx(style.col, style.complemento)}>
-    <h4 className={style.catName}>complementos: </h4>
-    <ul className={style.list}>
-      {complementos.map((complemento, i) => (
-        <li key={i} className={style.listItem}>
-          {complemento.texto}
-        </li>
-      ))}
-    </ul>
-  </div>
-);
+const VerbosColumn = ({ verbosPre, verbos }) => {
+  const classes = useStyles();
+  return (
+    <Card className={classes.item}>
+      <CardContent>
+        <Typography>verbos: </Typography>
+        <List>
+          {verbosPre
+            ? verbosPre.map((verbo, i) => (
+                <ListItem key={i}>
+                  <ListItemText key={i}>{verbo}</ListItemText>
+                </ListItem>
+              ))
+            : verbos.map((verbo, i) => (
+                <ListItem key={i}>
+                  <ListItemText key={i}>{verbo.nombre}</ListItemText>
+                </ListItem>
+              ))}
+        </List>
+      </CardContent>
+    </Card>
+  );
+};
+
+const ComplementosColumn = ({ complementos }) => {
+  const classes = useStyles();
+  return (
+    <Card className={classes.item}>
+      <CardContent>
+        <Typography>complementos: </Typography>
+        <List>
+          {complementos.map((complemento, i) => (
+            <ListItem key={i}>
+              <ListItemText>{complemento.texto}</ListItemText>
+            </ListItem>
+          ))}
+        </List>
+      </CardContent>
+    </Card>
+  );
+};
 
 const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
+  const classes = useStyles();
+
   return (
-    <div className={style.row}>
-      <SujetosColumn sujetos={sujetos} />
-      <VerbosColumn verbosPre={verbosPre} verbos={verbos} />
-      <ComplementosColumn complementos={complementos} />
+    <div className={classes.root}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <SujetosColumn sujetos={sujetos} />
+        </Grid>
+        <Grid item xs={4}>
+          <VerbosColumn verbosPre={verbosPre} verbos={verbos} />
+        </Grid>
+        <Grid item xs={4}>
+          <ComplementosColumn complementos={complementos} />
+        </Grid>
+      </Grid>
     </div>
   );
 };
