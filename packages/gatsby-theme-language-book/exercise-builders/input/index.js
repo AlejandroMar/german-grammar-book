@@ -1,14 +1,21 @@
 import React, { useState, useRef } from 'react';
 import { answer } from './input.module.css';
-import { InputBase as MuInput } from '@material-ui/core';
+import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
-import { Box, Button as MuButton, Paper, ButtonGroup } from '@material-ui/core';
+import { Button as MuButton, ButtonGroup } from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
-    position: 'fixed',
-    top: '5%',
+    display: 'inline-block',
+    position: 'relative',
+  },
+  letterTool: {
+    position: 'absolute',
+    top: '-100%',
+    left: '-100%',
+    width: '100px',
+    opacity: '.5',
   },
 }));
 
@@ -27,7 +34,7 @@ const Input = styled(MuInput)`
 const InputFun = props => {
   const [inputValue, setInputValue] = useState('');
   const [displayChars, setDisplayChars] = useState(false);
-  const [letterClicked, setLetterClicked] = useState(false);
+  const classes = useStyles();
 
   const inputEl = useRef(null);
 
@@ -36,9 +43,8 @@ const InputFun = props => {
   };
 
   const LetterSupport = ({ fun }) => {
-    const classes = useStyles();
     return (
-      <ButtonGroup size="small" className={classes.root}>
+      <ButtonGroup size="small" className={classes.letterTool}>
         <Button variant="contained" onClick={e => fun(e)}>
           Ñ
         </Button>
@@ -70,29 +76,26 @@ const InputFun = props => {
     );
   };
 
+  let timeOut;
+  const handleBlur = () => {
+    timeOut = setTimeout(() => {
+      setDisplayChars(false);
+    }, 300);
+  };
+
+  const handleFocus = () => {
+    setDisplayChars(true);
+    clearTimeout(timeOut);
+  };
+
   const addCharacterToState = e => {
-    console.log(e.target.innerText);
-
     setInputValue(inputValue + e.target.innerText);
-
+    clearTimeout(timeOut);
     try {
       inputEl.current.children[0].focus();
     } catch (e) {
       console.log(e);
     }
-  };
-
-  const handleFocus = e => {
-    setDisplayChars(true);
-  };
-
-  const handleBlur = () => {
-    return;
-    /*console.log('blurrrrr: ', inputEl);
-    if (letterClicked) {
-      return;
-    }
-    setDisplayChars(false);*/
   };
 
   const DisplayChars = () => {
@@ -104,7 +107,7 @@ const InputFun = props => {
   return displayAnswer ? (
     <span className={answer}>{props.answer}</span>
   ) : (
-    <>
+    <div className={classes.root}>
       <DisplayChars />
       <label htmlFor="fill-in">
         <Input
@@ -116,12 +119,12 @@ const InputFun = props => {
           onChange={handleChange}
           onFocus={handleFocus}
           size={props.answer.length}
-          autoComplete="false"
+          autoComplete="off"
           variant="outlined"
           onBlur={handleBlur}
         />
       </label>
-    </>
+    </div>
   );
 };
 
