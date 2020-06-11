@@ -4,8 +4,8 @@ import { Helmet } from 'react-helmet';
 import styled, { ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { Box } from '@material-ui/core';
 
 const Main = styled(Box)`
   margin: 2% 5rem 2% 18rem;
