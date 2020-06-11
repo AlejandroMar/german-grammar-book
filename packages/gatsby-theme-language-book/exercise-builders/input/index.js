@@ -45,52 +45,49 @@ const InputFun = props => {
   const LetterSupport = ({ fun }) => {
     return (
       <ButtonGroup size="small" className={classes.letterTool}>
-        <Button variant="contained" onClick={e => fun(e)}>
+        <Button variant="contained" onMouseDown={e => fun(e)}>
           Ñ
         </Button>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           ñ
         </ButtonMin>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           á
         </ButtonMin>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           é
         </ButtonMin>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           í
         </ButtonMin>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           ó
         </ButtonMin>
 
-        <ButtonMin variant="contained" onClick={e => fun(e)}>
+        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
           ú
         </ButtonMin>
       </ButtonGroup>
     );
   };
 
-  let timeOut;
   const handleBlur = () => {
-    timeOut = setTimeout(() => {
-      setDisplayChars(false);
-    }, 300);
+    setDisplayChars(false);
   };
 
   const handleFocus = () => {
     setDisplayChars(true);
-    clearTimeout(timeOut);
   };
 
   const addCharacterToState = e => {
+    e.preventDefault();
     setInputValue(inputValue + e.target.innerText);
-    clearTimeout(timeOut);
+
     try {
       inputEl.current.children[0].focus();
     } catch (e) {
