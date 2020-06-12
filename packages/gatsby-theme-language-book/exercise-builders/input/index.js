@@ -40,6 +40,11 @@ const Input = styled(MuInput)`
   font-size: inherit;
 `;
 
+const InputComponent = styled.input.attrs({
+  autocapitalize: 'none',
+  spellcheck: 'off',
+})``;
+
 const InputFun = props => {
   const [inputValue, setInputValue] = useState('');
   const [displayChars, setDisplayChars] = useState(false);
@@ -111,25 +116,36 @@ const InputFun = props => {
 
   const displayAnswer = props.answer === inputValue;
 
+  const WrappInFromToStopCapsOnMovile = ({ children }) => {
+    return isTouchDevice() ? (
+      <form autoCapitalize="none">{children} </form>
+    ) : (
+      <>{children}</>
+    );
+  };
+
   return displayAnswer ? (
     <span className={answer}>{props.answer}</span>
   ) : (
     <div className={classes.root}>
-      <label htmlFor="fill-in">
-        <Input
-          ref={inputEl}
-          type="text"
-          name="fill-in"
-          placeholder={props.root}
-          value={inputValue}
-          onChange={handleChange}
-          onFocus={handleFocus}
-          size={props.answer.length}
-          autoComplete="off"
-          variant="outlined"
-          onBlur={handleBlur}
-        />
-      </label>
+      <WrappInFromToStopCapsOnMovile>
+        <label htmlFor="fill-in">
+          <Input
+            ref={inputEl}
+            type="text"
+            name="fill-in"
+            placeholder={props.root}
+            value={inputValue}
+            onChange={handleChange}
+            onFocus={handleFocus}
+            size={props.answer.length}
+            autoComplete="off"
+            variant="outlined"
+            onBlur={handleBlur}
+            inputComponent={InputComponent}
+          />
+        </label>
+      </WrappInFromToStopCapsOnMovile>
       <DisplayChars />
     </div>
   );
