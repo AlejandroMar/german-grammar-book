@@ -2,28 +2,37 @@ import React, { useState, useRef } from 'react';
 import { answer } from './input.module.css';
 import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
-import { Button as MuButton, ButtonGroup } from '@material-ui/core';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-
-const useStyles = makeStyles(() => ({
+import isTouchDevice from 'is-touch-device/src';
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'inline-block',
     position: 'relative',
   },
   letterTool: {
     position: 'absolute',
-    top: '-100%',
-    left: '-100%',
-    width: '100px',
-    opacity: '.5',
+    listStyle: 'none',
+    marginTop: '2px',
+    width: '7rem',
+    padding: '0',
+    zIndex: '1200',
+    backgroundColor: theme.palette.info.light,
+    opacity: '.8',
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadows[1],
+  },
+
+  letterToolItem: {
+    textAlign: 'center',
+    float: 'left',
+    width: '1rem',
+    cursor: 'pointer',
+
+    '&:hover': {
+      backgroundColor: 'white',
+    },
   },
 }));
-
-const ButtonMin = styled(MuButton)`
-  text-transform: lowercase;
-`;
-
-const Button = styled(MuButton)``;
 
 const Input = styled(MuInput)`
   width: ${props => (props.size + 2) * 8 + 'px'};
@@ -43,36 +52,34 @@ const InputFun = props => {
   };
 
   const LetterSupport = ({ fun }) => {
+    const letters = [
+      'á',
+      'é',
+      'í',
+      'ó',
+      'ú',
+      'Á',
+      'É',
+      'Í',
+      'Ó',
+      'Ú',
+      'Ñ',
+      'ñ',
+      '¿',
+      '¡',
+    ];
     return (
-      <ButtonGroup size="small" className={classes.letterTool}>
-        <Button variant="contained" onMouseDown={e => fun(e)}>
-          Ñ
-        </Button>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          ñ
-        </ButtonMin>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          á
-        </ButtonMin>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          é
-        </ButtonMin>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          í
-        </ButtonMin>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          ó
-        </ButtonMin>
-
-        <ButtonMin variant="contained" onMouseDown={e => fun(e)}>
-          ú
-        </ButtonMin>
-      </ButtonGroup>
+      <ul className={classes.letterTool}>
+        {letters.map((letter, i) => (
+          <li
+            className={classes.letterToolItem}
+            key={i}
+            onMouseDown={e => fun(e)}
+          >
+            {letter}
+          </li>
+        ))}
+      </ul>
     );
   };
 
@@ -96,7 +103,10 @@ const InputFun = props => {
   };
 
   const DisplayChars = () => {
-    return displayChars && <LetterSupport fun={addCharacterToState} />;
+    return (
+      !isTouchDevice() &&
+      displayChars && <LetterSupport fun={addCharacterToState} />
+    );
   };
 
   const displayAnswer = props.answer === inputValue;
@@ -105,7 +115,6 @@ const InputFun = props => {
     <span className={answer}>{props.answer}</span>
   ) : (
     <div className={classes.root}>
-      <DisplayChars />
       <label htmlFor="fill-in">
         <Input
           ref={inputEl}
@@ -121,6 +130,7 @@ const InputFun = props => {
           onBlur={handleBlur}
         />
       </label>
+      <DisplayChars />
     </div>
   );
 };

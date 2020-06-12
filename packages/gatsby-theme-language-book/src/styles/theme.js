@@ -11,7 +11,7 @@ export const theme = createMuiTheme({
       '@global': {
         html: {
           WebkitFontSmoothing: 'auto',
-          fontSize: '20px',
+          fontSize: '123%',
         },
       },
     },
