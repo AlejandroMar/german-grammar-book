@@ -9,11 +9,11 @@ import Box from '@material-ui/core/Box';
 export const NavBarContext = createContext(null);
 
 const NavbarNav = styled(List)`
-  //list-style: none;
   display: flex;
   flex-direction: column;
-  // min-height: 100vh;
   overflow: hidden;
+  margin-left: 1rem;
+  margin-top: 0.5rem;
   ${props => props.theme.breakpoints.down('md')} {
     display: none;
     ${props => {
@@ -51,7 +51,6 @@ const NavBar = styled(Box)`
 
 // necesito poner index en el folder de cualquier menu que sea nesteado
 const SideBar = props => {
-  console.log('props: ', props);
   // this query will give only three levels of recursion
   // if in need of more levels add another to the query
   const sideBarData = getSideBarData();
