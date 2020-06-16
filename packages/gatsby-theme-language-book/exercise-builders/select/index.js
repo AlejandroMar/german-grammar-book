@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { answer as cssAnswer } from '../input/input.module.css';
+
 import Select from '@material-ui/core/Select';
 
-const SelectComp = ({ root, options, answer }) => {
+import CorrectAnswer from '../common-components/correct-answer';
+
+const SelectComp = ({ options, answer }) => {
   const [selectValue, setSelectValue] = useState('   ');
 
   const handleChange = e => {
@@ -11,7 +13,7 @@ const SelectComp = ({ root, options, answer }) => {
 
   const renderTextOrSelect = () => {
     if (selectValue === answer) {
-      return <span className={cssAnswer}>{answer}</span>;
+      return <CorrectAnswer answer={answer} />;
     }
     return (
       <label htmlFor="prueba">

@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { Box, Input as MuInput } from '@material-ui/core';
+import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import isTouchDevice from 'is-touch-device/src';
-import SpecialLettersToolTip from '../../src/components/SpecialLettersToolTip';
+import SpecialLettersToolTip from '../../src/components/specialLettersToolTip';
+import CorrectAnswer from '../common-components/correct-answer';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -28,10 +29,6 @@ const letters = [
   '¿',
   '¡',
 ];
-
-const CorrectAnswer = styled(Box)`
-  color: ${({ theme }) => theme.palette.success.main};
-`;
 
 const Input = styled(MuInput)`
   width: ${props => (props.size + 2) * 8 + 'px'};
@@ -81,9 +78,7 @@ const InputComponent = props => {
   const displayAnswer = props.answer === inputValue;
 
   return displayAnswer ? (
-    <CorrectAnswer component="span" borderBottom={1} borderColor="success.main">
-      {props.answer}
-    </CorrectAnswer>
+    <CorrectAnswer answer={props.answer} />
   ) : (
     <div className={classes.root}>
       <label htmlFor="fill-in">
