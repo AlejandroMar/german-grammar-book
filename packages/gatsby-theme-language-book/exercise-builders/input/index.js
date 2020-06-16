@@ -3,8 +3,9 @@ import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import isTouchDevice from 'is-touch-device/src';
-import SpecialLettersToolTip from '../../src/components/specialLettersToolTip';
 import CorrectAnswer from '../common-components/correct-answer';
+import { DisplayChars } from '../../src/components/specialLettersToolTip/displayChars';
+import { letters } from '../../src/components/specialLettersToolTip/spanish-letters';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -12,23 +13,6 @@ const useStyles = makeStyles(() => ({
     position: 'relative',
   },
 }));
-
-const letters = [
-  'á',
-  'é',
-  'í',
-  'ó',
-  'ú',
-  'Á',
-  'É',
-  'Í',
-  'Ó',
-  'Ú',
-  'Ñ',
-  'ñ',
-  '¿',
-  '¡',
-];
 
 const Input = styled(MuInput)`
   width: ${props => (props.size + 2) * 8 + 'px'};
@@ -66,15 +50,6 @@ const InputComponent = props => {
     }
   };
 
-  const DisplayChars = () => {
-    return (
-      !isTouchDevice() &&
-      displayChars && (
-        <SpecialLettersToolTip fun={addCharacterToState} letters={letters} />
-      )
-    );
-  };
-
   const displayAnswer = props.answer === inputValue;
 
   return displayAnswer ? (
@@ -96,7 +71,12 @@ const InputComponent = props => {
           variant="outlined"
         />
       </label>
-      <DisplayChars />
+      <DisplayChars
+        isTouchDevice={isTouchDevice}
+        displayChars={displayChars}
+        addCharacterToState={addCharacterToState}
+        letters={letters}
+      />
     </div>
   );
 };
