@@ -1,39 +1,33 @@
-import React, { useState, useRef } from 'react';
-import { Input as MuInput } from '@material-ui/core';
+import React, { useRef, useState } from 'react';
+import { Box, Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import isTouchDevice from 'is-touch-device/src';
-import { Box } from '@material-ui/core';
+import SpecialLettersToolTip from '../../src/components/SpecialLettersToolTip';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'inline-block',
     position: 'relative',
   },
-  letterTool: {
-    position: 'absolute',
-    listStyle: 'none',
-    marginTop: '2px',
-    width: '7rem',
-    padding: '0',
-    zIndex: '1200',
-    backgroundColor: theme.palette.info.light,
-    opacity: '.8',
-    borderRadius: theme.shape.borderRadius,
-    boxShadow: theme.shadows[1],
-  },
-
-  letterToolItem: {
-    textAlign: 'center',
-    float: 'left',
-    width: '1rem',
-    cursor: 'pointer',
-
-    '&:hover': {
-      backgroundColor: 'white',
-    },
-  },
 }));
+
+const letters = [
+  'á',
+  'é',
+  'í',
+  'ó',
+  'ú',
+  'Á',
+  'É',
+  'Í',
+  'Ó',
+  'Ú',
+  'Ñ',
+  'ñ',
+  '¿',
+  '¡',
+];
 
 const CorrectAnswer = styled(Box)`
   color: ${({ theme }) => theme.palette.success.main};
@@ -45,12 +39,7 @@ const Input = styled(MuInput)`
   font-size: inherit;
 `;
 
-/*const InputComponent = styled.input.attrs({
-  autocapitalize: 'none',
-  spellcheck: 'off',
-})``;*/
-
-const InputFun = props => {
+const InputComponent = props => {
   const [inputValue, setInputValue] = useState('');
   const [displayChars, setDisplayChars] = useState(false);
   const classes = useStyles();
@@ -59,38 +48,6 @@ const InputFun = props => {
 
   const handleChange = e => {
     setInputValue(e.target.value);
-  };
-
-  const LetterSupport = ({ fun }) => {
-    const letters = [
-      'á',
-      'é',
-      'í',
-      'ó',
-      'ú',
-      'Á',
-      'É',
-      'Í',
-      'Ó',
-      'Ú',
-      'Ñ',
-      'ñ',
-      '¿',
-      '¡',
-    ];
-    return (
-      <ul className={classes.letterTool}>
-        {letters.map((letter, i) => (
-          <li
-            className={classes.letterToolItem}
-            key={i}
-            onMouseDown={e => fun(e)}
-          >
-            {letter}
-          </li>
-        ))}
-      </ul>
-    );
   };
 
   const handleBlur = () => {
@@ -106,29 +63,22 @@ const InputFun = props => {
     setInputValue(inputValue + e.target.innerText);
 
     try {
-      console.log('ref: ', inputEl);
-      inputEl.current.children[0].focus();
+      inputEl.focus();
     } catch (e) {
-      console.log(e);
+      throw `Error on addCharactersToState on focusing input ${e}`;
     }
   };
 
   const DisplayChars = () => {
     return (
       !isTouchDevice() &&
-      displayChars && <LetterSupport fun={addCharacterToState} />
+      displayChars && (
+        <SpecialLettersToolTip fun={addCharacterToState} letters={letters} />
+      )
     );
   };
 
   const displayAnswer = props.answer === inputValue;
-
-  /*const WrappInFromToStopCapsOnMovile = ({ children }) => {
-    return isTouchDevice() ? (
-      <form autoCapitalize="none">{children} </form>
-    ) : (
-      <div>{children}</div>
-    );
-  };*/
 
   return displayAnswer ? (
     <CorrectAnswer component="span" borderBottom={1} borderColor="success.main">
@@ -138,17 +88,17 @@ const InputFun = props => {
     <div className={classes.root}>
       <label htmlFor="fill-in">
         <Input
-          ref={inputEl}
+          inputRef={inputEl}
           type="text"
           name="fill-in"
           placeholder={props.root}
           value={inputValue}
           onChange={handleChange}
           onFocus={handleFocus}
+          onBlur={handleBlur}
           size={props.answer.length}
           autoComplete="off"
           variant="outlined"
-          onBlur={handleBlur}
         />
       </label>
       <DisplayChars />
@@ -156,4 +106,4 @@ const InputFun = props => {
   );
 };
 
-export default InputFun;
+export default InputComponent;
