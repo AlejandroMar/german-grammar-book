@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { answer } from './input.module.css';
 import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import isTouchDevice from 'is-touch-device/src';
+import { Box } from '@material-ui/core';
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'inline-block',
@@ -33,6 +34,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
+
+const CorrectAnswer = styled(Box)`
+  color: ${({ theme }) => theme.palette.success.main};
+`;
 
 const Input = styled(MuInput)`
   width: ${props => (props.size + 2) * 8 + 'px'};
@@ -117,16 +122,18 @@ const InputFun = props => {
 
   const displayAnswer = props.answer === inputValue;
 
-  const WrappInFromToStopCapsOnMovile = ({ children }) => {
+  /*const WrappInFromToStopCapsOnMovile = ({ children }) => {
     return isTouchDevice() ? (
       <form autoCapitalize="none">{children} </form>
     ) : (
       <div>{children}</div>
     );
-  };
+  };*/
 
   return displayAnswer ? (
-    <span className={answer}>{props.answer}</span>
+    <CorrectAnswer component="span" borderBottom={1} borderColor="success.main">
+      {props.answer}
+    </CorrectAnswer>
   ) : (
     <div className={classes.root}>
       <label htmlFor="fill-in">
