@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 import { getComplement, getSubject, getVerb } from './filtros';
-import { Input as MuInput } from '@material-ui/core';
+import { Input as MuInput, Box } from '@material-ui/core';
 import styled from 'styled-components';
 
 import {
@@ -13,6 +13,7 @@ import {
 } from './action-types';
 import { reducer } from './reducer';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Button from '@material-ui/core/Button';
 
 // el componente debe ser independiente de los datos
 // un api
@@ -34,32 +35,40 @@ const cleanState = (dispatch, type, payload) => {
   });
 };
 
-const Input = styled(MuInput)``;
+const Input = styled(MuInput).attrs({
+  autoComplete: 'off',
+  variant: 'outlined',
+  type: 'text',
+})`
+  width: 20%;
+  padding: 10px 10px;
+  margin: 1% 5px;
+  display: inline-block;
+  box-sizing: border-box;
+`;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   wrapper: {
     borderBottom: '1px solid #ccc',
     paddingBottom: '.5%',
     margin: '2.5% 2.5%',
   },
-  input: {
+  /*input: {
     width: '20%',
     padding: '10px 10px',
-    margin: '1% 0',
+    margin: '1% 5px',
     display: 'inline-block',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
     boxSizing: 'border-box',
-  },
+  },*/
 
   inputSujeto: {
-    border: '1px solid turquoise',
+    borderBottom: '1px solid turquoise',
   },
   inputVerbo: {
-    border: '1px solid wheat',
+    borderBottom: '1px solid wheat',
   },
   inputComplemento: {
-    border: '1px solid teal',
+    borderBottom: '1px solid teal',
   },
 
   label: {
@@ -68,13 +77,12 @@ const useStyles = makeStyles({
   },
 
   submit: {
-    backgroundColor: 'rgb(148, 223, 150)',
     color: 'white',
-    padding: '1.5% 5%',
-    margin: '1%',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
+    textTransform: 'none',
+    backgroundColor: theme.palette.success.main,
+    '&:hover': {
+      backgroundColor: theme.palette.success.light,
+    },
   },
 
   correctAnswer: {
@@ -101,7 +109,7 @@ const useStyles = makeStyles({
   wrong: {
     color: 'rgb(205, 59, 7)',
   },
-});
+}));
 
 const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   const classes = useStyles();
@@ -207,51 +215,52 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
         <form>
           <label htmlFor="sujetoLocal">
             <Input
-              variant="outlined"
-              type="text"
               name="sujetoLocal"
               value={sujetoLocal}
               placeholder="sujeto"
               onChange={handleChange}
-              className={`${classes.input} ${classes.inputSujeto}`}
+              className={`${classes.inputSujeto}`}
             />
           </label>
           {verboPre ? (
-            <span style={{ margin: '0 5px' }} className={`${classes.verbo}`}>
+            <Box
+              boxShadow={1}
+              component="span"
+              style={{ margin: '0 5px' }}
+              className={`${classes.verbo}`}
+            >
               {verboPre}
-            </span>
+            </Box>
           ) : (
             <label htmlFor="verboLocal">
               <Input
-                variant="outlined"
-                type="text"
                 name="verboLocal"
                 value={verboLocal}
                 placeholder="verbo"
                 onChange={handleChange}
-                className={`${classes.input} ${classes.inputVerbo}`}
+                className={`${classes.inputVerbo}`}
               />
             </label>
           )}
 
           <label htmlFor="complementoLocal">
             <Input
-              variant="outlined"
-              type="text"
               name="complementoLocal"
               value={complementoLocal}
               placeholder="complemento"
               onChange={handleChange}
-              className={`${classes.input} ${classes.inputComplemento}`}
+              className={`${classes.inputComplemento}`}
             />
           </label>
-          <button
+          <Button
+            variant="contained"
             type="submit"
             onClick={checkAnswer}
             className={classes.submit}
+            size="medium"
           >
             salvar
-          </button>
+          </Button>
           {correcto && msg ? (
             <span className={classes.correct}> &#10003; {msg}</span>
           ) : (
