@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import isTouchDevice from 'is-touch-device/src';
 import CorrectAnswer from '../common-components/correct-answer';
-import { DisplayChars } from '../../src/components/specialLettersToolTip/displayChars';
-import { letters } from '../../src/components/specialLettersToolTip/spanish-letters';
+import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
+import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
 
 const useStyles = makeStyles(() => ({
   root: {

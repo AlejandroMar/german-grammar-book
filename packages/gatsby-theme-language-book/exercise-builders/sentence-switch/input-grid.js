@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer, useRef } from 'react';
 import { getComplement, getSubject, getVerb } from './filtros';
-import style from './input-grid.module.css';
+import { Input as MuInput } from '@material-ui/core';
+import styled from 'styled-components';
+
 import {
   CHECK_IF_CORRECT,
   CLEAN_STATE,
@@ -10,6 +12,8 @@ import {
   VERBO_CON_COMPLEMENTO,
 } from './action-types';
 import { reducer } from './reducer';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
 // el componente debe ser independiente de los datos
 // un api
 
@@ -30,7 +34,77 @@ const cleanState = (dispatch, type, payload) => {
   });
 };
 
+const Input = styled(MuInput)``;
+
+const useStyles = makeStyles({
+  wrapper: {
+    borderBottom: '1px solid #ccc',
+    paddingBottom: '.5%',
+    margin: '2.5% 2.5%',
+  },
+  input: {
+    width: '20%',
+    padding: '10px 10px',
+    margin: '1% 0',
+    display: 'inline-block',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    boxSizing: 'border-box',
+  },
+
+  inputSujeto: {
+    border: '1px solid turquoise',
+  },
+  inputVerbo: {
+    border: '1px solid wheat',
+  },
+  inputComplemento: {
+    border: '1px solid teal',
+  },
+
+  label: {
+    width: '50%',
+    display: 'inline-block',
+  },
+
+  submit: {
+    backgroundColor: 'rgb(148, 223, 150)',
+    color: 'white',
+    padding: '1.5% 5%',
+    margin: '1%',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
+
+  correctAnswer: {
+    /* text-align: center; */
+  },
+
+  sujeto: {
+    padding: '1% 2%',
+    backgroundColor: 'turquoise',
+  },
+  verbo: {
+    padding: '1% 2%',
+    backgroundColor: 'wheat',
+  },
+  complemento: {
+    padding: '1% 2%',
+    backgroundColor: 'teal',
+  },
+
+  correct: {
+    color: ' rgb(148, 223, 150)',
+  },
+
+  wrong: {
+    color: 'rgb(205, 59, 7)',
+  },
+});
+
 const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
+  const classes = useStyles();
   const initialMount = useRef(true);
 
   const [state, dispatch] = useReducer(reducer, initalState);
@@ -121,60 +195,67 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   };
 
   return (
-    <div className={style.wrapper}>
+    <div className={classes.wrapper}>
       {correcto ? (
-        <p className={style.correctAnswer}>
-          <span className={style.sujeto}>{sujetoLocal}</span>
-          <span className={style.verbo}>{verboLocal}</span>
-          <span className={style.complemento}>{complementoLocal}</span>
-          <span className={style.correct}> &#10003; {msg}</span>
+        <p className={classes.correctAnswer}>
+          <span className={classes.sujeto}>{sujetoLocal}</span>
+          <span className={classes.verbo}>{verboLocal}</span>
+          <span className={classes.complemento}>{complementoLocal}</span>
+          <span className={classes.correct}> &#10003; {msg}</span>
         </p>
       ) : (
         <form>
           <label htmlFor="sujetoLocal">
-            <input
+            <Input
+              variant="outlined"
               type="text"
               name="sujetoLocal"
               value={sujetoLocal}
               placeholder="sujeto"
               onChange={handleChange}
-              className={`${style.input} ${style.inputSujeto}`}
+              className={`${classes.input} ${classes.inputSujeto}`}
             />
           </label>
           {verboPre ? (
-            <span style={{ margin: '0 5px' }} className={`${style.verbo}`}>
+            <span style={{ margin: '0 5px' }} className={`${classes.verbo}`}>
               {verboPre}
             </span>
           ) : (
             <label htmlFor="verboLocal">
-              <input
+              <Input
+                variant="outlined"
                 type="text"
                 name="verboLocal"
                 value={verboLocal}
                 placeholder="verbo"
                 onChange={handleChange}
-                className={`${style.input} ${style.inputVerbo}`}
+                className={`${classes.input} ${classes.inputVerbo}`}
               />
             </label>
           )}
 
           <label htmlFor="complementoLocal">
-            <input
+            <Input
+              variant="outlined"
               type="text"
               name="complementoLocal"
               value={complementoLocal}
               placeholder="complemento"
               onChange={handleChange}
-              className={`${style.input} ${style.inputComplemento}`}
+              className={`${classes.input} ${classes.inputComplemento}`}
             />
           </label>
-          <button type="submit" onClick={checkAnswer} className={style.submit}>
+          <button
+            type="submit"
+            onClick={checkAnswer}
+            className={classes.submit}
+          >
             salvar
           </button>
           {correcto && msg ? (
-            <span className={style.correct}> &#10003; {msg}</span>
+            <span className={classes.correct}> &#10003; {msg}</span>
           ) : (
-            msg && <span className={style.wrong}>&#10007; {msg}</span>
+            msg && <span className={classes.wrong}>&#10007; {msg}</span>
           )}
         </form>
       )}
