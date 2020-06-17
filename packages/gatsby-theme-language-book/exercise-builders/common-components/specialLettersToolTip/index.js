@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const SpecialLettersToolTip = ({ fun, letters }) => {
+const SpecialLettersToolTip = ({ fun, letters, name }) => {
   const classes = useStyles();
   return (
     <ul className={classes.letterTool}>
@@ -35,7 +35,7 @@ const SpecialLettersToolTip = ({ fun, letters }) => {
         <li
           className={classes.letterToolItem}
           key={i}
-          onMouseDown={e => fun(e)}
+          onMouseDown={e => fun(e, name)}
         >
           {letter}
         </li>

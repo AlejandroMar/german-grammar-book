@@ -2,6 +2,7 @@ import {
   CHECK_IF_CORRECT,
   CLEAN_STATE,
   HANDLE_CHANGE,
+  HANDLE_SPECIAL_CHAR_CLICK,
   PREDEFINED_VERB,
   SUJETO_CON_VERBO,
   VERBO_CON_COMPLEMENTO,
@@ -16,6 +17,11 @@ export const reducer = (state, action) => {
     case HANDLE_CHANGE: {
       const { name, value } = payload;
       return { ...state, [name]: value };
+    }
+    case HANDLE_SPECIAL_CHAR_CLICK: {
+      const { name, value } = payload;
+      const newValue = state[name] + value;
+      return { ...state, [name]: newValue };
     }
     case SUJETO_CON_VERBO: {
       return { ...state, ...payload };

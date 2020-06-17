@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import isTouchDevice from 'is-touch-device/src';
+
 import CorrectAnswer from '../common-components/correct-answer';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
@@ -25,7 +25,7 @@ const InputComponent = props => {
   const [displayChars, setDisplayChars] = useState(false);
   const classes = useStyles();
 
-  const inputEl = useRef(null);
+  //const inputEl = useRef(null);
 
   const handleChange = e => {
     setInputValue(e.target.value);
@@ -43,11 +43,12 @@ const InputComponent = props => {
     e.preventDefault();
     setInputValue(inputValue + e.target.innerText);
 
-    try {
+    // it seems it's not necessary
+    /*try {
       inputEl.focus();
     } catch (e) {
       throw `Error on addCharactersToState on focusing input ${e}`;
-    }
+    }*/
   };
 
   const displayAnswer = props.answer === inputValue;
@@ -58,7 +59,6 @@ const InputComponent = props => {
     <div className={classes.root}>
       <label htmlFor="fill-in">
         <Input
-          inputRef={inputEl}
           type="text"
           name="fill-in"
           placeholder={props.root}
@@ -72,7 +72,6 @@ const InputComponent = props => {
         />
       </label>
       <DisplayChars
-        isTouchDevice={isTouchDevice}
         displayChars={displayChars}
         addCharacterToState={addCharacterToState}
         letters={letters}
