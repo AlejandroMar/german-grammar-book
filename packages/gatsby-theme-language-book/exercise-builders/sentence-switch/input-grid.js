@@ -53,13 +53,6 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '.5%',
     margin: '2.5% 2.5%',
   },
-  /*input: {
-    width: '20%',
-    padding: '10px 10px',
-    margin: '1% 5px',
-    display: 'inline-block',
-    boxSizing: 'border-box',
-  },*/
 
   inputSujeto: {
     borderBottom: '1px solid turquoise',
@@ -103,11 +96,11 @@ const useStyles = makeStyles(theme => ({
   },
 
   correct: {
-    color: ' rgb(148, 223, 150)',
+    color: theme.palette.success.light,
   },
 
   wrong: {
-    color: 'rgb(205, 59, 7)',
+    color: theme.palette.error.light,
   },
 }));
 
