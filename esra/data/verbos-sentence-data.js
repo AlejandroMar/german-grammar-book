@@ -128,6 +128,7 @@ const verbos = [
       'modo',
       'comida',
       'líquido',
+      'objeto-escrito',
     ],
   },
   {

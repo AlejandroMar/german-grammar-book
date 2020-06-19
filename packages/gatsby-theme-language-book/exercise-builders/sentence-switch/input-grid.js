@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { getComplement, getSubject, getVerb } from './filtros';
-import { Input as MuInput, Box } from '@material-ui/core';
+import { TextField as MuInput, Box, Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
@@ -40,12 +40,9 @@ const cleanState = (dispatch, type, payload) => {
 
 const Input = styled(MuInput).attrs({
   autoComplete: 'off',
-  variant: 'outlined',
   type: 'text',
 })`
   width: 100%;
-  padding: 10px 10px;
-
   display: inline-block;
   box-sizing: border-box;
 `;
@@ -54,17 +51,18 @@ const useStyles = makeStyles(theme => ({
   wrapper: {
     borderBottom: '1px solid #ccc',
     paddingBottom: '.5%',
-    margin: '2.5% 2.5%',
+    padding: '1%',
+    margin: '2% 0',
   },
 
   inputSujeto: {
-    borderBottom: '1px solid turquoise',
+    //borderBottom: '1px solid turquoise',
   },
   inputVerbo: {
-    borderBottom: '1px solid wheat',
+    //borderBottom: '1px solid wheat',
   },
   inputComplemento: {
-    borderBottom: '1px solid teal',
+    //borderBottom: '1px solid teal',
   },
 
   inputAndLettersWrap: {
@@ -75,6 +73,7 @@ const useStyles = makeStyles(theme => ({
   },
 
   submit: {
+    transform: 'translate(20%, 40%)',
     color: 'white',
     textTransform: 'none',
     backgroundColor: theme.palette.success.main,
@@ -84,28 +83,39 @@ const useStyles = makeStyles(theme => ({
   },
 
   correctAnswer: {
-    /* text-align: center; */
+    width: '60%',
   },
 
   sujeto: {
-    padding: '1% 2%',
-    backgroundColor: 'turquoise',
+    padding: '2% 2%',
+    display: 'inline-block',
+    backgroundColor: theme.palette.primary.dark,
   },
   verbo: {
-    padding: '1% 2%',
-    backgroundColor: 'wheat',
+    padding: '2% 2%',
+    display: 'inline-block',
+    backgroundColor: theme.palette.warning.dark,
   },
   complemento: {
-    padding: '1% 2%',
-    backgroundColor: 'teal',
+    padding: '2% 2%',
+    display: 'inline-block',
+    backgroundColor: theme.palette.info.dark,
   },
 
   correct: {
     color: theme.palette.success.light,
+    marginLeft: '5%',
+    display: 'inline-block',
+    textAlign: 'center',
   },
 
   wrong: {
+    marginLeft: '3%',
+    display: 'inline-block',
     color: theme.palette.error.light,
+    [theme.breakpoints.up('md')]: {
+      transform: 'translateY(50%)',
+    },
   },
 }));
 
@@ -244,28 +254,35 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   };
 
   return (
-    <div className={classes.wrapper}>
+    <Box component="div" className={classes.wrapper}>
       {correcto ? (
-        <p className={classes.correctAnswer}>
-          <span className={classes.sujeto}>{sujetoLocal}</span>
-          <span className={classes.verbo}>{verboLocal}</span>
-          <span className={classes.complemento}>{complementoLocal}</span>
-          <span className={classes.correct}> &#10003; {msg}</span>
-        </p>
+        <Paper className={classes.correctAnswer}>
+          <Box component="span" className={classes.sujeto}>
+            {sujetoLocal}
+          </Box>
+          <Box component="span" className={classes.verbo}>
+            {verboLocal}
+          </Box>
+          <Box component="span" className={classes.complemento}>
+            {complementoLocal}
+          </Box>
+
+          <Box component="span" className={classes.correct}>
+            &#10003; {msg}
+          </Box>
+        </Paper>
       ) : (
         <form>
           <div className={classes.inputAndLettersWrap}>
-            <label htmlFor="sujetoLocal">
-              <Input
-                name="sujetoLocal"
-                value={sujetoLocal}
-                placeholder="sujeto"
-                onChange={handleChange}
-                className={`${classes.inputSujeto}`}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
-            </label>
+            <Input
+              label="sujeto"
+              name="sujetoLocal"
+              value={sujetoLocal}
+              onChange={handleChange}
+              className={`${classes.inputSujeto}`}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
 
             <DisplayChars
               letters={letters}
@@ -286,17 +303,16 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             </Box>
           ) : (
             <div className={classes.inputAndLettersWrap}>
-              <label htmlFor="verboLocal">
-                <Input
-                  name="verboLocal"
-                  value={verboLocal}
-                  placeholder="verbo"
-                  onChange={handleChange}
-                  className={`${classes.inputVerbo}`}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-              </label>
+              <Input
+                label="verbo"
+                name="verboLocal"
+                value={verboLocal}
+                onChange={handleChange}
+                className={`${classes.inputVerbo}`}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+              />
+
               <DisplayChars
                 letters={letters}
                 displayChars={displayCharsVerb}
@@ -307,17 +323,16 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
           )}
 
           <div className={classes.inputAndLettersWrap}>
-            <label htmlFor="complementoLocal">
-              <Input
-                name="complementoLocal"
-                value={complementoLocal}
-                placeholder="complemento"
-                onChange={handleChange}
-                className={`${classes.inputComplemento}`}
-                onFocus={handleFocus}
-                onBlur={handleBlur}
-              />
-            </label>
+            <Input
+              label="complemento"
+              name="complementoLocal"
+              value={complementoLocal}
+              onChange={handleChange}
+              className={`${classes.inputComplemento}`}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+            />
+
             <DisplayChars
               letters={letters}
               displayChars={displayCharsComp}
@@ -342,7 +357,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
           )}
         </form>
       )}
-    </div>
+    </Box>
   );
 };
 
