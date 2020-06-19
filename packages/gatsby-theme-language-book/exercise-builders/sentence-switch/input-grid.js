@@ -307,7 +307,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
               boxShadow={1}
               component="span"
               style={{ margin: '0 5px' }}
-              className={`${classes.verbo}`}
+              className={`${cx(classes.verbo, classes.answerPart)}`}
             >
               {verboPre}
             </Box>
