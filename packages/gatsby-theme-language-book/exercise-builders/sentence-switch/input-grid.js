@@ -4,6 +4,7 @@ import { TextField as MuInput, Box, Paper } from '@material-ui/core';
 import styled from 'styled-components';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
+import cx from 'classnames';
 
 import {
   CHECK_IF_CORRECT,
@@ -86,19 +87,19 @@ const useStyles = makeStyles(theme => ({
     width: '60%',
   },
 
-  sujeto: {
+  answerPart: {
     padding: '2% 2%',
     display: 'inline-block',
+    color: 'white',
+  },
+
+  sujeto: {
     backgroundColor: theme.palette.primary.dark,
   },
   verbo: {
-    padding: '2% 2%',
-    display: 'inline-block',
     backgroundColor: theme.palette.warning.dark,
   },
   complemento: {
-    padding: '2% 2%',
-    display: 'inline-block',
     backgroundColor: theme.palette.info.dark,
   },
 
@@ -257,13 +258,22 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
     <Box component="div" className={classes.wrapper}>
       {correcto ? (
         <Paper className={classes.correctAnswer}>
-          <Box component="span" className={classes.sujeto}>
+          <Box
+            component="span"
+            className={cx(classes.answerPart, classes.sujeto)}
+          >
             {sujetoLocal}
           </Box>
-          <Box component="span" className={classes.verbo}>
+          <Box
+            component="span"
+            className={cx(classes.answerPart, classes.verbo)}
+          >
             {verboLocal}
           </Box>
-          <Box component="span" className={classes.complemento}>
+          <Box
+            component="span"
+            className={cx(classes.answerPart, classes.complemento)}
+          >
             {complementoLocal}
           </Box>
 
