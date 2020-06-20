@@ -7,7 +7,7 @@ import { initalState } from './initial-state';
 import { useStyles } from './mui-styles';
 import { CorrectAnswer } from './correct-answer';
 import { WrongAnswerTip } from './wrong-answer-tip';
-import { ButtonCheckAnswer } from './button-check-answer';
+import ButtonCheckAnswer from './button-check-answer';
 import { SubjectComponent } from './subject-component';
 import { VerbComponent } from './verb-component';
 import { ComplementComponent } from './complement-component';
@@ -138,7 +138,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
             letters={letters}
           />
 
-          <ButtonCheckAnswer onClick={checkAnswer} classes={classes} />
+          <ButtonCheckAnswer onClick={checkAnswer} />
           <WrongAnswerTip msg={msg} classes={classes} />
         </form>
       )}

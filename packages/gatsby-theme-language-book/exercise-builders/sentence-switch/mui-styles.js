@@ -25,16 +25,6 @@ export const useStyles = makeStyles(theme => ({
     margin: ' 1% 5px',
   },
 
-  submit: {
-    transform: 'translate(20%, 40%)',
-    color: 'white',
-    textTransform: 'none',
-    backgroundColor: theme.palette.success.main,
-    '&:hover': {
-      backgroundColor: theme.palette.success.light,
-    },
-  },
-
   correctAnswer: {
     width: '60%',
   },
