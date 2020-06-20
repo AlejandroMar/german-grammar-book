@@ -2,6 +2,12 @@ import { Box, Paper } from '@material-ui/core';
 import cx from 'classnames';
 import React from 'react';
 
+const CorrectAnswerTip = ({ className, msg }) => (
+  <Box component="span" className={className}>
+    &#10003; {msg}
+  </Box>
+);
+
 export const CorrectAnswer = ({
   classes,
   complementoLocal,
@@ -23,8 +29,6 @@ export const CorrectAnswer = ({
       {complementoLocal}
     </Box>
 
-    <Box component="span" className={classes.correct}>
-      &#10003; {msg}
-    </Box>
+    <CorrectAnswerTip className={classes.correct} msg={msg} />
   </Paper>
 );

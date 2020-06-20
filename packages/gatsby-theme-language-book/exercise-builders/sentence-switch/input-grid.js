@@ -2,15 +2,6 @@ import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { getComplement, getSubject, getVerb } from './filtros';
 import { Box } from '@material-ui/core';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
-import {
-  CHECK_IF_CORRECT,
-  CLEAN_STATE,
-  HANDLE_CHANGE,
-  HANDLE_SPECIAL_CHAR_CLICK,
-  PREDEFINED_VERB,
-  SUJETO_CON_VERBO,
-  VERBO_CON_COMPLEMENTO,
-} from './action-types';
 import { reducer } from './reducer';
 import { initalState } from './initial-state';
 import { useStyles } from './mui-styles';
@@ -20,16 +11,19 @@ import { ButtonCheckAnswer } from './button-check-answer';
 import { SubjectComponent } from './subject-component';
 import { VerbComponent } from './verb-component';
 import { ComplementComponent } from './complement-component';
+import {
+  addCharacterToStateActionCreator,
+  checkIfCorrect,
+  checkIfVerbAndComplementMatch,
+  checkIfVerbAndSubjectMatch,
+  checkIfVerbIsPredefined,
+  cleanState,
+  handleChangeActionCreator,
+} from './action-creators';
+import { setDisplayCharsOnBlurOrFocus } from './setDisplayCharsOnBlurOrFocus';
 
 // el componente debe ser independiente de los datos
 // un api
-
-const cleanState = (dispatch, type, payload) => {
-  dispatch({
-    type,
-    payload,
-  });
-};
 
 const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   const classes = useStyles();
@@ -41,35 +35,13 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   const [displayCharsVerb, setDisplayCharsVerb] = useState(false);
   const [displayCharsComp, setDisplayCharsComp] = useState(false);
 
-  const checkIfCorrect = () => {
-    if (state.sujetoConVerbo && state.verboConComplemento) {
-      dispatch({
-        type: CHECK_IF_CORRECT,
-        payload: { correcto: true, msg: 'correcto' },
-      });
-    } else {
-      dispatch({
-        type: CHECK_IF_CORRECT,
-        payload: { correcto: false, msg: 'falso: intenta otra vez' },
-      });
-    }
-    return false;
-  };
-
   // no se sie esto es un buen patron pero
   // cuando el componente se monta si tengo verbos predefinidos
   // los pongo en el state como verboLocal
   // y cambio el input por un span, así me queda lista la lógica
 
   useEffect(() => {
-    if (verboPre) {
-      dispatch({
-        type: PREDEFINED_VERB,
-        payload: {
-          verboLocal: verboPre,
-        },
-      });
-    }
+    checkIfVerbIsPredefined(verboPre, dispatch);
   }, [verboPre]);
 
   useEffect(() => {
@@ -77,82 +49,47 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
       initialMount.current = false;
       return;
     } else {
-      checkIfCorrect();
+      checkIfCorrect(state, dispatch);
     }
   }, [state.sujetoConVerbo, state.verboConComplemento]);
 
   const handleChange = e => {
-    const { name, value } = e.target;
-    dispatch({
-      type: HANDLE_CHANGE,
-      payload: {
-        value: value,
-        name: name,
-      },
-    });
+    handleChangeActionCreator(e, dispatch);
   };
 
   const checkAnswer = e => {
     e.preventDefault();
-    cleanState(dispatch, CLEAN_STATE, {
-      sujetoConVerbo: false,
-      verboConComplemento: false,
-      msg: '',
-    });
 
-    checkIfCorrect();
+    cleanState(dispatch);
+    checkIfCorrect(state, dispatch);
 
     const sujeto = getSubject(sujetos, sujetoLocal);
     const verbo = getVerb(verbos, verboLocal);
     const complemento = getComplement(complementos, complementoLocal);
 
-    if (verbo.conjugacion[sujeto.p] === verboLocal.trim()) {
-      dispatch({
-        type: SUJETO_CON_VERBO,
-        payload: {
-          sujetoConVerbo: true,
-        },
-      });
-    }
-
-    if (verbo.complementos.includes(complemento.categoria)) {
-      dispatch({
-        type: VERBO_CON_COMPLEMENTO,
-        payload: {
-          verboConComplemento: true,
-        },
-      });
-    }
-  };
-
-  const setDisplayCharsOnBlurOrFocus = (e, shouldDisplayChars) => {
-    const trueOrFalse = shouldDisplayChars;
-    if (e.target.name === 'sujetoLocal') {
-      setDisplayCharsSub(trueOrFalse);
-    } else if (e.target.name === 'verboLocal') {
-      setDisplayCharsVerb(trueOrFalse);
-    } else if (e.target.name === 'complementoLocal') {
-      setDisplayCharsComp(trueOrFalse);
-    }
+    checkIfVerbAndSubjectMatch(verbo, sujeto, verboLocal, dispatch);
+    checkIfVerbAndComplementMatch(verbo, complemento, dispatch);
   };
 
   const handleFocus = e => {
-    setDisplayCharsOnBlurOrFocus(e, true);
+    setDisplayCharsOnBlurOrFocus(e, true, {
+      setDisplayCharsSub,
+      setDisplayCharsVerb,
+      setDisplayCharsComp,
+    });
   };
 
   const handleBlur = e => {
-    setDisplayCharsOnBlurOrFocus(e, false);
+    setDisplayCharsOnBlurOrFocus(e, false, {
+      setDisplayCharsSub,
+      setDisplayCharsVerb,
+      setDisplayCharsComp,
+    });
   };
 
   const addCharacterToState = (e, name) => {
     e.preventDefault();
-    dispatch({
-      type: HANDLE_SPECIAL_CHAR_CLICK,
-      payload: {
-        value: e.target.innerText,
-        name: name,
-      },
-    });
+    addCharacterToStateActionCreator(dispatch, e, name);
   };
 
   return (
