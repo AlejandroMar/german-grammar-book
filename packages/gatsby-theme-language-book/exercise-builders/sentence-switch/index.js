@@ -2,57 +2,51 @@ import React from 'react';
 import InputGrid from './input-grid';
 import PoolGrid from './pools';
 
-// si el ejercicio viene con el verbo predeterminado
-const Predeterminados = ({ verbosPre, verbos, sujetos, complementos }) => {
-  return verbosPre.map((verbo, i) => (
-    <InputGrid
-      key={i}
-      verboPre={verbo}
-      verbos={verbos}
-      complementos={complementos}
-      sujetos={sujetos}
-    />
-  ));
+const Exercise = ({ predefinedVerbs, verbs, complements, subjects }) => {
+  return predefinedVerbs
+    ? predefinedVerbs.map((verb, i) => (
+        <InputGrid
+          key={i}
+          predefinedVerb={verb}
+          verbs={verbs}
+          complements={complements}
+          subjects={subjects}
+        />
+      ))
+    : // if verbs are dynamic
+      subjects.map((subject, i) => (
+        <InputGrid
+          key={i}
+          verbs={verbs}
+          complements={complements}
+          subjects={subjects}
+        />
+      ));
 };
 
-// si el ejercicio viene sin verbo determinado
-const Dynamic = ({ verbos, sujetos, complementos }) => {
-  return sujetos.map((verbo, i) => (
-    <InputGrid
-      key={i}
-      verbos={verbos}
-      complementos={complementos}
-      sujetos={sujetos}
-    />
-  ));
-};
-
-const VerboComponent = ({ verbosPre, verbos, sujetos, complementos }) => {
+const SentenceSwitchComp = ({
+  predefinedVerbs,
+  verbs,
+  subjects,
+  complements,
+}) => {
   return (
     <>
       <PoolGrid
-        verbosPre={verbosPre}
-        sujetos={sujetos}
-        verbos={verbos}
-        complementos={complementos}
+        predefinedVerbs={predefinedVerbs}
+        subjects={subjects}
+        verbs={verbs}
+        complements={complements}
       />
 
-      {verbosPre ? (
-        <Predeterminados
-          verbosPre={verbosPre}
-          verbos={verbos}
-          complementos={complementos}
-          sujetos={sujetos}
-        />
-      ) : (
-        <Dynamic
-          verbos={verbos}
-          complementos={complementos}
-          sujetos={sujetos}
-        />
-      )}
+      <Exercise
+        predefinedVerbs={predefinedVerbs}
+        verbs={verbs}
+        complements={complements}
+        subjects={subjects}
+      />
     </>
   );
 };
 
-export default VerboComponent;
+export default SentenceSwitchComp;

@@ -25,12 +25,13 @@ import { setDisplayCharsOnBlurOrFocus } from './setDisplayCharsOnBlurOrFocus';
 // el componente debe ser independiente de los datos
 // un api
 
-const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
+const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
   const classes = useStyles();
   const initialMount = useRef(true);
 
   const [state, dispatch] = useReducer(reducer, initalState);
-  const { sujetoLocal, verboLocal, complementoLocal, msg, correcto } = state;
+
+  const { localSubject, localVerb, localComplement, msg, correcto } = state;
   const [displayCharsSub, setDisplayCharsSub] = useState(false);
   const [displayCharsVerb, setDisplayCharsVerb] = useState(false);
   const [displayCharsComp, setDisplayCharsComp] = useState(false);
@@ -41,8 +42,8 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
   // y cambio el input por un span, así me queda lista la lógica
 
   useEffect(() => {
-    checkIfVerbIsPredefined(verboPre, dispatch);
-  }, [verboPre]);
+    checkIfVerbIsPredefined(predefinedVerb, dispatch);
+  }, [predefinedVerb]);
 
   useEffect(() => {
     if (initialMount.current) {
@@ -63,11 +64,11 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
     cleanState(dispatch);
     checkIfCorrect(state, dispatch);
 
-    const sujeto = getSubject(sujetos, sujetoLocal);
-    const verbo = getVerb(verbos, verboLocal);
-    const complemento = getComplement(complementos, complementoLocal);
+    const sujeto = getSubject(subjects, localSubject);
+    const verbo = getVerb(verbs, localVerb);
+    const complemento = getComplement(complements, localComplement);
 
-    checkIfVerbAndSubjectMatch(verbo, sujeto, verboLocal, dispatch);
+    checkIfVerbAndSubjectMatch(verbo, sujeto, localVerb, dispatch);
     checkIfVerbAndComplementMatch(verbo, complemento, dispatch);
   };
 
@@ -97,16 +98,16 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
       {correcto ? (
         <CorrectAnswer
           classes={classes}
-          sujetoLocal={sujetoLocal}
-          verboLocal={verboLocal}
-          complementoLocal={complementoLocal}
+          sujetoLocal={localSubject}
+          verboLocal={localVerb}
+          complementoLocal={localComplement}
           msg={msg}
         />
       ) : (
         <form>
           <SubjectComponent
             classes={classes}
-            value={sujetoLocal}
+            value={localSubject}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -116,9 +117,9 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
           />
 
           <VerbComponent
-            verboPre={verboPre}
+            predefinedVerb={predefinedVerb}
             classes={classes}
-            value={verboLocal}
+            value={localVerb}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
@@ -129,7 +130,7 @@ const InputGrid = ({ verboPre, verbos, complementos, sujetos }) => {
 
           <ComplementComponent
             classes={classes}
-            value={complementoLocal}
+            value={localComplement}
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}

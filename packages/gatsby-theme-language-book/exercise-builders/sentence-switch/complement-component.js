@@ -7,7 +7,7 @@ export const ComplementComponent = props => (
   <div className={props.classes.inputAndLettersWrap}>
     <Input
       label="complemento"
-      name="complementoLocal"
+      name="localComplement"
       value={props.value}
       onChange={props.onChange}
       className={`${props.classes.inputComplemento}`}
@@ -19,7 +19,7 @@ export const ComplementComponent = props => (
       letters={letters}
       displayChars={props.displayChars}
       addCharacterToState={props.addCharacterToState}
-      name="complementoLocal"
+      name="localComplement"
     />
   </div>
 );

@@ -1,14 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
 import {
-  List,
-  ListItemText,
-  ListItem as MuListItem,
   Card,
+  List,
+  ListItem as MuListItem,
+  ListItemText,
 } from '@material-ui/core';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import styled from 'styled-components';
 
 const ListItem = styled(MuListItem)`
@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const SujetosColumn = ({ sujetos }) => {
+const SubjectsColumn = ({ subjects }) => {
   const classes = useStyles();
   return (
     <Card className={classes.item}>
@@ -35,9 +35,9 @@ const SujetosColumn = ({ sujetos }) => {
         </Typography>
 
         <List>
-          {sujetos.map((sujeto, i) => (
+          {subjects.map((subject, i) => (
             <ListItem key={i}>
-              <ListItemText primary={sujeto.name} />
+              <ListItemText primary={subject.name} />
             </ListItem>
           ))}
         </List>
@@ -46,7 +46,7 @@ const SujetosColumn = ({ sujetos }) => {
   );
 };
 
-const VerbosColumn = ({ verbosPre, verbos }) => {
+const VerbsColumn = ({ predefinedVerbs, verbs }) => {
   const classes = useStyles();
   return (
     <Card className={classes.item}>
@@ -55,15 +55,15 @@ const VerbosColumn = ({ verbosPre, verbos }) => {
           Verbos:
         </Typography>
         <List>
-          {verbosPre
-            ? verbosPre.map((verbo, i) => (
+          {predefinedVerbs
+            ? predefinedVerbs.map((verb, i) => (
                 <ListItem key={i}>
-                  <ListItemText key={i}>{verbo}</ListItemText>
+                  <ListItemText key={i}>{verb}</ListItemText>
                 </ListItem>
               ))
-            : verbos.map((verbo, i) => (
+            : verbs.map((verb, i) => (
                 <ListItem key={i}>
-                  <ListItemText key={i}>{verbo.nombre}</ListItemText>
+                  <ListItemText key={i}>{verb.nombre}</ListItemText>
                 </ListItem>
               ))}
         </List>
@@ -72,7 +72,7 @@ const VerbosColumn = ({ verbosPre, verbos }) => {
   );
 };
 
-const ComplementosColumn = ({ complementos }) => {
+const ComplementsColumn = ({ complements }) => {
   const classes = useStyles();
   return (
     <Card className={classes.item}>
@@ -81,9 +81,9 @@ const ComplementosColumn = ({ complementos }) => {
           Complementos:
         </Typography>
         <List>
-          {complementos.map((complemento, i) => (
+          {complements.map((complement, i) => (
             <ListItem key={i}>
-              <ListItemText>{complemento.texto}</ListItemText>
+              <ListItemText>{complement.texto}</ListItemText>
             </ListItem>
           ))}
         </List>
@@ -92,20 +92,20 @@ const ComplementosColumn = ({ complementos }) => {
   );
 };
 
-const Pools = ({ verbosPre, sujetos, verbos, complementos }) => {
+const Pools = ({ predefinedVerbs, subjects, verbs, complements }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
-          <SujetosColumn sujetos={sujetos} />
+          <SubjectsColumn subjects={subjects} />
         </Grid>
         <Grid item xs={4}>
-          <VerbosColumn verbosPre={verbosPre} verbos={verbos} />
+          <VerbsColumn predefinedVerbs={predefinedVerbs} verbs={verbs} />
         </Grid>
         <Grid item xs={4}>
-          <ComplementosColumn complementos={complementos} />
+          <ComplementsColumn complements={complements} />
         </Grid>
       </Grid>
     </div>

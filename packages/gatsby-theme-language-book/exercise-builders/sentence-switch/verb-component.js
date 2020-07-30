@@ -7,20 +7,20 @@ import React from 'react';
 export function VerbComponent(props) {
   return (
     <>
-      {props.verboPre ? (
+      {props.predefinedVerb ? (
         <Box
           boxShadow={1}
           component="span"
           style={{ margin: '0 5px' }}
           className={`${cx(props.classes.verbo, props.classes.answerPart)}`}
         >
-          {props.verboPre}
+          {props.predefinedVerb}
         </Box>
       ) : (
         <div className={props.classes.inputAndLettersWrap}>
           <Input
             label="verbo"
-            name="verboLocal"
+            name="localVerb"
             value={props.value}
             onChange={props.onChange}
             className={`${props.classes.inputVerbo}`}
@@ -32,7 +32,7 @@ export function VerbComponent(props) {
             letters={props.letters}
             displayChars={props.displayChars}
             addCharacterToState={props.addCharacterToState}
-            name="verboLocal"
+            name="localVerb"
           />
         </div>
       )}

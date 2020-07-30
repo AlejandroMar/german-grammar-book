@@ -6,7 +6,7 @@ export const SubjectComponent = props => (
   <div className={props.classes.inputAndLettersWrap}>
     <Input
       label="sujeto"
-      name="sujetoLocal"
+      name="localSubject"
       value={props.value}
       onChange={props.onChange}
       className={`${props.classes.inputSujeto}`}
@@ -18,7 +18,7 @@ export const SubjectComponent = props => (
       letters={props.letters}
       displayChars={props.displayChars}
       addCharacterToState={props.addCharacterToState}
-      name="sujetoLocal"
+      name="localSubject"
     />
   </div>
 );

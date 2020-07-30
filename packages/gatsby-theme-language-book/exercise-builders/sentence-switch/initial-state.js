@@ -1,7 +1,7 @@
 export const initalState = {
-  sujetoLocal: '',
-  verboLocal: '',
-  complementoLocal: '',
+  localSubject: '',
+  localVerb: '',
+  localComplement: '',
   sujetoConVerbo: false,
   verboConComplemento: false,
   correcto: false,

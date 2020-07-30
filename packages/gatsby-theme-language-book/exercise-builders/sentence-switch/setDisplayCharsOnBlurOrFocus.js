@@ -4,11 +4,11 @@ export const setDisplayCharsOnBlurOrFocus = (
   options
 ) => {
   const trueOrFalse = shouldDisplayChars;
-  if (e.target.name === 'sujetoLocal') {
+  if (e.target.name === 'localSubject') {
     options.setDisplayCharsSub(trueOrFalse);
-  } else if (e.target.name === 'verboLocal') {
+  } else if (e.target.name === 'localVerb') {
     options.setDisplayCharsVerb(trueOrFalse);
-  } else if (e.target.name === 'complementoLocal') {
+  } else if (e.target.name === 'localComplement') {
     options.setDisplayCharsComp(trueOrFalse);
   }
 };
