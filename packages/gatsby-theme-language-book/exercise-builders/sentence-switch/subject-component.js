@@ -9,7 +9,6 @@ export const SubjectComponent = props => (
       name="localSubject"
       value={props.value}
       onChange={props.onChange}
-      className={`${props.classes.inputSujeto}`}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
     />

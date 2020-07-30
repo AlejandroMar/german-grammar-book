@@ -12,7 +12,7 @@ export function VerbComponent(props) {
           boxShadow={1}
           component="span"
           style={{ margin: '0 5px' }}
-          className={`${cx(props.classes.verbo, props.classes.answerPart)}`}
+          className={`${cx(props.classes.verb, props.classes.answerPart)}`}
         >
           {props.predefinedVerb}
         </Box>
@@ -23,7 +23,6 @@ export function VerbComponent(props) {
             name="localVerb"
             value={props.value}
             onChange={props.onChange}
-            className={`${props.classes.inputVerbo}`}
             onFocus={props.onFocus}
             onBlur={props.onBlur}
           />

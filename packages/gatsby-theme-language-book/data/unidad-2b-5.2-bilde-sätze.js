@@ -1,4 +1,4 @@
-const verbos = [
+const verbs = [
   {
     nombre: 'vivir',
     conjugacion: {
@@ -93,7 +93,7 @@ const verbos = [
   },
 ];
 
-const sujetos = [
+const subjects = [
   {
     name: 'Yo',
     p: 'p1_s',
@@ -122,7 +122,7 @@ const sujetos = [
   },
 ];
 
-const complementos = [
+const complements = [
   {
     categoria: 'lugar',
     texto: 'en Madrid',
@@ -149,7 +149,7 @@ const complementos = [
   },
 ];
 
-const verbosPredeterminados = [
+const predefinedVerbs = [
   'vivimos',
   'bebes',
   'coméis',
@@ -158,4 +158,4 @@ const verbosPredeterminados = [
   'ven',
 ];
 
-export { verbos, sujetos, complementos, verbosPredeterminados };
+export { verbs, subjects, complements, predefinedVerbs };

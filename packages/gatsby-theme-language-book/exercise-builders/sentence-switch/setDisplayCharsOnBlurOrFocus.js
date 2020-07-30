@@ -5,10 +5,10 @@ export const setDisplayCharsOnBlurOrFocus = (
 ) => {
   const trueOrFalse = shouldDisplayChars;
   if (e.target.name === 'localSubject') {
-    options.setDisplayCharsSub(trueOrFalse);
+    options.setDisplayCharsSubject(trueOrFalse);
   } else if (e.target.name === 'localVerb') {
     options.setDisplayCharsVerb(trueOrFalse);
   } else if (e.target.name === 'localComplement') {
-    options.setDisplayCharsComp(trueOrFalse);
+    options.setDisplayCharsComplement(trueOrFalse);
   }
 };

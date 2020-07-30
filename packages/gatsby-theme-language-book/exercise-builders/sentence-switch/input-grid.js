@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react';
-import { getComplement, getSubject, getVerb } from './filtros';
+import { getComplement, getSubject, getVerb } from './filters';
 import { Box } from '@material-ui/core';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
 import { reducer } from './reducer';
@@ -38,7 +38,7 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
 
   // no se sie esto es un buen patron pero
   // cuando el componente se monta si tengo verbos predefinidos
-  // los pongo en el state como verboLocal
+  // los pongo en el state como localVerb
   // y cambio el input por un span, así me queda lista la lógica
 
   useEffect(() => {
@@ -65,27 +65,27 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
     checkIfCorrect(state, dispatch);
 
 
-    const verbo = getVerb(verbs, localVerb);
-    const sujeto = getSubject(subjects, localSubject);
-    const complemento = getComplement(complements, localComplement);
+    const verb = getVerb(verbs, localVerb);
+    const subject = getSubject(subjects, localSubject);
+    const complement = getComplement(complements, localComplement);
 
-    checkIfVerbAndSubjectMatch(verbo, sujeto, localVerb, dispatch);
-    checkIfVerbAndComplementMatch(verbo, complemento, dispatch);
+    checkIfVerbAndSubjectMatch(verb, subject, localVerb, dispatch);
+    checkIfVerbAndComplementMatch(verb, complement, dispatch);
   };
 
   const handleFocus = e => {
     setDisplayCharsOnBlurOrFocus(e, true, {
-      setDisplayCharsSub: setDisplayCharsSubject,
+      setDisplayCharsSubject,
       setDisplayCharsVerb,
-      setDisplayCharsComp: setDisplayCharsComplement,
+      setDisplayCharsComplement,
     });
   };
 
   const handleBlur = e => {
     setDisplayCharsOnBlurOrFocus(e, false, {
-      setDisplayCharsSub: setDisplayCharsSubject,
+      setDisplayCharsSubject,
       setDisplayCharsVerb,
-      setDisplayCharsComp: setDisplayCharsComplement,
+      setDisplayCharsComplement,
     });
   };
 
@@ -99,9 +99,9 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
       {correct ? (
         <CorrectAnswer
           classes={classes}
-          sujetoLocal={localSubject}
-          verboLocal={localVerb}
-          complementoLocal={localComplement}
+          localSubject={localSubject}
+          localVerb={localVerb}
+          localComplement={localComplement}
           msg={msg}
         />
       ) : (

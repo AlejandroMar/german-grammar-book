@@ -59,11 +59,11 @@ export const cleanState = dispatch => {
 
 export function checkIfVerbAndSubjectMatch(
   verb,
-  sujeto,
+  subject,
   localVerb,
   dispatch
 ) {
-  if (verb.conjugacion[sujeto.p] === localVerb.trim()) {
+  if (verb.conjugation[subject.p] === localVerb.trim()) {
     dispatch({
       type: SUBJECT_WITH_VERB_MATCH,
       payload: {
@@ -73,8 +73,8 @@ export function checkIfVerbAndSubjectMatch(
   }
 }
 
-export function checkIfVerbAndComplementMatch(verb, complemento, dispatch) {
-  if (verb.complementos.includes(complemento.categoria)) {
+export function checkIfVerbAndComplementMatch(verb, complement, dispatch) {
+  if (verb.complements.includes(complement.category)) {
     dispatch({
       type: VERB_WITH_COMPLEMENT_MATCH,
       payload: {

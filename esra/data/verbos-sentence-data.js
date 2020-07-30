@@ -1,7 +1,7 @@
-const verbos = [
+const verbs = [
   {
-    nombre: 'vivir',
-    conjugacion: {
+    name: 'vivir',
+    conjugation: {
       p1_s: 'vivo',
       p2_s: 'vives',
       p3_s: 'vive',
@@ -10,11 +10,11 @@ const verbos = [
       p3_p: 'viven',
     },
 
-    complementos: ['lugar', 'acompañante', 'modo'],
+    complements: ['lugar', 'acompañante', 'modo'],
   },
   {
-    nombre: 'escribir',
-    conjugacion: {
+    name: 'escribir',
+    conjugation: {
       p1_s: 'escribo',
       p2_s: 'escribes',
       p3_s: 'escribe',
@@ -23,11 +23,11 @@ const verbos = [
       p3_p: 'escriben',
     },
 
-    complementos: ['objeto-escrito', 'acompañante', 'modo'],
+    complements: ['objeto-escrito', 'acompañante', 'modo'],
   },
   {
-    nombre: 'beber',
-    conjugacion: {
+    name: 'beber',
+    conjugation: {
       p1_s: 'bebo',
       p2_s: 'bebes',
       p3_s: 'bebe',
@@ -36,11 +36,11 @@ const verbos = [
       p3_p: 'beben',
     },
 
-    complementos: ['líquido', 'cantidad'],
+    complements: ['líquido', 'cantidad'],
   },
   {
-    nombre: 'hacer',
-    conjugacion: {
+    name: 'hacer',
+    conjugation: {
       p1_s: 'hago',
       p2_s: 'haces',
       p3_s: 'hace',
@@ -49,11 +49,11 @@ const verbos = [
       p3_p: 'hacen',
     },
 
-    complementos: ['comida', 'líquido', 'cantidad', 'objeto-directo'],
+    complements: ['comida', 'líquido', 'cantidad', 'objeto-directo'],
   },
   {
-    nombre: 'tener',
-    conjugacion: {
+    name: 'tener',
+    conjugation: {
       p1_s: 'tengo',
       p2_s: 'tienes',
       p3_s: 'tiene',
@@ -62,11 +62,11 @@ const verbos = [
       p3_p: 'tienen',
     },
 
-    complementos: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
+    complements: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
   },
   {
-    nombre: 'querer',
-    conjugacion: {
+    name: 'querer',
+    conjugation: {
       p1_s: 'quiero',
       p2_s: 'quieres',
       p3_s: 'quiere',
@@ -75,11 +75,11 @@ const verbos = [
       p3_p: 'quieren',
     },
 
-    complementos: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
+    complements: ['comida', 'líquido', 'objeto-directo', 'objeto-escrito'],
   },
   {
-    nombre: 'comer',
-    conjugacion: {
+    name: 'comer',
+    conjugation: {
       p1_s: 'como',
       p2_s: 'comes',
       p3_s: 'come',
@@ -88,7 +88,7 @@ const verbos = [
       p3_p: 'comen',
     },
 
-    complementos: [
+    complements: [
       'comida',
       'cantidad',
       'acompañante',
@@ -98,8 +98,8 @@ const verbos = [
     ],
   },
   {
-    nombre: 'ver',
-    conjugacion: {
+    name: 'ver',
+    conjugation: {
       p1_s: 'veo',
       p2_s: 'ves',
       p3_s: 've',
@@ -108,11 +108,11 @@ const verbos = [
       p3_p: 'ven',
     },
 
-    complementos: ['objeto-directo', 'cantidad', 'líquido', 'comida'],
+    complements: ['objeto-directo', 'cantidad', 'líquido', 'comida'],
   },
   {
-    nombre: 'buscar',
-    conjugacion: {
+    name: 'buscar',
+    conjugation: {
       p1_s: 'busco',
       p2_s: 'buscas',
       p3_s: 'busca',
@@ -121,7 +121,7 @@ const verbos = [
       p3_p: 'buscan',
     },
 
-    complementos: [
+    complements: [
       'objeto-directo',
       'cantidad',
       'lugar',
@@ -132,8 +132,8 @@ const verbos = [
     ],
   },
   {
-    nombre: 'llevar',
-    conjugacion: {
+    name: 'llevar',
+    conjugation: {
       p1_s: 'llevo',
       p2_s: 'llevas',
       p3_s: 'lleva',
@@ -142,11 +142,11 @@ const verbos = [
       p3_p: 'llevan',
     },
 
-    complementos: ['objeto-directo', 'cantidad', 'comida', 'líquido'],
+    complements: ['objeto-directo', 'cantidad', 'comida', 'líquido'],
   },
   {
-    nombre: 'mandar',
-    conjugacion: {
+    name: 'mandar',
+    conjugation: {
       p1_s: 'mando',
       p2_s: 'mandas',
       p3_s: 'manda',
@@ -155,11 +155,11 @@ const verbos = [
       p3_p: 'mandan',
     },
 
-    complementos: ['objeto-directo', 'objeto-escrito', 'cantidad'],
+    complements: ['objeto-directo', 'objeto-escrito', 'cantidad'],
   },
   {
-    nombre: 'comprar',
-    conjugacion: {
+    name: 'comprar',
+    conjugation: {
       p1_s: 'compro',
       p2_s: 'compras',
       p3_s: 'compra',
@@ -168,11 +168,11 @@ const verbos = [
       p3_p: 'compran',
     },
 
-    complementos: ['objeto-directo', 'cantidad', 'comida', 'bebida'],
+    complements: ['objeto-directo', 'cantidad', 'comida', 'bebida'],
   },
   {
-    nombre: 'leer',
-    conjugacion: {
+    name: 'leer',
+    conjugation: {
       p1_s: 'leo',
       p2_s: 'lees',
       p3_s: 'lee',
@@ -181,11 +181,11 @@ const verbos = [
       p3_p: 'leen',
     },
 
-    complementos: ['objeto-escrito', 'acompañante', 'lugar', 'tiempo'],
+    complements: ['objeto-escrito', 'acompañante', 'lugar', 'tiempo'],
   },
 ]
 
-const sujetos = [
+const subjects = [
   {
     name: 'Yo',
     p: 'p1_s',
@@ -234,62 +234,62 @@ const sujetos = [
   },
 ]
 
-const complementos = [
+const complements = [
   {
-    categoria: 'lugar',
-    texto: 'en Madrid',
+    category: 'lugar',
+    text: 'en Madrid',
   },
   {
-    categoria: 'lugar',
-    texto: 'en el colegio',
+    category: 'lugar',
+    text: 'en el colegio',
   },
   {
-    categoria: 'lugar',
-    texto: 'en casa',
+    category: 'lugar',
+    text: 'en casa',
   },
   {
-    categoria: 'objeto-escrito',
-    texto: 'un mensaje',
+    category: 'objeto-escrito',
+    text: 'un mensaje',
   },
   {
-    categoria: 'objeto-escrito',
-    texto: 'un libro',
+    category: 'objeto-escrito',
+    text: 'un libro',
   },
   {
-    categoria: 'objeto-directo',
-    texto: 'unas gafas',
+    category: 'objeto-directo',
+    text: 'unas gafas',
   },
   {
-    categoria: 'objeto-directo',
-    texto: 'ropa de verano',
+    category: 'objeto-directo',
+    text: 'ropa de verano',
   },
   {
-    categoria: 'líquido',
-    texto: 'un zumo',
+    category: 'líquido',
+    text: 'un zumo',
   },
   {
-    categoria: 'líquido',
-    texto: 'un chocolate caliente',
+    category: 'líquido',
+    text: 'un chocolate caliente',
   },
   {
-    categoria: 'objeto-directo',
-    texto: 'una película',
+    category: 'objeto-directo',
+    text: 'una película',
   },
   {
-    categoria: 'comida',
-    texto: 'bocadillos',
+    category: 'comida',
+    text: 'bocadillos',
   },
   {
-    categoria: 'comida',
-    texto: 'manzanas',
+    category: 'comida',
+    text: 'manzanas',
   },
   {
-    categoria: 'comida',
-    texto: 'helados',
+    category: 'comida',
+    text: 'helados',
   },
   {
-    categoria: 'objeto-directo',
-    texto: 'el móvil de Marta',
+    category: 'objeto-directo',
+    text: 'el móvil de Marta',
   },
 ]
 
@@ -302,4 +302,4 @@ const verbosPredeterminados = [
   'ven',
 ]
 
-export { verbos, sujetos, complementos, verbosPredeterminados }
+export { verbs, subjects, complements, verbosPredeterminados }

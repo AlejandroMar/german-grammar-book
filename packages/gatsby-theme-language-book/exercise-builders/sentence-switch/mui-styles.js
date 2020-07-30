@@ -8,15 +8,7 @@ export const useStyles = makeStyles(theme => ({
     margin: '2% 0',
   },
 
-  inputSujeto: {
-    //borderBottom: '1px solid turquoise',
-  },
-  inputVerbo: {
-    //borderBottom: '1px solid wheat',
-  },
-  inputComplemento: {
-    //borderBottom: '1px solid teal',
-  },
+
 
   inputAndLettersWrap: {
     display: 'inline-block',
@@ -35,13 +27,13 @@ export const useStyles = makeStyles(theme => ({
     color: 'white',
   },
 
-  sujeto: {
+  subject: {
     backgroundColor: theme.palette.primary.dark,
   },
-  verbo: {
+  verb: {
     backgroundColor: theme.palette.warning.dark,
   },
-  complemento: {
+  complement: {
     backgroundColor: theme.palette.info.dark,
   },
 

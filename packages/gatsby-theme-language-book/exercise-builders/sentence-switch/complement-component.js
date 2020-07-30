@@ -10,7 +10,6 @@ export const ComplementComponent = props => (
       name="localComplement"
       value={props.value}
       onChange={props.onChange}
-      className={`${props.classes.inputComplemento}`}
       onFocus={props.onFocus}
       onBlur={props.onBlur}
     />

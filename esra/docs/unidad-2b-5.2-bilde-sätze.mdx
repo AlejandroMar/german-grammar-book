@@ -1,5 +1,5 @@
 import SW from "../../packages/gatsby-theme-language-book/exercise-builders/sentence-switch"
-import { verbos, sujetos, complementos, verbosPredeterminados } from "../data/unidad-2b-5.2-bilde-sätze.js";
+import { verbs, subjects, complements, predefinedVerbs } from "../data/unidad-2b-5.2-bilde-sätze.js";
 
 
 Forma frases. (Bilde Sätze. Schreibe die Wörter für jeden Satz in die offenen Kästchen.)
@@ -7,12 +7,12 @@ Forma frases. (Bilde Sätze. Schreibe die Wörter für jeden Satz in die offenen
 <br />
 Ejemplo:   
 
-|sujeto | verbo | complemento |
+|sujeto | verb | complemento |
 |-------|-------|-------------|
 | Nosotros    | vivimos  | en Madrid.   |
 <SW 
-  predefinedVerbs={verbosPredeterminados}
-  verbs={verbos}
-  complements={complementos}
-  subjects={sujetos}
+  predefinedVerbs={predefinedVerbs}
+  verbs={verbs}
+  complements={complements}
+  subjects={subjects}
 />

@@ -8,25 +8,19 @@ const CorrectAnswerTip = ({ className, msg }) => (
   </Box>
 );
 
-export const CorrectAnswer = ({
-  classes,
-  complementoLocal,
-  msg,
-  sujetoLocal,
-  verboLocal,
-}) => (
+export const CorrectAnswer = ({ classes, localComplement, msg, localSubject, localVerb, }) => (
   <Paper className={classes.correctAnswer}>
-    <Box component="span" className={cx(classes.answerPart, classes.sujeto)}>
-      {sujetoLocal}
+    <Box component="span" className={cx(classes.answerPart, classes.subject)}>
+      {localSubject}
     </Box>
-    <Box component="span" className={cx(classes.answerPart, classes.verbo)}>
-      {verboLocal}
+    <Box component="span" className={cx(classes.answerPart, classes.verb)}>
+      {localVerb}
     </Box>
     <Box
       component="span"
-      className={cx(classes.answerPart, classes.complemento)}
+      className={cx(classes.answerPart, classes.complement)}
     >
-      {complementoLocal}
+      {localComplement}
     </Box>
 
     <CorrectAnswerTip className={classes.correct} msg={msg} />

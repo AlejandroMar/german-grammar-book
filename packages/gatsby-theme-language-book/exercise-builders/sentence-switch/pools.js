@@ -63,7 +63,7 @@ const VerbsColumn = ({ predefinedVerbs, verbs }) => {
               ))
             : verbs.map((verb, i) => (
                 <ListItem key={i}>
-                  <ListItemText key={i}>{verb.nombre}</ListItemText>
+                  <ListItemText key={i}>{verb.name}</ListItemText>
                 </ListItem>
               ))}
         </List>
@@ -83,7 +83,7 @@ const ComplementsColumn = ({ complements }) => {
         <List>
           {complements.map((complement, i) => (
             <ListItem key={i}>
-              <ListItemText>{complement.texto}</ListItemText>
+              <ListItemText>{complement.text}</ListItemText>
             </ListItem>
           ))}
         </List>
