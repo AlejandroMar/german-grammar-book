@@ -5,7 +5,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import CorrectAnswer from '../common-components/correct-answer';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
-import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
+import { letters } from '../common-components/specialLettersToolTip/german-letters';
 
 const useStyles = makeStyles(() => ({
   root: {

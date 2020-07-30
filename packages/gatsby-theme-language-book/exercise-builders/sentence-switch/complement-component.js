@@ -1,6 +1,6 @@
 import { Input } from './input-component';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
-import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
+import { letters } from '../common-components/specialLettersToolTip/german-letters';
 import React from 'react';
 
 export const ComplementComponent = props => (

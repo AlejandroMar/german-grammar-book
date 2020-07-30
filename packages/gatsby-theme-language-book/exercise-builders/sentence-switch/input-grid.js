@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import { getComplement, getSubject, getVerb } from './filters';
 import { Box } from '@material-ui/core';
-import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
+import { letters } from '../common-components/specialLettersToolTip/german-letters';
 import { reducer } from './reducer';
 import { initialState } from './initial-state';
 import { useStyles } from './mui-styles';
