@@ -4,8 +4,8 @@ import {
   HANDLE_CHANGE,
   HANDLE_SPECIAL_CHAR_CLICK,
   PREDEFINED_VERB,
-  SUJETO_CON_VERBO,
-  VERBO_CON_COMPLEMENTO,
+  SUBJECT_WITH_VERB_MATCH,
+  VERB_WITH_COMPLEMENT_MATCH,
 } from './action-types';
 
 export const reducer = (state, action) => {
@@ -23,10 +23,10 @@ export const reducer = (state, action) => {
       const newValue = state[name] + value;
       return { ...state, [name]: newValue };
     }
-    case SUJETO_CON_VERBO: {
+    case SUBJECT_WITH_VERB_MATCH: {
       return { ...state, ...payload };
     }
-    case VERBO_CON_COMPLEMENTO: {
+    case VERB_WITH_COMPLEMENT_MATCH: {
       return { ...state, ...payload };
     }
     case CHECK_IF_CORRECT: {

@@ -4,21 +4,21 @@ import {
   HANDLE_CHANGE,
   HANDLE_SPECIAL_CHAR_CLICK,
   PREDEFINED_VERB,
-  SUJETO_CON_VERBO,
-  VERBO_CON_COMPLEMENTO,
+  SUBJECT_WITH_VERB_MATCH,
+  VERB_WITH_COMPLEMENT_MATCH,
 } from './action-types';
 
 // this action creatpr checks if correct
 export const checkIfCorrect = (state, dispatch) => {
-  if (state.sujetoConVerbo && state.verboConComplemento) {
+  if (state.subjectWithVerbMatch && state.verbWithComplementMatch) {
     dispatch({
       type: CHECK_IF_CORRECT,
-      payload: { correcto: true, msg: 'correcto' },
+      payload: { correct: true, msg: 'correcto' },
     });
   } else {
     dispatch({
       type: CHECK_IF_CORRECT,
-      payload: { correcto: false, msg: 'falso: intenta otra vez' },
+      payload: { correct: false, msg: 'falso: intenta otra vez' },
     });
   }
   return false;
@@ -35,12 +35,12 @@ export const handleChangeActionCreator = (e, dispatch) => {
   });
 };
 
-export function checkIfVerbIsPredefined(verboPre, dispatch) {
-  if (verboPre) {
+export function checkIfVerbIsPredefined(predefinedVerb, dispatch) {
+  if (predefinedVerb) {
     dispatch({
       type: PREDEFINED_VERB,
       payload: {
-        verboLocal: verboPre,
+        localVerb: predefinedVerb,
       },
     });
   }
@@ -50,35 +50,35 @@ export const cleanState = dispatch => {
   dispatch({
     type: CLEAN_STATE,
     payload: {
-      sujetoConVerbo: false,
-      verboConComplemento: false,
+      subjectWithVerbMatch: false,
+      verbWithComplementMatch: false,
       msg: '',
     },
   });
 };
 
 export function checkIfVerbAndSubjectMatch(
-  verbo,
+  verb,
   sujeto,
-  verboLocal,
+  localVerb,
   dispatch
 ) {
-  if (verbo.conjugacion[sujeto.p] === verboLocal.trim()) {
+  if (verb.conjugacion[sujeto.p] === localVerb.trim()) {
     dispatch({
-      type: SUJETO_CON_VERBO,
+      type: SUBJECT_WITH_VERB_MATCH,
       payload: {
-        sujetoConVerbo: true,
+        subjectWithVerbMatch: true,
       },
     });
   }
 }
 
-export function checkIfVerbAndComplementMatch(verbo, complemento, dispatch) {
-  if (verbo.complementos.includes(complemento.categoria)) {
+export function checkIfVerbAndComplementMatch(verb, complemento, dispatch) {
+  if (verb.complementos.includes(complemento.categoria)) {
     dispatch({
-      type: VERBO_CON_COMPLEMENTO,
+      type: VERB_WITH_COMPLEMENT_MATCH,
       payload: {
-        verboConComplemento: true,
+        verbWithComplementMatch: true,
       },
     });
   }

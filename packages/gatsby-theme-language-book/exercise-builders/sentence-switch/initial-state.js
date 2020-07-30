@@ -1,9 +1,9 @@
-export const initalState = {
+export const initialState = {
   localSubject: '',
   localVerb: '',
   localComplement: '',
-  sujetoConVerbo: false,
-  verboConComplemento: false,
-  correcto: false,
+  subjectWithVerbMatch: false,
+  verbWithComplementMatch: false,
+  correct: false,
   msg: '',
 };

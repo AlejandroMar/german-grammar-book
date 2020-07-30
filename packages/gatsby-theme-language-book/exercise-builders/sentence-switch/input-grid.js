@@ -3,7 +3,7 @@ import { getComplement, getSubject, getVerb } from './filtros';
 import { Box } from '@material-ui/core';
 import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
 import { reducer } from './reducer';
-import { initalState } from './initial-state';
+import { initialState } from './initial-state';
 import { useStyles } from './mui-styles';
 import { CorrectAnswer } from './correct-answer';
 import { WrongAnswerTip } from './wrong-answer-tip';
@@ -29,12 +29,12 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
   const classes = useStyles();
   const initialMount = useRef(true);
 
-  const [state, dispatch] = useReducer(reducer, initalState);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { localSubject, localVerb, localComplement, msg, correcto } = state;
-  const [displayCharsSub, setDisplayCharsSub] = useState(false);
+  const { localSubject, localVerb, localComplement, msg, correct } = state;
+  const [displayCharsSubject, setDisplayCharsSubject] = useState(false);
   const [displayCharsVerb, setDisplayCharsVerb] = useState(false);
-  const [displayCharsComp, setDisplayCharsComp] = useState(false);
+  const [displayCharsComplement, setDisplayCharsComplement] = useState(false);
 
   // no se sie esto es un buen patron pero
   // cuando el componente se monta si tengo verbos predefinidos
@@ -52,7 +52,7 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
     } else {
       checkIfCorrect(state, dispatch);
     }
-  }, [state.sujetoConVerbo, state.verboConComplemento]);
+  }, [state.subjectWithVerbMatch, state.verbWithComplementMatch]);
 
   const handleChange = e => {
     handleChangeActionCreator(e, dispatch);
@@ -64,8 +64,9 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
     cleanState(dispatch);
     checkIfCorrect(state, dispatch);
 
-    const sujeto = getSubject(subjects, localSubject);
+
     const verbo = getVerb(verbs, localVerb);
+    const sujeto = getSubject(subjects, localSubject);
     const complemento = getComplement(complements, localComplement);
 
     checkIfVerbAndSubjectMatch(verbo, sujeto, localVerb, dispatch);
@@ -74,17 +75,17 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
 
   const handleFocus = e => {
     setDisplayCharsOnBlurOrFocus(e, true, {
-      setDisplayCharsSub,
+      setDisplayCharsSub: setDisplayCharsSubject,
       setDisplayCharsVerb,
-      setDisplayCharsComp,
+      setDisplayCharsComp: setDisplayCharsComplement,
     });
   };
 
   const handleBlur = e => {
     setDisplayCharsOnBlurOrFocus(e, false, {
-      setDisplayCharsSub,
+      setDisplayCharsSub: setDisplayCharsSubject,
       setDisplayCharsVerb,
-      setDisplayCharsComp,
+      setDisplayCharsComp: setDisplayCharsComplement,
     });
   };
 
@@ -95,7 +96,7 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
 
   return (
     <Box component="div" className={classes.wrapper}>
-      {correcto ? (
+      {correct ? (
         <CorrectAnswer
           classes={classes}
           sujetoLocal={localSubject}
@@ -111,7 +112,7 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            displayChars={displayCharsSub}
+            displayChars={displayCharsSubject}
             addCharacterToState={addCharacterToState}
             letters={letters}
           />
@@ -134,7 +135,7 @@ const InputGrid = ({ predefinedVerb, verbs, complements, subjects }) => {
             onChange={handleChange}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            displayChars={displayCharsComp}
+            displayChars={displayCharsComplement}
             addCharacterToState={addCharacterToState}
             letters={letters}
           />
