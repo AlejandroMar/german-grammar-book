@@ -1,7 +1,7 @@
-import { Input } from './input-component';
+import React from 'react';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import { letters } from '../common-components/specialLettersToolTip/german-letters';
-import React from 'react';
+import { Input } from './input-component';
 
 export const ComplementComponent = props => (
   <div className={props.classes.inputAndLettersWrap}>

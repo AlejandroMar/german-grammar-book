@@ -9,7 +9,6 @@ export const getVerb = (verbs, localVerb) => {
     });
     return result;
   }, []);
-  
 
   const verbFilteredAndClean = filteredVerb.length
     ? filteredVerb[0]

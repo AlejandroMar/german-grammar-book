@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { TextField as MuInput } from '@material-ui/core';
+import styled from 'styled-components';
 
 export const Input = styled(MuInput).attrs({
   autoComplete: 'off',

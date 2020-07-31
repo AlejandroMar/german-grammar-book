@@ -57,12 +57,7 @@ export const cleanState = dispatch => {
   });
 };
 
-export function checkIfVerbAndSubjectMatch(
-  verb,
-  subject,
-  localVerb,
-  dispatch
-) {
+export function checkIfVerbAndSubjectMatch(verb, subject, localVerb, dispatch) {
   if (verb.conjugation[subject.p] === localVerb.trim()) {
     dispatch({
       type: SUBJECT_WITH_VERB_MATCH,

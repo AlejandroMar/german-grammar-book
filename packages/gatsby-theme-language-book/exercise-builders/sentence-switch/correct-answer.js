@@ -8,7 +8,13 @@ const CorrectAnswerTip = ({ className, msg }) => (
   </Box>
 );
 
-export const CorrectAnswer = ({ classes, localComplement, msg, localSubject, localVerb, }) => (
+export const CorrectAnswer = ({
+  classes,
+  localComplement,
+  msg,
+  localSubject,
+  localVerb,
+}) => (
   <Paper className={classes.correctAnswer}>
     <Box component="span" className={cx(classes.answerPart, classes.subject)}>
       {localSubject}

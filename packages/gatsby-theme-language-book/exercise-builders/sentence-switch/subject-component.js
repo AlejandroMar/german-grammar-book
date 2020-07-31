@@ -1,6 +1,6 @@
-import { Input } from './input-component';
-import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import React from 'react';
+import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
+import { Input } from './input-component';
 
 export const SubjectComponent = props => (
   <div className={props.classes.inputAndLettersWrap}>

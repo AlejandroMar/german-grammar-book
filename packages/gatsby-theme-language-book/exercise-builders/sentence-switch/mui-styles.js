@@ -8,8 +8,6 @@ export const useStyles = makeStyles(theme => ({
     margin: '2% 0',
   },
 
-
-
   inputAndLettersWrap: {
     display: 'inline-block',
     width: '20%',

@@ -1,8 +1,8 @@
 import { Box } from '@material-ui/core';
 import cx from 'classnames';
-import { Input } from './input-component';
-import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
 import React from 'react';
+import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
+import { Input } from './input-component';
 
 export function VerbComponent(props) {
   return (
