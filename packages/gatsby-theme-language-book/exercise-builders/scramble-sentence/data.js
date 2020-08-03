@@ -13,7 +13,7 @@ export const initialData = {
     phrasePartIds: Array,
     title: String,
     text: String,
-    isDropppable: Boolean,
+    isDroppable: Boolean,
     done: {
       correct: Boolean,
       answerId: String, // answers.answer

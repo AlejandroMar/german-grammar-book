@@ -1,5 +1,5 @@
 import React from 'react'
-import ScrableSentence from '../../packages/gatsby-theme-language-book/exercise-builders/scramble-sentence/ScrambleSentence'
+import ScrableSentence from 'gatsby-theme-language-book/exercise-builders/scramble-sentence'
 
 const phraseData = {
   phrase: {

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Droppable } from 'react-beautiful-dnd';
 import PoolPart from './PoolPart';
 import { Container, PoolPartList } from './PoolStyledComponents';
 import styled from 'styled-components';
+import { Paper } from '@material-ui/core';
 
-const DropHere = styled.div`
+const DropHere = styled(Paper)`
   z-index: 0;
   position: relative;
-  background-color: lightgray;
+  background-color: ${props => props.theme.palette.grey[400]};
   height: 1%;
   padding: 1%;
-
   margin: 0 auto;
 
   &::after {
@@ -21,34 +21,30 @@ const DropHere = styled.div`
   }
 `;
 
-class Pool extends Component {
-  state = {};
-  render() {
-    const { phrase, pool, isDropDisabled } = this.props;
-    return (
-      <Container isDropDisabled={isDropDisabled} done={pool.done.correct}>
-        {!isDropDisabled && <DropHere>Drop here</DropHere>}
-        <Droppable
-          droppableId={pool.id}
-          direction="horizontal"
-          isDropDisabled={isDropDisabled}
-        >
-          {(provided, snapshot) => (
-            <PoolPartList
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              isDraggingOver={snapshot.isDraggingOver}
-            >
-              {phrase.map((part, index) => (
-                <PoolPart part={part} index={index} key={part.id} />
-              ))}
-              {provided.placeholder}
-            </PoolPartList>
-          )}
-        </Droppable>
-      </Container>
-    );
-  }
-}
+const Pool = ({ isDropDisabled, phrase, pool }) => {
+  return (
+    <Container isDropDisabled={isDropDisabled} done={pool.done.correct}>
+      {!isDropDisabled && <DropHere square>Drop here</DropHere>}
+      <Droppable
+        droppableId={pool.id}
+        direction="horizontal"
+        isDropDisabled={isDropDisabled}
+      >
+        {(provided, snapshot) => (
+          <PoolPartList
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            isDraggingOver={snapshot.isDraggingOver}
+          >
+            {phrase.map((part, index) => (
+              <PoolPart part={part} index={index} key={part.id} />
+            ))}
+            {provided.placeholder}
+          </PoolPartList>
+        )}
+      </Droppable>
+    </Container>
+  );
+};
 
 export default Pool;

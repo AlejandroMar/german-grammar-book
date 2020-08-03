@@ -4,21 +4,17 @@ import produce from 'immer';
 import styled, { withTheme } from 'styled-components';
 import ParentPhrase from './ParentPhrase';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { Container as MuiContainer } from '@material-ui/core';
 
 import Pool from './Pool';
 import PoolDone from './PoolDone';
 
-const Container = styled.div`
-  width: 100%;
-  margin: 0 auto;
+const Container = styled(MuiContainer)`
   display: flex;
   flex-direction: column;
-  /* @media (max-width: 768px) {
-    width: 95%;
-  } */
 `;
 
-class ScrambleSentence extends Component {
+class Index extends Component {
   state = {
     ...initialData,
     ...this.props.phraseData,
@@ -34,7 +30,7 @@ class ScrambleSentence extends Component {
           phrasePartIds: [],
           title: String,
           text: String,
-          isDropppable: false,
+          isDroppable: false,
           done: {
             correct: false,
             answerId: String, // answers.answer
@@ -56,33 +52,25 @@ class ScrambleSentence extends Component {
   }
 
   checkSolution = (partIds, answers) => {
-    //console.log("answers: ", Object.keys(answers));
-    //console.log("parts: ", partIds);
     const solution = {
       answerId: null,
       correct: false,
     };
     Object.keys(answers)
-      .map((currentAnswer, index) => {
+      .map(currentAnswer => {
         return answers[currentAnswer].pattern.map((part, index) => {
-          //console.log("part: ", part);
-          //console.log("partfrom index: ", partIds[index]);
           if (part === partIds[index]) {
-            //console.log("match");
             return { correct: true, id: answers[currentAnswer].id };
           }
           return { correct: false, id: null };
         });
       })
-      .forEach((answer, index) => {
+      .forEach(answer => {
         if (answer.every(val => val.correct === true)) {
-          //console.log("each answer: ", answer[0].id);
           solution.answerId = answer[0].id;
           solution.correct = true;
         }
       });
-
-    //console.log(solution);
 
     return solution;
   };
@@ -119,8 +107,6 @@ class ScrambleSentence extends Component {
 
   // on end
   onDragEnd = result => {
-    //console.log(result);
-
     const { destination, source, draggableId } = result;
     // if dropped nowhere
     if (!destination) return;
@@ -162,7 +148,6 @@ class ScrambleSentence extends Component {
       return;
     }
     // if dropped in another pool
-    //console.log("start: ", start, "finins: ", finish);
     const newStart = Array.from(start.phrasePartIds);
     newStart.splice(source.index, 1);
 
@@ -186,7 +171,7 @@ class ScrambleSentence extends Component {
   };
 
   render() {
-    const phrase = this.state.parentPhrase.phrasePartIds.map((part, index) => {
+    const phrase = this.state.parentPhrase.phrasePartIds.map(part => {
       return this.state.phrase[part];
     });
 
@@ -203,7 +188,7 @@ class ScrambleSentence extends Component {
               const pool = this.state.pools[currentPool];
               //console.log("pool: ", pool);
               const phrase = pool.phrasePartIds.map(
-                (part, index) => this.state.phrase[part]
+                part => this.state.phrase[part]
               );
 
               const isDropDisabled = this.state.isDroppableIndex !== index;
@@ -229,4 +214,4 @@ class ScrambleSentence extends Component {
   }
 }
 
-export default withTheme(ScrambleSentence);
+export default withTheme(Index);

@@ -1,36 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
+import { Paper } from '@material-ui/core';
 
-const Container = styled.div`
-  border: 1px solid lightgrey;
+const Container = styled(Paper)`
   padding: 1%;
-  border-radius: 5px;
   margin: 0.5%;
   min-width: fit-content;
   min-height: fit-content;
-  background-color: ${props => (props.isDragging ? 'lightgreen' : 'white')};
+  background-color: ${props =>
+    props.isDragging ? props.theme.palette.success.light : 'white'};
 `;
 
-class Part extends Component {
-  state = {};
-  render() {
-    const { part, index } = this.props;
-    return (
-      <Draggable draggableId={part.id} index={index}>
-        {(provided, snapshot) => (
-          <Container
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            ref={provided.innerRef}
-            isDragging={snapshot.isDragging}
-          >
-            {part.content}
-          </Container>
-        )}
-      </Draggable>
-    );
-  }
-}
+const Part = ({ index, part }) => {
+  return (
+    <Draggable draggableId={part.id} index={index}>
+      {(provided, snapshot) => (
+        <Container
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+          isDragging={snapshot.isDragging}
+        >
+          {part.content}
+        </Container>
+      )}
+    </Draggable>
+  );
+};
 
 export default Part;

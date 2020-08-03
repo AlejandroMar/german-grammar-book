@@ -5,6 +5,11 @@ export const theme = createMuiTheme({
     bg: {
       main: '#23232e',
     },
+    primary: {
+      main: '#1976d2',
+      light: '#4791db',
+      dark: '#115293',
+    }
   },
   overrides: {
     MuiCssBaseline: {
