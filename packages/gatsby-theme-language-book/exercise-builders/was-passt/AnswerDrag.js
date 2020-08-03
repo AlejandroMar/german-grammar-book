@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import { usePreview } from 'react-dnd-preview';
 import isTouchDevice from 'is-touch-device';
 import { Types } from './reactDndTypes';
+import { Paper } from '@material-ui/core';
 
-const ContentText = styled.div`
-  border: 1px solid lightgray;
+const ContentText = styled(Paper)`
+  //border: 1px solid lightgray;
   padding: 4%;
-  border-radius: 5px;
+  //border-radius: 5px;
   background-color: white;
   flex-basis: 100%;
 `;
@@ -37,7 +38,9 @@ const AnswerDrag = ({ answer }) => {
 
   return (
     <>
-      <ContentText ref={drag}>{answer.text}</ContentText>
+      <ContentText ref={drag} elevation={2}>
+        {answer.text}
+      </ContentText>
       {isTouchDevice() && <DragPreviewForTouch />}
     </>
   );

@@ -2,9 +2,20 @@ import React from 'react';
 import { useDrop } from 'react-dnd';
 import styled, { css } from 'styled-components';
 import { Types } from './reactDndTypes';
+import { Paper } from '@material-ui/core';
 
-const ContentText = styled.p`
+const Info = styled(Paper)`
+  padding: 4px;
+  width: fit-content;
+  margin: 0 0 0 auto;
+  background-color: ${props => props.theme.palette.warning.light};
+`;
+
+const ContentText = styled(Paper)`
   margin-right: 1%;
+  margin-bottom: 8px;
+  padding: 4px;
+  background-color: ${props => props.theme.palette.success.light};
 `;
 
 const AnswerDropBox = styled.div`
@@ -14,19 +25,19 @@ const AnswerDropBox = styled.div`
   margin-block-end: 1em;
   margin-inline-start: 0;
   margin-inline-end: 0;
-  padding: 0.5rem;
+  padding: 0.8rem;
 
   ${props => {
     if (props.correct) {
       return css`
-        background-color: lightgreen;
+        background-color: ${({ theme }) => theme.palette.success.light};
       `;
     }
   }}
   ${props => {
     if (props.isOver) {
       return css`
-        background-color: lightblue;
+        background-color: ${({ theme }) => theme.palette.info.light};
       `;
     }
     return css`
@@ -36,7 +47,7 @@ const AnswerDropBox = styled.div`
   background-clip: padding-box;
   flex-basis: 50%;
 
-  @media only screen and (max-width: 600px) {
+  ${({ theme }) => theme.breakpoints.down('xs')} {
     padding: 1rem;
   }
 `;
@@ -59,9 +70,9 @@ const RenderDropBox = ({ drop, isOver, respondedCounter, possibleAnswers }) => {
 
 const ProgressInfo = ({ respondedCounter, possibleAnswers }) => {
   return (
-    <div>
+    <Info>
       {respondedCounter}/{possibleAnswers}
-    </div>
+    </Info>
   );
 };
 
@@ -85,10 +96,6 @@ const AnswerDrop = ({
 
   return (
     <>
-      <ProgressInfo
-        respondedCounter={respondedCounter}
-        possibleAnswers={possibleAnswers}
-      />
       <RenderDropBox
         drop={drop}
         isOver={isOver}
@@ -96,6 +103,10 @@ const AnswerDrop = ({
         possibleAnswers={possibleAnswers}
       />
       <CorrectAnswers respondedAnswers={respondedAnswers} />
+      <ProgressInfo
+        respondedCounter={respondedCounter}
+        possibleAnswers={possibleAnswers}
+      />
     </>
   );
 };

@@ -7,9 +7,9 @@ const Container = styled.div`
   display: flex;
   width: 80%;
   margin: 0 auto;
-  border: 1px solid blue;
+  border: 1px solid ${({ theme }) => theme.palette.primary.light};
 
-  @media only screen and (max-width: 600px) {
+  ${({ theme }) => theme.breakpoints.down('xs')} {
     width: 100%;
   }
 `;
@@ -19,7 +19,7 @@ const Row = styled.div`
 const Col = styled.div`
   flex-basis: ${props => `${props.flexBasis}%`};
   flex-direction: column;
-  border: 1px solid green;
+  border: 1px solid ${({ theme }) => theme.palette.success.light};
   padding: 1rem;
 `;
 
