@@ -1,5 +1,5 @@
 export function shuffleArray(array) {
-  var m = array.length,
+  let m = array.length,
     t,
     i;
 

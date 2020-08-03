@@ -7,3 +7,5 @@
   items:
     - name: Genero
       path: /intro/genero
+- name: Wass Past
+  path: /wass-past
