@@ -16,21 +16,21 @@ export const data = {
   questions: [
     {
       respondedCounter: 0,
-      question: 'El perro está.',
+      question: 'El perro está',
       answers: ['a-1', 'a-2', 'a-3', 'a-6'],
       responded: [],
       done: false,
     },
     {
       respondedCounter: 0,
-      question: 'Clara quiere.',
+      question: 'Clara quiere',
       answers: ['a-4', 'a-5'],
       done: false,
       responded: [],
     },
     {
       respondedCounter: 0,
-      question: 'el computador está.',
+      question: 'el computador está',
       answers: ['a-6', 'a-7'],
       done: false,
       responded: [],
