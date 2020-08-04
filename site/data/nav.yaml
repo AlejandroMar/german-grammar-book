@@ -1,6 +1,6 @@
 - name: Introducción
   path: /
-- name: Scramble
+- name: OrdenaFrase1
   path: /scramble
 - name: Intro
   path: /intro

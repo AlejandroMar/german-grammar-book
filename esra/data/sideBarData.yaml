@@ -6,6 +6,15 @@
   path: /unidad-2b-5.2-bilde-sätze-level-2
 - name: Unidad 6.
   path: /unidad-6-texto-para-completar
+- name: Ordena la frase 1
+  path: /ordena-frase-1
+- name: Ordena la frase 2
+  path: /ordena-frase-2
+- name: Relaciona pregunta-rspuesta
+  path: /pregunta-respuesta
+- name: Relaciona las frases
+  path: /relaciona-frases
+
 - name: 'Repaso: Verbos en presente.'
   items:
     - name: Verbos con -ar

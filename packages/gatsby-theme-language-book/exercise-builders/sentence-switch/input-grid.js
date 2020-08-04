@@ -1,6 +1,6 @@
 import { Box } from '@material-ui/core';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
-import { letters } from '../common-components/specialLettersToolTip/german-letters';
+import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
 import {
   addCharacterToStateActionCreator,
   checkIfCorrect,

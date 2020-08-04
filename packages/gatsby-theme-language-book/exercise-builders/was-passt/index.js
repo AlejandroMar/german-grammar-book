@@ -6,7 +6,6 @@ import { TouchBackend } from 'react-dnd-touch-backend';
 import { DndProvider } from 'react-dnd';
 import isTouchDevice from 'is-touch-device';
 
-import { data } from './data';
 import { shuffleArray, repeatedAnswer } from './utils';
 
 import AnswerDrop from './AnswerDrop';
@@ -23,7 +22,7 @@ import {
 const chooseBackend = isTouchDevice() ? TouchBackend : Backend;
 
 // Main component
-function Index() {
+function Index({ data }) {
   const [state, setState] = useImmer(data);
 
   useEffect(() => {

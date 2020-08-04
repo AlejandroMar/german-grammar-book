@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Input as MuInput } from '@material-ui/core';
 import styled from 'styled-components';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import CorrectAnswer from '../common-components/correct-answer';
 import { DisplayChars } from '../common-components/specialLettersToolTip/displayChars';
-import { letters } from '../common-components/specialLettersToolTip/german-letters';
+import { letters } from '../common-components/specialLettersToolTip/spanish-letters';
 
 const useStyles = makeStyles(() => ({
   root: {
