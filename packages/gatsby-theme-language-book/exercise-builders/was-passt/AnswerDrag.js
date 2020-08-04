@@ -12,10 +12,12 @@ const ContentText = styled(Paper)`
   //border-radius: 5px;
   background-color: white;
   flex-basis: 100%;
+  cursor: ${({ isDragging }) => (isDragging ? 'grabbing' : 'grab')};
 `;
 const PreviewText = styled(ContentText)`
   padding: 1%;
   background-color: white;
+  cursor: grabbing;
 `;
 
 const DragPreviewForTouch = () => {
@@ -23,13 +25,14 @@ const DragPreviewForTouch = () => {
   if (!display) {
     return null;
   }
+
   return <PreviewText style={style}>{item.answer.text}</PreviewText>;
 };
 
 // Main Component
 const AnswerDrag = ({ answer }) => {
   // hook from reactDnd
-  const [, drag] = useDrag({
+  const [{ isDragging }, drag] = useDrag({
     item: { type: Types.ANSWER, answer },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
@@ -38,7 +41,7 @@ const AnswerDrag = ({ answer }) => {
 
   return (
     <>
-      <ContentText ref={drag} elevation={2}>
+      <ContentText ref={drag} elevation={2} isDragging={isDragging}>
         {answer.text}
       </ContentText>
       {isTouchDevice() && <DragPreviewForTouch />}
