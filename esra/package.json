@@ -15,13 +15,13 @@
   },
   "dependencies": {
     "gatsby": "^2.20.12",
+    "gatsby-plugin-manifest": "^2.4.21",
+    "gatsby-theme-language-book": "*",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0",
-    "gatsby-theme-language-book": "*"
+    "react-helmet": "^6.0.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
   }
-  
 }
