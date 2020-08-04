@@ -8,12 +8,14 @@ const Info = styled(Paper)`
   padding: 4px;
   width: fit-content;
   margin: 0 0 0 auto;
+  color: ${props => props.theme.palette.warning.contrastText};
   background-color: ${props => props.theme.palette.warning.light};
 `;
 
 const ContentText = styled(Paper)`
   margin-right: 1%;
   margin-bottom: 8px;
+  color: ${props => props.theme.palette.success.contrastText};
   padding: 4px;
   background-color: ${props => props.theme.palette.success.light};
 `;
